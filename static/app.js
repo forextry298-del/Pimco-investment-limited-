@@ -4,6 +4,11 @@ document.querySelectorAll('[data-tab]').forEach(btn=>btn.addEventListener('click
  document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b===btn));
  document.querySelectorAll('#register,#login').forEach(f=>f.classList.toggle('hidden',f.id!==btn.dataset.tab));
 }));
+const requestedTab=new URLSearchParams(window.location.search).get('tab');
+if(requestedTab==='login'){
+ const loginTab=document.querySelector('[data-tab="login"]');
+ if(loginTab)loginTab.click();
+}
 document.querySelectorAll('[data-open]').forEach(btn=>btn.addEventListener('click',()=>{
  const kind=btn.dataset.open, modal=document.getElementById('transactionModal');
  if(!modal)return;

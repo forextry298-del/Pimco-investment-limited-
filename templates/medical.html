@@ -1,5 +1,28 @@
-{% extends "base.html" %}{% block content %}<section class="panel" style="margin-top:15px"><div style="display:flex;gap:10px;align-items:center"><div class="brandmark"><i data-lucide="clipboard-heart"></i></div><div><h2 style="margin:0">Medical Information</h2><p class="small" style="margin:3px 0">Please fill this medical form</p></div></div><form method="post">
-<div class="field"><label>Your Name</label><input value="{{ user['name'] }}" disabled></div>
-<div class="field"><label>Age</label><input name="age" type="number" min="1" max="120" placeholder="Enter your age" required></div>
-<div class="field"><label>Have you experienced or been diagnosed with any disease?</label><select name="disease" required><option value="">Choose an answer</option><option value="No">No</option><option value="Yes">Yes</option><option value="Prefer not to say">Prefer not to say</option></select></div>
-<p class="small">This is an optional demonstration questionnaire, not a medical assessment. Avoid entering sensitive medical details.</p><button class="btn full">Submit Medical Form</button></form></section>{% endblock %}
+{% extends "base.html" %}{% block content %}
+<section class="panel" style="margin-top:15px">
+<div style="display:flex;gap:10px;align-items:center">
+<div class="brandmark"><i data-lucide="clipboard-heart"></i></div>
+<div><h2 style="margin:0">Patient Medical Intake</h2><p class="small" style="margin:3px 0">Please provide your information accurately.</p></div>
+</div>
+<form method="post">
+<h3>Personal Information</h3>
+<div class="field"><label>Full Name</label><input value="{{ user['name'] }}" disabled></div>
+<div class="field"><label>Age *</label><input name="age" type="number" min="1" max="120" required></div>
+<div class="field"><label>Date of Birth</label><input name="date_of_birth" type="date"></div>
+<div class="field"><label>Gender *</label><select name="gender" required><option value="">Select gender</option><option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option></select></div>
+<div class="field"><label>Email Address</label><input name="email" type="email"></div>
+<div class="field"><label>Residential Address</label><textarea name="address" rows="2"></textarea></div>
+<div class="field"><label>Emergency Contact Number *</label><input name="emergency_contact" type="tel" required></div>
+<h3>Medical History</h3>
+<div class="field"><label>Previous illnesses or diagnosed conditions</label><textarea name="medical_history" rows="3"></textarea></div>
+<div class="field"><label>Current medications</label><textarea name="medications" rows="2"></textarea></div>
+<div class="field"><label>Known allergies</label><textarea name="allergies" rows="2"></textarea></div>
+<div class="field"><label>Previous surgeries or hospital admissions</label><textarea name="surgeries" rows="2"></textarea></div>
+<div class="field"><label>Current symptoms or reason for assistance *</label><textarea name="symptoms" rows="3" required></textarea></div>
+<div class="field"><label>Additional information</label><textarea name="additional_info" rows="3"></textarea></div>
+<div class="field"><label><input type="checkbox" name="medical_consent" value="yes" required> I confirm that the information provided is accurate to the best of my knowledge.</label></div>
+<p class="small">This form collects information and is not a medical diagnosis or substitute for professional medical advice.</p>
+<button class="btn full" type="submit">Submit Medical Information</button>
+</form>
+</section>
+{% endblock %}
