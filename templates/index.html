@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block content %}
+<section class="panel" style="margin-top:24px">
+<div class="tabs"><button class="active" type="button" data-tab="register">Create Account</button><button type="button" data-tab="login">Member Login</button></div>
+<form id="register" method="post" action="{{ url_for('register') }}">
+<div class="field"><label>Full Name</label><input name="name" placeholder="Enter your full name" autocomplete="name" required></div>
+<div class="field"><label>Phone Number</label><input name="phone" type="tel" placeholder="+256 7XX XXX XXX" autocomplete="tel" required></div>
+<div class="field"><label>Password</label><input name="password" type="password" placeholder="Create a password (6+ characters)" minlength="6" required></div>
+<div class="field"><label>Invitation Code <span class="small">(optional)</span></label><input name="invite_code" placeholder="Enter invitation code"></div>
+<button class="btn full" type="submit">Register &amp; Enter Platform</button>
+</form>
+<form id="login" class="hidden" method="post" action="{{ url_for('login') }}">
+<div class="field"><label>Registered Phone Number</label><input name="phone" type="tel" placeholder="+256 7XX XXX XXX" required></div>
+<div class="field"><label>Password</label><input name="password" type="password" placeholder="Your password" required></div>
+<button class="btn full navy" type="submit">Sign In to Dashboard</button>
+</form><p class="small" style="margin:16px 0 0">Local demonstration platform. Use a test phone number and password. No real deposits or withdrawals are processed.</p>
+</section>{% endblock %}

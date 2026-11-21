@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}<div class="section-head"><h2 style="font-size:23px">Equipment</h2><span class="small">Medical equipment store</span></div><div class="equipment-grid">
+{% for item,price,ico in [('Examination Gloves Box','25,000','hand'),('First Aid Kit','75,000','briefcase-medical'),('Wheelchair','480,000','accessibility'),('Nebulizer','165,000','wind'),('Blood Pressure Monitor','95,000','heart-pulse'),('Digital Thermometer','18,000','thermometer'),('Stethoscope','55,000','stethoscope'),('Pulse Oximeter','45,000','activity'),('Oxygen Concentrator','1,250,000','wind')] %}
+<div class="equip"><div class="pico"><i data-lucide="{{ ico }}"></i></div><h3>{{ item }}</h3><strong>UGX {{ price }}</strong><button class="btn" onclick="demoAlert('Order request for {{ item }}: demo only. No payment or delivery is arranged.')">Order Item</button></div>
+{% endfor %}</div>{% endblock %}
