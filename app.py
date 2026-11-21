@@ -89,6 +89,15 @@ def init_db():
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )""")
 
+        con.execute("""CREATE TABLE IF NOT EXISTS bonus_claims(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL UNIQUE,
+            amount INTEGER NOT NULL,
+            reference TEXT UNIQUE NOT NULL,
+            claimed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        )""")
+
         con.execute("CREATE INDEX IF NOT EXISTS idx_purchases_user ON purchases(user_id)")
         con.execute("CREATE INDEX IF NOT EXISTS idx_credits_user ON earning_credits(user_id)")
 
@@ -146,8 +155,6 @@ def login():
 
     session["user_id"] = user["id"]
     flash("Login successful.", "success")
-    if not user["medical_done"]:
-        return redirect(url_for("medical"))
     return redirect(url_for("home"))
 
 @app.route("/home")
@@ -155,9 +162,6 @@ def home():
     user = current_user()
     if not user:
         return redirect(url_for("index"))
-    if not user["medical_done"]:
-        return redirect(url_for("medical"))
-
     with db() as con:
         con.execute("INSERT OR IGNORE INTO wallets(user_id) VALUES(?)", (user["id"],))
         wallet = con.execute(
@@ -169,11 +173,17 @@ def home():
             (user["id"],)
         ).fetchall()
 
+        bonus_claimed = con.execute(
+            "SELECT 1 FROM bonus_claims WHERE user_id=?",
+            (user["id"],)
+        ).fetchone() is not None
+
     return render_template(
         "home.html",
         user=user,
         transactions=tx,
-        wallet=wallet
+        wallet=wallet,
+        bonus_claimed=bonus_claimed
     )
 
 
@@ -364,12 +374,18 @@ def allocate_verified_revenue():
             WHERE verified=1
         """).fetchone()[0]
 
-        already_allocated = con.execute("""
+        earning_allocated = con.execute("""
             SELECT COALESCE(SUM(amount),0)
             FROM earning_credits
             WHERE status='credited'
         """).fetchone()[0]
 
+        bonus_allocated = con.execute("""
+            SELECT COALESCE(SUM(amount),0)
+            FROM bonus_claims
+        """).fetchone()[0]
+
+        already_allocated = earning_allocated + bonus_allocated
         available = max(0, revenue - already_allocated)
 
         pending = con.execute("""
@@ -477,6 +493,80 @@ def admin_process_daily_earnings():
         revenue_funded_amount=funded
     )
 
+
+
+
+@app.route("/claim-bonus", methods=["POST"])
+def claim_bonus():
+    user = current_user()
+    if not user:
+        return redirect(url_for("index"))
+
+    amount = 4000
+    reference = f"bonus:{user['id']}"
+
+    try:
+        with db() as con:
+            con.execute("BEGIN IMMEDIATE")
+
+            existing = con.execute(
+                "SELECT 1 FROM bonus_claims WHERE user_id=?",
+                (user["id"],)
+            ).fetchone()
+
+            if existing:
+                flash("UNREPEATABLE", "error")
+                return redirect(url_for("home"))
+
+            revenue = con.execute(
+                "SELECT COALESCE(SUM(amount),0) FROM business_revenue WHERE verified=1"
+            ).fetchone()[0]
+
+            earnings_used = con.execute(
+                "SELECT COALESCE(SUM(amount),0) FROM earning_credits WHERE status='credited'"
+            ).fetchone()[0]
+
+            bonuses_used = con.execute(
+                "SELECT COALESCE(SUM(amount),0) FROM bonus_claims"
+            ).fetchone()[0]
+
+            if revenue - earnings_used - bonuses_used < amount:
+                flash("Bonus funding is not yet available.", "error")
+                return redirect(url_for("home"))
+
+            con.execute(
+                "INSERT OR IGNORE INTO wallets(user_id) VALUES(?)",
+                (user["id"],)
+            )
+
+            con.execute(
+                "INSERT INTO bonus_claims(user_id,amount,reference) VALUES(?,?,?)",
+                (user["id"], amount, reference)
+            )
+
+            con.execute("""
+                UPDATE wallets
+                SET earnings_balance=earnings_balance+?,
+                    updated_at=CURRENT_TIMESTAMP
+                WHERE user_id=?
+            """, (amount, user["id"]))
+
+            con.execute("""
+                INSERT INTO wallet_ledger(
+                    user_id,entry_type,amount,reference,description
+                ) VALUES(?,?,?,?,?)
+            """, (
+                user["id"], "bonus", amount, reference,
+                "One-time UGX 4,000 bonus"
+            ))
+
+        flash("Your one-time bonus of UGX 4,000 has been credited to your withdrawable balance.", "success")
+
+    except Exception:
+        app.logger.exception("Bonus claim failed")
+        flash("Bonus claim could not be completed.", "error")
+
+    return redirect(url_for("home"))
 
 @app.route("/earning")
 def earning():
