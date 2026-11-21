@@ -1,4 +1,40 @@
-{% extends "base.html" %}{% block content %}<div class="section-head"><h2 style="font-size:23px">Equipment</h2><span class="small">Medical equipment store</span></div><div class="equipment-grid">
-{% for item,price,ico in [('Examination Gloves Box','25,000','hand'),('First Aid Kit','75,000','briefcase-medical'),('Wheelchair','480,000','accessibility'),('Nebulizer','165,000','wind'),('Blood Pressure Monitor','95,000','heart-pulse'),('Digital Thermometer','18,000','thermometer'),('Stethoscope','55,000','stethoscope'),('Pulse Oximeter','45,000','activity'),('Oxygen Concentrator','1,250,000','wind')] %}
-<div class="equip"><div class="pico"><i data-lucide="{{ ico }}"></i></div><h3>{{ item }}</h3><strong>UGX {{ price }}</strong><button class="btn" onclick="demoAlert('Order request for {{ item }}: demo only. No payment or delivery is arranged.')">Order Item</button></div>
-{% endfor %}</div>{% endblock %}
+{% extends "base.html" %}
+{% block content %}
+<div class="section-head">
+<h2 style="font-size:23px">Investment Products</h2>
+<span class="small">Available plans</span>
+</div>
+
+<div class="panel" style="margin-bottom:16px">
+<div class="small">Available Wallet Balance</div>
+<h2 style="margin:5px 0">UGX {{ "{:,}".format(wallet_balance) }}</h2>
+<p class="small">Purchases require sufficient available funds.</p>
+</div>
+
+<div class="equipment-grid">
+{% for item in products %}
+<div class="equip">
+<div class="pico"><i data-lucide="chart-no-axes-combined"></i></div>
+<h3>Investment Plan {{ item.id }}</h3>
+
+<p class="small">Purchase Price</p>
+<strong>UGX {{ "{:,}".format(item.price) }}</strong>
+
+<p class="small">Daily Income</p>
+<b>UGX {{ "{:,}".format(item.daily) }}</b>
+
+<p class="small">Duration</p>
+<b>{{ item.days }} Days</b>
+
+<p class="small">Total Projected Income</p>
+<strong style="color:#15965b">
+UGX {{ "{:,}".format(item.daily * item.days) }}
+</strong>
+
+<form method="POST" action="{{ url_for('purchase', product_id=item.id) }}">
+<button class="btn" type="submit">Purchase</button>
+</form>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

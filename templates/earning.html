@@ -1,1 +1,61 @@
-{% extends "base.html" %}{% block content %}<div class="section-head"><h2 style="font-size:23px">Earning &amp; Activity</h2></div><div class="panel"><p class="small">Your demo account activity</p><h2 style="margin:5px 0 0">UGX 0</h2><span class="small">Recorded earnings (demo)</span></div><div class="section-head"><h2>Recent Transactions</h2></div><div class="panel">{% if transactions %}{% for t in transactions %}<div class="txrow"><span>{{ t['kind']|title }} · {{ t['channel'] }}</span><b>UGX {{ "{:,}".format(t['amount']) }}</b></div><div class="small">{{ t['status'] }} · {{ t['created_at'] }}</div>{% endfor %}{% else %}<p class="small">No transactions yet.</p>{% endif %}</div>{% endblock %}
+{% extends "base.html" %}
+{% block content %}
+
+<div class="section-head">
+<h2 style="font-size:23px">Earning &amp; Activity</h2>
+</div>
+
+<div class="panel">
+<p class="small">Total Projected Income from Purchased Plans</p>
+<h2 style="margin:5px 0">UGX {{ "{:,}".format(total_income) }}</h2>
+<p class="small">This is projected income, not yet-earned or withdrawable money.</p>
+
+<div class="divider"></div>
+<p class="small">Available Wallet Balance</p>
+<strong>UGX {{ "{:,}".format(wallet['available_balance'] if wallet else 0) }}</strong>
+<p class="small">Verified Earnings Balance</p>
+<strong>UGX {{ "{:,}".format(wallet['earnings_balance'] if wallet else 0) }}</strong>
+</div>
+
+<div class="section-head">
+<h2>My Purchased Plans</h2>
+</div>
+
+<div class="panel">
+{% if purchases %}
+{% for p in purchases %}
+<div class="txrow">
+<b>Investment Plan {{ p['product_id'] }}</b>
+<span>{{ p['status']|title }}</span>
+</div>
+<p class="small">Purchase Price: UGX {{ "{:,}".format(p['product_price']) }}</p>
+<p class="small">Daily Income: UGX {{ "{:,}".format(p['daily_income']) }}</p>
+<p class="small">Duration: {{ p['duration_days'] }} days</p>
+<p class="small">Total Projected Income: UGX {{ "{:,}".format(p['daily_income'] * p['duration_days']) }}</p>
+<p class="small">Purchase Date: {{ p['purchased_at'] }}</p>
+<hr>
+{% endfor %}
+{% else %}
+<p class="small">No investment plans purchased yet.</p>
+{% endif %}
+</div>
+
+<div class="section-head">
+<h2>Recent Transactions</h2>
+</div>
+
+<div class="panel">
+{% if transactions %}
+{% for t in transactions %}
+<div class="txrow">
+<span>{{ t['kind']|title }} · {{ t['channel'] }}</span>
+<b>UGX {{ "{:,}".format(t['amount']) }}</b>
+</div>
+<div class="small">{{ t['status'] }} · {{ t['created_at'] }}</div>
+{% endfor %}
+{% else %}
+<p class="small">No transactions yet.</p>
+{% endif %}
+</div>
+
+{% endblock %}
