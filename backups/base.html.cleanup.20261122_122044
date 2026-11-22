@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="theme-color" content="#eaf5ff"><title>PIMCO Investment</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"><script src="https://unpkg.com/lucide@latest"></script><link rel="stylesheet" href="{{ url_for('static', filename='medical_catalog.css') }}">\n  <link rel="stylesheet" href="{{ url_for('static', filename='home-slider.css') }}">
+</head><body><main class="wrap">
+<header class="brand"><div class="brandmark"><i data-lucide="chart-no-axes-combined"></i></div><div class="brandname">PIMCO<small>INVESTMENT PLATFORM</small></div></header>
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
+{% block content %}{% endblock %}
+</main>
+{% if session.get('user_id') %}<nav class="bottomnav">
+<a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint=='home' else '' }}"><i data-lucide="house"></i>Home</a>
+<a href="{{ url_for('equipment') }}" class="{{ 'active' if request.endpoint=='equipment' else '' }}"><i data-lucide="package"></i>Equipment</a>
+<a href="{{ url_for('earning') }}" class="{{ 'active' if request.endpoint=='earning' else '' }}"><i data-lucide="chart-no-axes-column-increasing"></i>Earning</a>
+<a href="{{ url_for('profile') }}" class="{{ 'active' if request.endpoint=='profile' else '' }}"><i data-lucide="user-round"></i>Profile</a>
+</nav>{% endif %}
+<script>if(window.lucide){lucide.createIcons();}</script><script src="{{ url_for('static', filename='app.js') }}"></script></body></html>

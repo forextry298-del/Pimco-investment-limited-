@@ -1,18 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="section-head">
-  <h2 style="font-size:23px">Investment Products</h2>
-  <span class="small">20 available plans</span>
-</div>
-
-<div class="panel" style="margin-bottom:16px">
-  <div class="small">Available Wallet Balance</div>
-  <h2 style="margin:5px 0">UGX {{ "{:,}".format(wallet_balance) }}</h2>
-  <p class="small">Purchases are processed against the available wallet balance.</p>
-</div>
-
-<p class="pimco-note">Projected figures are illustrative estimates only and are not guaranteed earnings.</p>
-
 <div class="pimco-plan-grid">
 {% for item in products %}
   <article class="pimco-plan-card">

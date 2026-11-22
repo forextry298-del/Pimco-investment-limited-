@@ -1,0 +1,9 @@
+PIMCO requested text cleanup
+
+Extract this ZIP into ~/pimco_investment, then run:
+cd ~/pimco_investment && bash REMOVE_REQUESTED_TEXT.sh
+
+The script backs up the affected templates in backups/ before editing.
+It removes the specified top section and wallet panel from the investment products page,
+the PIMCO/platform brand block, the projected-figures disclaimer, auth-page warning banners,
+and literal \\n / stray comma artifacts. It runs Python syntax validation for app.py.

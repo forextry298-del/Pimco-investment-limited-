@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="section-head">
+  <h2 style="font-size:23px">Investment Products</h2>
+  <span class="small">20 available plans</span>
+</div>
+
+<div class="panel" style="margin-bottom:16px">
+  <div class="small">Available Wallet Balance</div>
+  <h2 style="margin:5px 0">UGX {{ "{:,}".format(wallet_balance) }}</h2>
+  <p class="small">Purchases are processed against the available wallet balance.</p>
+</div>
+
+<p class="pimco-note">Projected figures are illustrative estimates only and are not guaranteed earnings.</p>
+
+<div class="pimco-plan-grid">
+{% for item in products %}
+  <article class="pimco-plan-card">
+    <img class="pimco-plan-image"
+         src="{{ url_for('static', filename='product-images/plan-%02d.jpg'|format(item.id)) }}"
+         alt="Medical product image for Investment Plan {{ item.id }}"
+         loading="lazy">
+    <div class="pimco-plan-body">
+      <div class="pimco-plan-label">PLAN {{ "%02d"|format(item.id) }}</div>
+      <h3>Investment Plan {{ item.id }}</h3>
+      <div class="pimco-plan-row"><span>Purchase Price</span><strong>UGX {{ "{:,}".format(item.price) }}</strong></div>
+      <div class="pimco-plan-row"><span>Daily Income</span><strong>UGX {{ "{:,}".format(item.daily) }}</strong></div>
+      <div class="pimco-plan-row"><span>Duration</span><strong>{{ item.days }} days</strong></div>
+      <div class="pimco-plan-total">
+        <span>Total Projected Income</span>
+        <strong>UGX {{ "{:,}".format(item.daily * item.days) }}</strong>
+      </div>
+      <p class="pimco-plan-function"><b>Function:</b> Submit a plan purchase. The system checks your wallet balance, records the purchase, and deducts the purchase price from the wallet.</p>
+      <form method="POST" action="{{ url_for('purchase', product_id=item.id) }}">
+        <button class="btn full" type="submit">Purchase Plan</button>
+      </form>
+    </div>
+  </article>
+{% endfor %}
+</div>
+
+<style>
+.pimco-note{font-size:11px;line-height:1.45;color:#596d80;background:#fff;border:1px solid #e8eef4;border-radius:12px;padding:11px;margin:0 0 12px}
+.pimco-plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pimco-plan-card{min-width:0;overflow:hidden;background:#fff;border:1px solid #e8eef4;border-radius:17px;box-shadow:0 5px 16px #1b477010}
+.pimco-plan-image{display:block;width:100%;height:125px;object-fit:cover;background:#eef3f7}
+.pimco-plan-body{padding:11px}
+.pimco-plan-label{font-size:9px;font-weight:800;letter-spacing:1px;color:#078e89}
+.pimco-plan-body h3{font-size:13px;margin:4px 0 10px;color:#123d76}
+.pimco-plan-row{display:flex;justify-content:space-between;gap:6px;padding:6px 0;border-bottom:1px solid #edf1f5;font-size:10px}
+.pimco-plan-row span{color:#63758a}
+.pimco-plan-row strong{text-align:right;font-size:10px;overflow-wrap:anywhere}
+.pimco-plan-total{margin:9px 0;padding:9px;border-radius:11px;background:#eaf8f1}
+.pimco-plan-total span{display:block;font-size:9px;color:#4e6c60}
+.pimco-plan-total strong{display:block;margin-top:4px;font-size:12px;color:#138653;overflow-wrap:anywhere}
+.pimco-plan-function{font-size:10px;line-height:1.45;color:#53677c;min-height:58px}
+.pimco-plan-card form{margin-top:9px}
+.pimco-plan-card .btn{font-size:11px;padding:10px 6px}
+@media(max-width:360px){.pimco-plan-grid{grid-template-columns:1fr}.pimco-plan-image{height:165px}}
+</style>
+{% endblock %}
