@@ -645,6 +645,57 @@ def logout():
     session.clear()
     return redirect(url_for("index"))
 
+
+# === SEASONAL OFFERS UPDATE ===
+from datetime import datetime, timedelta, timezone
+from flask import request, flash, redirect
+
+KAMPALA_TZ = timezone(timedelta(hours=3))
+
+SEASONAL_PRODUCTS = [
+    {"id": 21, "name": "Christmas Premium", "price": 1000000, "daily": 750000, "days": 2, "active_hours": 8, "starts_at": "2026-11-25T00:00:00+03:00", "season": "Christmas"},
+    {"id": 22, "name": "Christmas Mini", "price": 1000, "daily": 400, "days": 4, "active_hours": 4, "starts_at": "2026-11-25T00:00:00+03:00", "season": "Christmas"},
+    {"id": 23, "name": "Christmas Gift", "price": 50000, "daily": 25000, "days": 4, "active_hours": 0.5, "starts_at": "2026-11-25T00:00:00+03:00", "season": "Christmas"},
+    {"id": 24, "name": "Christmas Box", "price": 5000, "daily": 3000, "days": 3, "active_hours": 24, "starts_at": "2026-11-25T00:00:00+03:00", "season": "Christmas"},
+    {"id": 25, "name": "Christmas Family", "price": 20000, "daily": 7500, "days": 4, "active_hours": 72, "starts_at": "2026-11-25T00:00:00+03:00", "season": "Christmas"},
+    {"id": 26, "name": "Black November Hen", "price": 4000, "daily": 3000, "days": 2, "active_hours": 7, "starts_at": "2026-12-26T00:00:00+03:00", "season": "Black November"},
+    {"id": 27, "name": "Black November Mini", "price": 500, "daily": 300, "days": 4, "active_hours": 4, "starts_at": "2026-12-26T00:00:00+03:00", "season": "Black November"},
+    {"id": 28, "name": "Black November Premium", "price": 100000, "daily": 70000, "days": 10, "active_hours": 24, "starts_at": "2026-12-26T00:00:00+03:00", "season": "Black November"},
+    {"id": 29, "name": "Black November Matooke", "price": 49000, "daily": 26000, "days": 25, "active_hours": 216, "starts_at": "2026-12-26T00:00:00+03:00", "season": "Black November"},
+]
+
+existing_ids = {item.get("id") for item in INVESTMENT_PRODUCTS}
+INVESTMENT_PRODUCTS.extend(
+    item.copy() for item in SEASONAL_PRODUCTS
+    if item["id"] not in existing_ids
+)
+
+@app.before_request
+def validate_seasonal_purchase_window():
+    if request.endpoint != "purchase":
+        return None
+
+    product_id = request.view_args.get("product_id") if request.view_args else None
+    offer = next((p for p in SEASONAL_PRODUCTS if p["id"] == product_id), None)
+    if not offer:
+        return None
+
+    now = datetime.now(KAMPALA_TZ)
+    start = datetime.fromisoformat(offer["starts_at"])
+    end = start + timedelta(hours=offer["active_hours"])
+
+    if now < start:
+        flash("This seasonal offer has not started yet.", "warning")
+        return redirect(request.referrer or "/")
+
+    if now >= end:
+        flash("Expired. Please try again later.", "warning")
+        return redirect(request.referrer or "/")
+
+    return None
+# === END SEASONAL OFFERS UPDATE ===
+
+
 if __name__ == "__main__":
     import os
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
