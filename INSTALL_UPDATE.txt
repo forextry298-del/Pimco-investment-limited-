@@ -1,0 +1,8 @@
+PIMCO update patch
+1. Copy/extract this ZIP into ~/pimco_investment (merge/overwrite).
+2. In Termux run:
+   cd ~/pimco_investment && bash INSTALL_PIMCO_UPDATE.sh
+3. Restart Flask and open http://127.0.0.1:5000/
+The script backs up home.html, base.html and style.css in backups/ first.
+It changes the existing hero to an 8-image automatic slider using the 20 plan image assets.
+It removes visible Demo/demo wording and the stray ,, newline ,, artifact from templates/static text.

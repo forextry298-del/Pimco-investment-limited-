@@ -1,4 +1,4 @@
-function demoAlert(msg){alert(msg)}
+function notifyUser(msg){alert(msg)}
 function closeModal(id){const el=document.getElementById(id);if(el)el.classList.remove('show')}
 document.querySelectorAll('[data-tab]').forEach(btn=>btn.addEventListener('click',()=>{
  document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b===btn));

@@ -1,0 +1,26 @@
+
+/* Medical catalog image cards */
+.medical-image {
+    width: 100%;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f1f7fb;
+    margin-bottom: 10px;
+}
+.medical-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.equip h3 {
+    min-height: 32px;
+}
+.equip .btn {
+    width: 100%;
+    font-size: 11px;
+    padding: 9px;
+}

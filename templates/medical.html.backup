@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}<section class="panel" style="margin-top:15px"><div style="display:flex;gap:10px;align-items:center"><div class="brandmark"><i data-lucide="clipboard-heart"></i></div><div><h2 style="margin:0">Medical Information</h2><p class="small" style="margin:3px 0">Please fill this medical form</p></div></div><form method="post">
+<div class="field"><label>Your Name</label><input value="{{ user['name'] }}" disabled></div>
+<div class="field"><label>Age</label><input name="age" type="number" min="1" max="120" placeholder="Enter your age" required></div>
+<div class="field"><label>Have you experienced or been diagnosed with any disease?</label><select name="disease" required><option value="">Choose an answer</option><option value="No">No</option><option value="Yes">Yes</option><option value="Prefer not to say">Prefer not to say</option></select></div>
+<p class="small">This is an optional demonstration questionnaire, not a medical assessment. Avoid entering sensitive medical details.</p><button class="btn full">Submit Medical Form</button></form></section>{% endblock %}

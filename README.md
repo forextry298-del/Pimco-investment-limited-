@@ -1,4 +1,4 @@
-# PIMCO Investment Platform — Local Demo
+# PIMCO Investment Platform — Local 
 
 ## Run locally (Termux / Linux / macOS / Windows)
 
@@ -27,10 +27,10 @@ Create an account with a test name, phone number and password (minimum 6 charact
 - Registration and login with password hashing; local SQLite database.
 - Medical profile form shown after registration/login until completed.
 - Home, Equipment, Earning and Profile pages with bottom navigation.
-- Deposit and withdrawal demo modals, preset amounts and locally recorded activity.
+- Deposit and withdrawal  modals, preset amounts and locally recorded activity.
 - Auto-rotating home hero and Lucide icon set.
 
-## Important demo limitations
-This is a local prototype. Deposit/withdrawal requests are stored as **Demo pending** records only. It does not connect to MTN, Airtel, a bank, payment processor, real investment ledger, or product delivery. Balances and earnings are placeholders, not real funds or returns. Do not collect real medical information or real money with this prototype. Before any public launch, obtain legal/compliance review, implement secure production hosting, privacy controls, verified payment integrations, and truthful investment disclosures.
+## Important  limitations
+This is a local prototype. Deposit/withdrawal requests are stored as ** pending** records only. It does not connect to MTN, Airtel, a bank, payment processor, real investment ledger, or product delivery. Balances and earnings are placeholders, not real funds or returns. Do not collect real medical information or real money with this prototype. Before any public launch, obtain legal/compliance review, implement secure production hosting, privacy controls, verified payment integrations, and truthful investment disclosures.
 
 Icons are loaded from the Lucide CDN, so the device needs internet access for the icon library to render. All app routes and data storage run locally.

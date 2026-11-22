@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="section-head">
+    <h2 style="font-size:23px">Medical Equipment</h2>
+    <span class="small">Medical products</span>
+</div>
+
+<div class="equipment-grid">
+{% set medical_products = [
+    ("Surgical Equipment", "medical-1.jpg"),
+    ("Laboratory Analyzer", "medical-2.jpg"),
+    ("Medical Examination Equipment", "medical-3.jpg"),
+    ("Hospital Patient Room", "medical-4.jpg"),
+    ("Digital Glucose Monitor", "medical-5.jpg"),
+    ("Professional Stethoscope", "medical-6.jpg"),
+    ("Adjustable Hospital Bed", "medical-7.jpg")
+] %}
+
+{% for name, image in medical_products %}
+<div class="equip">
+    <div class="medical-image">
+        <img
+            src="{{ url_for('static', filename='medical/' + image) }}"
+            alt="{{ name }}"
+            onerror="this.style.display='none'"
+        >
+    </div>
+    <h3>{{ name }}</h3>
+    <p class="small">Medical equipment information and availability.</p>
+    <a class="btn"
+       href="https://wa.me/256727939417"
+       target="_blank"
+       rel="noopener noreferrer">
+        Ask About Product
+    </a>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}
