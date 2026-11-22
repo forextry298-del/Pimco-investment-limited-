@@ -4,7 +4,7 @@
 href="{{ url_for('static', filename='css/seasonal-offers.css') }}">
 
 </head><body><main class="wrap">
-<header class="brand"><div class="brandmark"><i data-lucide="chart-no-axes-combined"></i></div><div class="brandname">MUSEVENI MUST GO <small>MEDICAL STORE</small></div></header>
+<header class="brand"><div class="brandmark"><i data-lucide="chart-no-axes-combined"></i></div><div class="brandname">EASTRIDGE <small>MEDICAL HOSPITAL</small></div></header>
 {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
 {% block content %}{% endblock %}
 </main>

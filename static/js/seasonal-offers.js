@@ -103,6 +103,7 @@
     }
   ];
 
+  window.SEASONAL_OFFERS = offers;
   console.log("Seasonal offers loaded:", offers.length);
 })();
 
@@ -159,6 +160,7 @@ const offers = window.SEASONAL_OFFERS;
   function createOfferCard(offer) {
     const card = document.createElement("article");
     card.className = "seasonal-offer-card";
+    card.dataset.seasonalId = offer.id;
 
     const image = document.createElement("img");
     image.className = "seasonal-photo";
@@ -243,103 +245,31 @@ const offers = window.SEASONAL_OFFERS;
   }
 
 
-  function createSeasonalPopup() {
-    if (document.getElementById("seasonal-popup")) {
-      return;
-    }
-
-    const popup = document.createElement("div");
-    popup.id = "seasonal-popup";
-
-    popup.innerHTML = `
-      <div class="seasonal-popup-backdrop"></div>
-      <section class="seasonal-popup-panel">
-        <button class="seasonal-close"
-          type="button">×</button>
-
-        <h2>Seasonal Special Offers</h2>
-
-        <p class="seasonal-intro">
-          Limited offers with individual countdowns
-        </p>
-
-        <div class="seasonal-tabs">
-          <button type="button"
-            data-team="Christmas">Christmas</button>
-
-          <button type="button"
-            data-team="Black November">
-            Black November
-          </button>
-        </div>
-
-        <div class="seasonal-popup-cards"></div>
-      </section>
-    `;
-
-    document.body.appendChild(popup);
-
-    const cards = popup.querySelector(
-      ".seasonal-popup-cards"
-    );
-
-    function showTeam(team) {
-      cards.replaceChildren();
-
-      offers
-        .filter(offer => offer.team === team)
-        .forEach(offer => {
-          cards.appendChild(createOfferCard(offer));
-        });
-
-      popup.querySelectorAll(
-        ".seasonal-tabs button"
-      ).forEach(button => {
-        button.classList.toggle(
-          "selected",
-          button.dataset.team === team
-        );
-      });
-    }
-
-    popup.querySelectorAll(
-      ".seasonal-tabs button"
-    ).forEach(button => {
-      button.addEventListener("click", () => {
-        showTeam(button.dataset.team);
-      });
-    });
-
-    popup.querySelector(".seasonal-close")
-      .addEventListener("click", () => popup.remove());
-
-    popup.querySelector(".seasonal-popup-backdrop")
-      .addEventListener("click", () => popup.remove());
-
-    showTeam("Christmas");
-  }
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const path = window.location.pathname;
-
-    if (path === "/" || path.endsWith("/home")) {
-      createSeasonalPopup();
-    }
-  });
-
 
   function addSeasonalEquipmentCards() {
-    const equipment = document.querySelector(
-      ".products, .equipment, .plans, .product-grid"
-    );
-
+    const equipment = document.querySelector(".pimco-plan-grid");
     if (!equipment) return;
 
     offers.forEach(function (offer) {
-      const card = createOfferCard(offer);
+      let card = equipment.querySelector(
+        '[data-product-id="' + offer.id + '"]'
+      );
+
+      if (!card) {
+        card = createOfferCard(offer);
+        card.classList.add("seasonal-product-card");
+        equipment.appendChild(card);
+        return;
+      }
+
+      card.dataset.seasonalId = offer.id;
       card.classList.add("seasonal-product-card");
-      equipment.appendChild(card);
+
+      const image = card.querySelector("img");
+      if (image) {
+        image.src = offer.image;
+        image.alt = offer.name;
+      }
     });
   }
 
@@ -349,3 +279,76 @@ const offers = window.SEASONAL_OFFERS;
     }
   });
 
+  function openSeasonalDetails(offer) {
+    const old = document.getElementById("eastridge-countdown");
+    if (old) old.remove();
+
+    const modal = document.createElement("div");
+    modal.id = "eastridge-countdown";
+    modal.style.cssText =
+      "position:fixed;inset:0;z-index:99999;background:#07152bdd;" +
+      "display:flex;align-items:center;justify-content:center;padding:15px";
+
+    const box = document.createElement("section");
+    box.style.cssText =
+      "background:white;border-radius:18px;padding:20px;" +
+      "width:100%;max-width:360px;color:#123d76";
+
+    const close = document.createElement("button");
+    close.textContent = "Close";
+
+    const heading = document.createElement("h2");
+    heading.textContent = offer.name;
+
+    const status = document.createElement("p");
+    const timer = document.createElement("h2");
+    timer.style.color = "#078e89";
+
+    const note = document.createElement("p");
+    note.textContent = "Projected income only; not guaranteed.";
+
+    box.append(close, heading, status, timer, note);
+    modal.appendChild(box);
+    document.body.appendChild(modal);
+
+    close.onclick = function () { modal.remove(); };
+    modal.onclick = function (e) {
+      if (e.target === modal) modal.remove();
+    };
+
+    function refresh() {
+      if (!modal.isConnected) return;
+      const result = getOfferStatus(offer);
+
+      if (result.state === "coming") {
+        status.textContent = "Offer starts in:";
+        timer.textContent = formatCountdown(result.remaining);
+      } else if (result.state === "expired") {
+        status.textContent = "Expired. Please try again later.";
+        timer.textContent = "";
+      } else {
+        status.textContent = "Offer expires in:";
+        timer.textContent = formatCountdown(result.remaining);
+      }
+    }
+
+    refresh();
+    const clock = setInterval(function () {
+      if (!modal.isConnected) {
+        clearInterval(clock);
+        return;
+      }
+      refresh();
+    }, 1000);
+  }
+
+  document.addEventListener("click", function (event) {
+    const card = event.target.closest("[data-seasonal-id]");
+    if (!card || event.target.closest("form, button")) return;
+
+    const offer = offers.find(function (item) {
+      return String(item.id) === card.dataset.seasonalId;
+    });
+
+    if (offer) openSeasonalDetails(offer);
+  });

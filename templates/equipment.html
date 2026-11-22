@@ -2,9 +2,9 @@
 {% block content %}
 <div class="pimco-plan-grid">
 {% for item in products %}
-  <article class="pimco-plan-card">
+  <article class="pimco-plan-card" data-product-id="{{ item.id }}">
     <img class="pimco-plan-image"
-         src="{{ url_for('static', filename='product-images/plan-%02d.jpg'|format(item.id)) }}"
+         src="{{ url_for('static', filename=('images/seasonal/christmas-tree.jpg' if item.id in [21,25] else 'images/seasonal/christmas-gifts.jpg' if item.id == 23 else 'images/seasonal/gift-boxes.jpg' if item.id == 24 else 'images/seasonal/hen.jpg' if item.id in [26,27,28] else 'images/seasonal/matooke.jpg' if item.id == 29 else 'product-images/plan-%02d.jpg'|format(item.id))) }}"
          alt="Medical product image for Investment Plan {{ item.id }}"
          loading="lazy">
     <div class="pimco-plan-body">
