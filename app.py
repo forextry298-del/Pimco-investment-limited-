@@ -98,6 +98,17 @@ def init_db():
             FOREIGN KEY(user_id) REFERENCES users(id)
         )""")
 
+        con.execute("""CREATE TABLE IF NOT EXISTS deposit_submissions(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            amount INTEGER NOT NULL,
+            channel TEXT NOT NULL,
+            reference TEXT,
+            status TEXT NOT NULL DEFAULT 'pending',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        )""")
+
         con.execute("CREATE INDEX IF NOT EXISTS idx_purchases_user ON purchases(user_id)")
         con.execute("CREATE INDEX IF NOT EXISTS idx_credits_user ON earning_credits(user_id)")
 
@@ -248,11 +259,26 @@ def transaction():
     try: amount = int(request.form.get("amount","0"))
     except ValueError: amount = 0
     if kind not in ("deposit","withdrawal") or amount < 1000:
-        return jsonify(ok=False, message="Enter a valid amount of at least UGX 1,000.")
+        return jsonify(ok=False, message="Enter a valid amount of at least UGX 1,000."), 400
+
+    if kind == "deposit":
+        reference = request.form.get("reference", "").strip()[:100]
+        with db() as con:
+            con.execute("""
+                INSERT INTO deposit_submissions(user_id,amount,channel,reference)
+                VALUES(?,?,?,?)
+            """, (user["id"], amount, channel, reference))
+        return jsonify(
+            ok=True,
+            message="Your deposit submission has been received and is pending payment verification. Your balance has not yet been credited."
+        )
+
     with db() as con:
-        con.execute("INSERT INTO transactions(user_id,kind,amount,channel) VALUES(?,?,?,?)",
-                    (user["id"],kind,amount,channel))
-    return jsonify(ok=True, message=f"Demo {kind} request recorded: UGX {amount:,}. No money was moved.")
+        con.execute(
+            "INSERT INTO transactions(user_id,kind,amount,channel) VALUES(?,?,?,?)",
+            (user["id"],kind,amount,channel)
+        )
+    return jsonify(ok=True, message=f"Withdrawal request recorded: UGX {amount:,}.")
 
 
 INVESTMENT_PRODUCTS = [

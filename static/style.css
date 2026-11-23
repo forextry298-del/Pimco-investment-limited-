@@ -68,3 +68,11 @@
   background: #222;
   color: white;
 }
+
+/* PIMCO animated ambient background */
+body{position:relative;isolation:isolate;background:#08152e}
+body::before{content:"";position:fixed;inset:-35%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 18% 25%,#176eea88 0%,transparent 38%),radial-gradient(ellipse at 78% 30%,#8538df77 0%,transparent 38%),radial-gradient(ellipse at 55% 82%,#d49a2870 0%,transparent 36%);filter:blur(42px);animation:pimcoGlow 12s ease-in-out infinite alternate}
+@keyframes pimcoGlow{0%{transform:translate3d(-3%,1%,0) scale(1)}50%{transform:translate3d(3%,-2%,0) scale(1.08)}100%{transform:translate3d(-1%,3%,0) scale(1.03)}}
+.payment-detail{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:13px;margin:10px 0;border:1px solid #e2e9f2;border-radius:13px;background:#f7faff}
+.payment-detail span{font-size:12px;color:#64748b}
+.payment-detail strong{font-size:15px;color:#163b70}
