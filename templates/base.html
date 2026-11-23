@@ -3,6 +3,7 @@
 <link rel="stylesheet"
 href="{{ url_for('static', filename='css/seasonal-offers.css') }}">
 
+<link rel="stylesheet" href="{{ url_for('static', filename='neon-redesign.css') }}">
 </head><body><main class="wrap">
 <header class="brand"><div class="brandmark"><i data-lucide="chart-no-axes-combined"></i></div><div class="brandname">EASTRIDGE <small>MEDICAL HOSPITAL</small></div></header>
 {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
@@ -11,7 +12,7 @@ href="{{ url_for('static', filename='css/seasonal-offers.css') }}">
 {% if session.get('user_id') %}<nav class="bottomnav">
 <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint=='home' else '' }}"><i data-lucide="house"></i>Home</a>
 <a href="{{ url_for('equipment') }}" class="{{ 'active' if request.endpoint=='equipment' else '' }}"><i data-lucide="package"></i>Equipment</a>
-<a href="{{ url_for('earning') }}" class="{{ 'active' if request.endpoint=='earning' else '' }}"><i data-lucide="chart-no-axes-column-increasing"></i>Earning</a>
+<a href="{{ url_for('earning') }}" class="{{ 'active' if request.endpoint=='earning' else '' }}"><i data-lucide="chart-no-axes-column-increasing"></i>Donate</a>
 <a href="{{ url_for('profile') }}" class="{{ 'active' if request.endpoint=='profile' else '' }}"><i data-lucide="user-round"></i>Profile</a>
 </nav>{% endif %}
 <script>if(window.lucide){lucide.createIcons();}</script><script src="{{ url_for('static', filename='app.js') }}"></script>

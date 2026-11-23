@@ -1,26 +1,99 @@
 {% extends "base.html" %}
 {% block content %}
 
+<style>
+.donate-hero{background:linear-gradient(135deg,#071b3b,#075c91);color:white;padding:22px;border-radius:18px;margin:12px 0}
+.donate-hero h2{font-size:25px}
+.donate-hero p{color:#e0efff;line-height:1.6;font-size:13px}
+.donate-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:15px 0}
+.donate-gallery img{width:100%;height:145px;object-fit:cover;border-radius:13px}
+.donate-gallery img:first-child{grid-column:span 2;height:210px}
+.donate-item{background:white;border:1px solid #dce7ef;border-radius:13px;padding:14px;margin-bottom:10px}
+.donate-item label{font-weight:700;display:flex;align-items:center;gap:10px}
+.donate-item input{width:19px;height:19px;accent-color:#0879bd}
+.donate-input{width:100%;box-sizing:border-box;padding:14px;border:1px solid #ccd9e6;border-radius:11px;font-size:16px}
+.donate-button{width:100%;padding:16px;border:0;border-radius:12px;background:linear-gradient(120deg,#0879bd,#064b83);color:white;font-weight:800;font-size:16px;margin-top:15px}
+.donate-balance{background:#e9f7ff;padding:17px;border-radius:14px;margin:14px 0}
+.donate-balance strong{font-size:23px;color:#075b91}
+.donate-history{padding:13px 0;border-bottom:1px solid #e5edf3}
+.donate-small{font-size:12px;color:#718096}
+</style>
+
 <div class="section-head">
-<h2 style="font-size:23px">Earning &amp; Activity</h2>
+<h2 style="font-size:24px">School Donations ❤️</h2>
+</div>
+
+<div class="donate-hero">
+<p><b>MAKE A DIFFERENCE</b></p>
+<h2>Donate to This School</h2>
+<p>Your kindness can help children learn in a better and more comfortable environment. Support their education by providing essential classroom supplies.</p>
+</div>
+
+<div class="section-head"><h2>Our School & Classroom</h2></div>
+
+<div class="donate-gallery">
+<img src="{{ url_for('static',filename='images/school-donation/school1.jpg') }}" alt="School child studying">
+<img src="{{ url_for('static',filename='images/school-donation/school2.jpg') }}" alt="Children in classroom">
+<img src="{{ url_for('static',filename='images/school-donation/school3.jpg') }}" alt="Teacher teaching">
+<img src="{{ url_for('static',filename='images/school-donation/school4.jpg') }}" alt="School pupils">
+<img src="{{ url_for('static',filename='images/school-donation/school5.jpg') }}" alt="Classroom learning">
 </div>
 
 <div class="panel">
-<p class="small">Total Projected Income from Purchased Plans</p>
-<h2 style="margin:5px 0">UGX {{ "{:,}".format(total_income) }}</h2>
-<p class="small">This is projected income, not yet-earned or withdrawable money.</p>
+<h3>Help Provide These Items</h3>
+<p class="small">Choose what you would like your donation to support.</p>
 
-<div class="divider"></div>
-<p class="small">Available Wallet Balance</p>
+<form method="POST" action="{{ url_for('donate') }}" onsubmit="return confirmSchoolDonation(this)">
+<input type="hidden" name="request_token" value="{{ donation_token }}">
+
+{% for item, description in [
+("School chairs","Help provide comfortable seats for pupils."),
+("Classroom desks","Support better classroom learning spaces."),
+("Exercise books","Provide books for writing and schoolwork."),
+("Pens and stationery","Provide essential learning materials."),
+("Classroom learning materials","Support teaching and learning resources."),
+("Classroom improvement","Improve the children's learning environment.")
+] %}
+<div class="donate-item">
+<label><input type="radio" name="item" value="{{ item }}" required> {{ item }}</label>
+<p class="donate-small">{{ description }}</p>
+</div>
+{% endfor %}
+
+<div style="margin-top:18px">
+<label for="schoolDonationAmount"><b>Donation Amount (UGX)</b></label>
+<input class="donate-input" id="schoolDonationAmount" name="amount" type="number" min="1" step="1" placeholder="Enter amount you wish to donate" required>
+</div>
+
+<button type="submit" class="donate-button">❤️ DONATE TO THIS SCHOOL</button>
+<p class="small" style="text-align:center">Your donation will be deducted from your available wallet balance after confirmation.</p>
+</form>
+</div>
+
+<div class="donate-balance">
+<p class="small">Your Available Wallet Balance</p>
 <strong>UGX {{ "{:,}".format(wallet['available_balance'] if wallet else 0) }}</strong>
-<p class="small">Verified Earnings Balance</p>
-<strong>UGX {{ "{:,}".format(wallet['earnings_balance'] if wallet else 0) }}</strong>
 </div>
 
-<div class="section-head">
-<h2>My Purchased Plans</h2>
+<div class="section-head"><h2>My Donation History</h2></div>
+<div class="panel">
+{% if donations %}
+{% for d in donations %}
+<div class="donate-history">
+<div class="txrow">
+<b>{{ d['item'] }}</b>
+<strong>UGX {{ "{:,}".format(d['amount']) }}</strong>
+</div>
+<p class="donate-small">Donation to {{ d['school'] }}</p>
+<p class="donate-small">{{ d['created_at'] }}</p>
+</div>
+{% endfor %}
+{% else %}
+<p class="small">You have not made any school donations yet.</p>
+{% endif %}
 </div>
 
+<div class="section-head"><h2>My Purchased Plans</h2></div>
 <div class="panel">
 {% if purchases %}
 {% for p in purchases %}
@@ -40,10 +113,7 @@
 {% endif %}
 </div>
 
-<div class="section-head">
-<h2>Recent Transactions</h2>
-</div>
-
+<div class="section-head"><h2>Recent Transactions</h2></div>
 <div class="panel">
 {% if transactions %}
 {% for t in transactions %}
@@ -57,5 +127,24 @@
 <p class="small">No transactions yet.</p>
 {% endif %}
 </div>
+
+<script>
+function confirmSchoolDonation(form) {
+    const amount = Number(form.amount.value);
+    const item = form.querySelector('input[name="item"]:checked');
+
+    if (!item || !Number.isSafeInteger(amount) || amount < 1) {
+        alert("Please select a donation item and enter a valid amount.");
+        return false;
+    }
+
+    return confirm(
+        "CONFIRM YOUR DONATION\n\n" +
+        "Donate UGX " + amount.toLocaleString("en-US") +
+        " to this school?\n\nPurpose: " + item.value +
+        "\n\nThis exact amount will be deducted from your available wallet balance."
+    );
+}
+</script>
 
 {% endblock %}

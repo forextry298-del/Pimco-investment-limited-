@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
-import sqlite3, os
+import sqlite3, os, secrets
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -105,6 +105,18 @@ def init_db():
             channel TEXT NOT NULL,
             reference TEXT,
             status TEXT NOT NULL DEFAULT 'pending',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        )""")
+
+        con.execute("""CREATE TABLE IF NOT EXISTS school_donations(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            school TEXT NOT NULL,
+            item TEXT NOT NULL,
+            amount INTEGER NOT NULL CHECK(amount > 0),
+            reference TEXT UNIQUE NOT NULL,
+            request_token TEXT UNIQUE NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY(user_id) REFERENCES users(id)
         )""")
@@ -616,6 +628,11 @@ def earning():
             (user["id"],)
         ).fetchone()
 
+        donations = con.execute(
+            "SELECT * FROM school_donations WHERE user_id=? ORDER BY id DESC",
+            (user["id"],)
+        ).fetchall()
+
         total_income = sum(
             item["daily_income"] * item["duration_days"]
             for item in purchases
@@ -627,8 +644,100 @@ def earning():
         transactions=tx,
         purchases=purchases,
         wallet=wallet,
-        total_income=total_income
+        total_income=total_income,
+        donations=donations,
+        donation_token=secrets.token_urlsafe(32)
     )
+
+
+@app.route("/donate", methods=["POST"])
+def donate():
+    user = current_user()
+    if not user:
+        return redirect(url_for("index"))
+
+    item = request.form.get("item", "").strip()
+    token = request.form.get("request_token", "").strip()
+
+    allowed = {
+        "School chairs", "Classroom desks", "Exercise books",
+        "Pens and stationery", "Classroom learning materials",
+        "Classroom improvement"
+    }
+
+    try:
+        amount = int(request.form.get("amount", ""))
+    except (ValueError, TypeError):
+        flash("Please enter a valid donation amount.", "error")
+        return redirect(url_for("earning"))
+
+    if item not in allowed or not token or amount < 1:
+        flash("Please provide a valid donation item and amount.", "error")
+        return redirect(url_for("earning"))
+
+    try:
+        with db() as con:
+            previous = con.execute(
+                "SELECT id FROM school_donations WHERE request_token=?",
+                (token,)
+            ).fetchone()
+
+            if previous:
+                flash("This donation has already been processed.", "error")
+                return redirect(url_for("earning"))
+
+            con.execute(
+                "INSERT OR IGNORE INTO wallets(user_id) VALUES(?)",
+                (user["id"],)
+            )
+
+            debit = con.execute(
+                """UPDATE wallets
+                   SET available_balance=available_balance-?,
+                       updated_at=CURRENT_TIMESTAMP
+                   WHERE user_id=? AND available_balance>=?""",
+                (amount, user["id"], amount)
+            )
+
+            if debit.rowcount != 1:
+                flash("Insufficient available wallet balance.", "error")
+                return redirect(url_for("earning"))
+
+            reference = f"school-donation:{user['id']}:{token}"
+
+            con.execute(
+                """INSERT INTO school_donations
+                (user_id,school,item,amount,reference,request_token)
+                VALUES(?,?,?,?,?,?)""",
+                (user["id"], "This School", item, amount,
+                 reference, token)
+            )
+
+            con.execute(
+                """INSERT INTO wallet_ledger
+                (user_id,entry_type,amount,reference,description)
+                VALUES(?,?,?,?,?)""",
+                (user["id"], "donation", amount, reference,
+                 "School donation: " + item)
+            )
+
+            con.execute(
+                """INSERT INTO transactions
+                (user_id,kind,amount,channel,status)
+                VALUES(?,?,?,?,?)""",
+                (user["id"], "donation", amount,
+                 "School donation - " + item, "Successful")
+            )
+
+        flash("Donation successful, Easteagde is happy for ur kind heart ❤️", "success")
+
+    except sqlite3.IntegrityError:
+        flash("This donation has already been processed.", "error")
+    except Exception:
+        app.logger.exception("Donation failed")
+        flash("Donation could not be completed.", "error")
+
+    return redirect(url_for("earning"))
 
 
 @app.route("/profile")
