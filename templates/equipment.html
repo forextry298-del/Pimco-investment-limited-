@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="eastridge-wave-net" aria-hidden="true"></div>
+
 <div class="pimco-plan-grid">
 {% for item in products %}
   <article class="pimco-plan-card" data-product-id="{{ item.id }}">
@@ -46,21 +46,7 @@
 .pimco-plan-card .btn{font-size:11px;padding:10px 6px}
 @media(max-width:360px){.pimco-plan-grid{grid-template-columns:1fr}.pimco-plan-image{height:165px}}
 
-.eastridge-wave-net{
-  position:fixed;
-  inset:-30%;
-  z-index:0;
-  pointer-events:none;
-  opacity:.72;
-  background-image:
-    repeating-linear-gradient(0deg,transparent 0 27px,#00d875 28px 30px,transparent 31px 55px),
-    repeating-linear-gradient(90deg,transparent 0 27px,#00d875 28px 30px,transparent 31px 55px);
-  background-size:100% 100%;
-  transform:perspective(700px) rotateX(58deg) rotateZ(-8deg) scale(1.35);
-  transform-origin:center;
-  animation:eastridgeNetWave 7s ease-in-out infinite alternate;
-  filter:drop-shadow(0 0 5px #00d875);
-}
+
 .pimco-plan-grid{
   position:relative;
   z-index:1;
@@ -69,10 +55,7 @@
   position:relative;
   z-index:2;
 }
-@keyframes eastridgeNetWave{
-  0%{background-position:0 0,0 0;transform:perspective(700px) rotateX(58deg) rotateZ(-8deg) scale(1.35) translateY(-2%)}
-  100%{background-position:70px 45px,-55px 65px;transform:perspective(700px) rotateX(58deg) rotateZ(8deg) scale(1.45) translateY(3%)}
-}
+
 
 </style>
 {% endblock %}
