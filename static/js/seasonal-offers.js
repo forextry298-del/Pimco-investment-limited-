@@ -270,6 +270,59 @@ const offers = window.SEASONAL_OFFERS;
         image.src = offer.image;
         image.alt = offer.name;
       }
+
+      const body = card.querySelector(".pimco-plan-body");
+      if (!body) return;
+
+      let status = card.querySelector(".seasonal-live-status");
+      let timer = card.querySelector(".seasonal-live-timer");
+
+      if (!status) {
+        status = document.createElement("div");
+        status.className = "seasonal-live-status";
+        status.style.cssText =
+          "font-size:11px;font-weight:800;color:#087f46;margin:8px 0 3px";
+        const label = body.querySelector(".pimco-plan-label");
+        if (label) label.insertAdjacentElement("afterend", status);
+        else body.prepend(status);
+      }
+
+      if (!timer) {
+        timer = document.createElement("div");
+        timer.className = "seasonal-live-timer";
+        timer.style.cssText =
+          "font-size:17px;font-weight:900;color:#087f46;" +
+          "background:#e7fff0;border:1px solid #55d98a;" +
+          "border-radius:9px;padding:8px;margin:4px 0 9px";
+        status.insertAdjacentElement("afterend", timer);
+      }
+
+      function updateLiveTimer() {
+        const result = getOfferStatus(offer);
+        const button = card.querySelector("form button");
+
+        if (result.state === "coming") {
+          status.textContent = "OFFER STARTS IN";
+          timer.textContent = formatCountdown(result.remaining);
+          if (button) button.disabled = true;
+        } else if (result.state === "active") {
+          status.textContent = "● LIVE — EXPIRES IN";
+          timer.textContent = formatCountdown(result.remaining);
+          if (button) button.disabled = false;
+        } else {
+          status.textContent = "OFFER ENDED";
+          timer.textContent = "Expired. Please try again later.";
+          timer.style.fontSize = "12px";
+          if (button) button.disabled = true;
+        }
+      }
+
+      updateLiveTimer();
+
+      if (!card.dataset.timerStarted) {
+        card.dataset.timerStarted = "yes";
+        setInterval(updateLiveTimer, 1000);
+      }
     });
   }
 
