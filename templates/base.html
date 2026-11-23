@@ -4,6 +4,9 @@
 href="{{ url_for('static', filename='css/seasonal-offers.css') }}">
 
 <link rel="stylesheet" href="{{ url_for('static', filename='neon-redesign.css') }}">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+</style>
 </head><body><main class="wrap">
 <header class="brand"><div class="brandmark"><i data-lucide="chart-no-axes-combined"></i></div><div class="brandname">EASTRIDGE <small>MEDICAL HOSPITAL</small></div></header>
 {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}

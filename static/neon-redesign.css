@@ -1,0 +1,223 @@
+/* PIMCO GLOBAL NEON REDESIGN */
+:root{
+ --bg:#020817;
+ --panel:rgba(5,20,48,.88);
+ --panel2:rgba(7,31,67,.94);
+ --cyan:#00eaff;
+ --blue:#167dff;
+ --purple:#765cff;
+ --white:#f2f8ff;
+ --muted:#9db4d4;
+ --line:rgba(0,207,255,.25);
+}
+*{box-sizing:border-box}
+html,body{
+ min-height:100%;
+ background:#020817!important;
+ color:var(--white)!important;
+ overflow-x:hidden;
+ font-family:'Inter',Arial,sans-serif!important;
+}
+body{
+ background-image:
+ radial-gradient(circle at 12% 18%,#087dff35 0 1px,transparent 3px),
+ radial-gradient(circle at 82% 30%,#00eaff40 0 1px,transparent 3px),
+ radial-gradient(circle at 45% 72%,#167dff35 0 1px,transparent 3px),
+ radial-gradient(ellipse at 50% 0%,#073b7955,transparent 55%),
+ linear-gradient(145deg,#010511,#03132b 55%,#020817)!important;
+ background-size:90px 90px,130px 130px,110px 110px,100% 100%,100% 100%!important;
+ background-attachment:fixed!important;
+}
+body:before{
+ content:"";
+ position:fixed;
+ inset:0;
+ z-index:0;
+ pointer-events:none;
+ background:
+ radial-gradient(ellipse at 0% 35%,transparent 35%,#00cfff12 70%,transparent 85%),
+ radial-gradient(ellipse at 100% 75%,transparent 35%,#167dff18 70%,transparent 85%);
+}
+
+/* GLOBAL GLASS PANELS */
+.wrap{
+ position:relative!important;
+ z-index:1!important;
+ width:min(100%,480px)!important;
+ padding:9px 11px 105px!important;
+ margin:auto!important;
+}
+.panel,.card,.balance,.notice,.announcement,
+.product,.quick a,.quick>button{
+ background:linear-gradient(145deg,rgba(7,29,64,.96),rgba(2,12,31,.96))!important;
+ color:#f2f8ff!important;
+ border:1px solid var(--line)!important;
+ border-radius:15px!important;
+ box-shadow:0 5px 22px #001b4380,0 0 12px #087dff20!important;
+}
+.panel{padding:14px!important;margin:10px 0!important}
+.balance{padding:13px 10px!important}
+.balance label,.small,.notice small{color:var(--muted)!important}
+.balance strong,.product b,.panel strong{color:#fff!important}
+.section-head{margin:16px 3px 9px!important}
+.section-head h2{
+ color:var(--cyan)!important;
+ font-size:18px!important;
+ text-shadow:0 0 12px #00cfff66;
+}
+
+/* NEON BUTTONS AND INPUTS */
+.btn,button,.donate-button{
+ background:linear-gradient(110deg,#0758c9,#00aeca)!important;
+ color:#fff!important;
+ border:1px solid #16dfff88!important;
+ border-radius:11px!important;
+ font-weight:800!important;
+ box-shadow:0 0 13px #087dff55!important;
+ transition:transform .2s,box-shadow .2s;
+}
+.btn:active,button:active{
+ transform:scale(.97);
+ box-shadow:0 0 20px #00dfff99!important;
+}
+input,select,textarea{
+ background:#061832!important;
+ color:#f4faff!important;
+ border:1px solid #167dff88!important;
+ border-radius:10px!important;
+ padding:12px!important;
+}
+input::placeholder,textarea::placeholder{
+ color:#8da7c9!important;
+}
+label{color:#dceeff!important}
+input:focus,select:focus,textarea:focus{
+ outline:none!important;
+ border-color:var(--cyan)!important;
+ box-shadow:0 0 12px #00cfff55!important;
+}
+option{background:#061832!important;color:#fff!important}
+
+/* HANDWRITTEN HEADINGS */
+.brandname,.section-head h2,h1,h2,h3,
+.donate-hero h2{
+ font-family:'Caveat',cursive!important;
+ font-weight:700!important;
+ letter-spacing:.3px;
+}
+.brandname{font-size:27px!important;color:#fff!important}
+.brandname small{
+ display:block;
+ font-family:'Inter',sans-serif!important;
+ font-size:9px!important;
+ letter-spacing:2px;
+ color:var(--cyan)!important;
+}
+h1{font-size:29px!important;color:var(--cyan)!important}
+h2{font-size:23px!important}
+h3{font-size:20px!important;color:var(--cyan)!important}
+p,span,label,a,.small{
+ font-family:'Inter',Arial,sans-serif;
+}
+.quick{
+ gap:8px!important;
+}
+.quick a,.quick form button,.quick>button{
+ min-height:68px!important;
+ padding:8px 4px!important;
+ border-radius:13px!important;
+ font-size:10px!important;
+}
+.products{gap:8px!important}
+.product{
+ min-height:90px!important;
+ padding:9px 5px!important;
+}
+
+/* BRAND AND BOTTOM NAVIGATION */
+.brand{
+ display:flex!important;
+ align-items:center!important;
+ gap:10px!important;
+ margin:5px 3px 15px!important;
+ color:#fff!important;
+}
+.brandmark{
+ background:linear-gradient(135deg,#0758c9,#00cfff)!important;
+ border:1px solid #00eaff!important;
+ border-radius:13px!important;
+ box-shadow:0 0 19px #087dff99!important;
+}
+.brandmark svg{color:#fff!important}
+.bottomnav{
+ position:fixed!important;
+ left:50%!important;
+ transform:translateX(-50%)!important;
+ bottom:calc(7px + env(safe-area-inset-bottom))!important;
+ width:94%!important;
+ max-width:460px!important;
+ padding:9px 5px!important;
+ border-radius:17px!important;
+ background:rgba(3,16,39,.96)!important;
+ border:1px solid #087dff88!important;
+ box-shadow:0 0 24px #087dff66!important;
+ backdrop-filter:blur(16px)!important;
+ z-index:1000!important;
+}
+.bottomnav a{
+ color:#a9c4e8!important;
+ font-size:10px!important;
+ font-weight:700!important;
+}
+.bottomnav a.active{color:var(--cyan)!important}
+.bottomnav svg{width:22px!important;height:22px!important}
+.flash{
+ background:#06254a!important;
+ color:#fff!important;
+ border:1px solid #00cfff88!important;
+ border-radius:11px!important;
+ box-shadow:0 0 12px #087dff33!important;
+}
+
+/* SLIDERS, IMAGES AND MODALS */
+.home-image-slider{
+ border:1px solid #168dff!important;
+ border-radius:15px!important;
+ overflow:hidden!important;
+ box-shadow:0 0 18px #087dff66!important;
+}
+.home-slide{border-radius:15px!important}
+.slide-caption{
+ background:linear-gradient(transparent,#020817dd)!important;
+}
+.notice,.announcement{
+ padding:13px!important;
+ margin:11px 0!important;
+}
+.modalback{
+ background:#000b!important;
+ backdrop-filter:blur(8px)!important;
+}
+.modal{
+ background:#061832!important;
+ color:#fff!important;
+ border:1px solid #087dff!important;
+ border-radius:17px!important;
+ box-shadow:0 0 25px #087dff66!important;
+}
+.modal h2,.modal h3{color:var(--cyan)!important}
+.payment-detail{
+ background:#0a2447!important;
+ border:1px solid var(--line)!important;
+ border-radius:11px!important;
+ color:#fff!important;
+ padding:12px!important;
+}
+img{max-width:100%}
+@media(max-width:380px){
+ .wrap{padding-left:8px!important;padding-right:8px!important}
+ .panel{padding:11px!important}
+ .balance{padding:10px 7px!important}
+ .bottomnav{width:96%!important}
+ .section-head h2{font-size:17px!important}
+}
