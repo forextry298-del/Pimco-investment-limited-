@@ -1,138 +1,2565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Eastradge Medical Hospital — MedInvest Uganda</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Plus Jakarta Sans','sans-serif']},colors:{medTeal:'#127369',medTealDark:'#0D564E',royalBlue:'#1363DF',warmAmber:'#F5B82E',softBg:'#F4F6F9'}}}};
-</script>
-<style>
-body{background:#E2E8F0;font-family:Inter,sans-serif;-webkit-tap-highlight-color:transparent}
-.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
-.card-shadow{box-shadow:0 4px 18px -2px rgba(15,23,42,.06),0 2px 6px -1px rgba(15,23,42,.03)}
-.animate-ticker{display:inline-flex;white-space:nowrap;animation:marquee 22s linear infinite}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.page{display:none}.page.active{display:block}
-.modal-backdrop{background:rgba(15,23,42,.55);backdrop-filter:blur(4px)}
-.provider-btn.selected{border:2px solid #127369;background:#ecfdf5;color:#127369}
-.nav-item.selected{color:#127369;background:#ecfdf5}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>ITALIAN — Strategic Investment &amp; Defense Capital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #eef2f6; color: #0f172a; margin: 0; padding: 0; }
+    .app-shell {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background-color: #f8fafc;
+      position: relative;
+      padding-bottom: 88px;
+      box-shadow: 0 0 32px rgba(15, 23, 42, 0.08);
+    }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
 </head>
-<body class="flex justify-center min-h-screen">
-<div id="app-shell" class="w-full max-w-[430px] bg-[#F4F6F9] min-h-screen relative flex flex-col shadow-2xl overflow-x-hidden pb-24">
-<header class="bg-white border-b border-slate-100 sticky top-0 z-30 px-4 py-3 flex items-center justify-between shadow-sm">
- <div class="flex items-center gap-2.5">
-  <div class="w-9 h-9 rounded-xl bg-[#127369] text-white flex items-center justify-center"><i data-lucide="plus-square" class="w-5 h-5"></i></div>
-  <div><h1 class="font-display font-extrabold text-[15px] text-slate-900 tracking-tight">Eastradge Medical Hospital</h1><p class="text-[11px] font-medium text-[#127369] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>MedInvest Uganda • UGX Portal</p></div>
- </div>
- <button onclick="openAnnouncementsModal()" aria-label="Announcements" class="p-2 rounded-xl bg-slate-50 text-slate-700 relative"><i data-lucide="bell" class="w-5 h-5"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-500"></span></button>
-</header>
+<body>
 
-<main class="flex-1 px-4 pt-3.5 space-y-4">
-<section id="view-home" class="page active space-y-4">
- <div class="rounded-3xl overflow-hidden bg-gradient-to-br from-[#0D564E] via-[#127369] to-[#1363DF] text-white p-4 relative">
-  <div class="relative z-10"><p class="text-[10px] uppercase tracking-[.18em] text-teal-100 font-bold">Healthcare • Opportunity • Growth</p><h2 class="font-display text-2xl font-extrabold leading-tight mt-2">Supporting better<br>healthcare in Uganda</h2><p class="text-xs text-teal-50 mt-2 max-w-[230px]">Explore the equipment catalogue and track your demo lease portfolio.</p><button onclick="switchTab('equipment')" class="mt-4 bg-white text-[#0D564E] px-4 py-2 rounded-xl text-xs font-extrabold">Explore Equipment <i data-lucide="arrow-right" class="inline w-3 h-3"></i></button></div>
-  <div class="absolute right-2 bottom-1 opacity-20"><i data-lucide="hospital" style="width:150px;height:150px"></i></div>
- </div>
- <div class="rounded-xl bg-slate-900 text-white overflow-hidden py-2"><div class="animate-ticker text-[10px] font-semibold gap-12"><span>WELCOME TO EASTRADGE MEDICAL HOSPITAL</span><span>TRACK YOUR EQUIPMENT LEASES</span><span>DEMO PORTAL • UGX CURRENCY</span><span>WELCOME TO EASTRADGE MEDICAL HOSPITAL</span><span>TRACK YOUR EQUIPMENT LEASES</span></div></div>
- <div class="grid grid-cols-2 gap-3">
-  <div class="rounded-2xl bg-white p-3.5 card-shadow"><div class="flex items-center justify-between"><span class="text-[11px] text-slate-500 font-semibold">Deposit Balance</span><i data-lucide="wallet" class="w-4 h-4 text-blue-600"></i></div><p id="deposit-balance-text" class="font-display font-extrabold text-lg mt-2">UGX 50,000</p><button onclick="openDepositModal()" class="mt-3 w-full bg-[#1363DF] text-white rounded-xl py-2 text-xs font-bold">Deposit</button></div>
-  <div class="rounded-2xl bg-white p-3.5 card-shadow"><div class="flex items-center justify-between"><span class="text-[11px] text-slate-500 font-semibold">Withdraw Balance</span><i data-lucide="banknote" class="w-4 h-4 text-emerald-600"></i></div><p id="withdraw-balance-text" class="font-display font-extrabold text-lg mt-2">UGX 0</p><button onclick="openWithdrawModal()" class="mt-3 w-full bg-[#127369] text-white rounded-xl py-2 text-xs font-bold">Withdraw</button></div>
- </div>
- <div><div class="flex items-center justify-between mb-2"><h3 class="font-display font-extrabold text-sm text-slate-900">Quick Access</h3><span class="text-[10px] text-slate-400">Your shortcuts</span></div><div class="grid grid-cols-4 gap-2">
-  <button onclick="switchTab('earnings')" class="bg-white rounded-2xl p-3 text-center card-shadow"><i data-lucide="chart-no-axes-combined" class="w-5 h-5 mx-auto text-blue-600"></i><span class="block text-[10px] font-bold mt-2">Earnings</span></button>
-  <button onclick="claimDailyBonus()" class="bg-white rounded-2xl p-3 text-center card-shadow"><i data-lucide="gift" class="w-5 h-5 mx-auto text-amber-500"></i><span class="block text-[10px] font-bold mt-2">Bonus</span></button>
-  <button onclick="openManagerModal()" class="bg-white rounded-2xl p-3 text-center card-shadow"><i data-lucide="headset" class="w-5 h-5 mx-auto text-teal-700"></i><span class="block text-[10px] font-bold mt-2">Manager</span></button>
-  <button onclick="openAnnouncementsModal()" class="bg-white rounded-2xl p-3 text-center card-shadow"><i data-lucide="megaphone" class="w-5 h-5 mx-auto text-indigo-600"></i><span class="block text-[10px] font-bold mt-2">Notices</span></button>
- </div></div>
- <section><div class="flex items-center justify-between mb-2"><div><h3 class="font-display font-bold text-[15px] text-slate-900">Our Products</h3><p class="text-[11px] text-slate-500">Explore hospital equipment lease plans</p></div><button onclick="switchTab('equipment')" class="text-[11px] font-bold text-[#127369]">View all</button></div><div id="products-list" class="space-y-3"></div></section>
- <div class="rounded-2xl bg-gradient-to-r from-emerald-700 to-teal-600 p-4 text-white"><div class="flex gap-3 items-center"><i data-lucide="message-circle" class="w-8 h-8"></i><div class="flex-1"><h3 class="font-bold text-sm">Community & Support</h3><p class="text-[10px] text-emerald-50">Contact the support desk for assistance.</p></div></div><button onclick="openManagerModal()" class="mt-3 bg-white text-emerald-800 rounded-xl py-2 px-3 text-xs font-extrabold">Contact Support</button></div>
-</section>
+  <!-- Non-blocking Toast Message Container -->
+  <div id="toast-container" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-[440px] pointer-events-none flex flex-col gap-2"></div>
 
-<section id="view-equipment" class="page space-y-4">
- <div><h2 class="font-display font-extrabold text-lg">My Equipment</h2><p class="text-xs text-slate-500">Track active equipment lease demo records</p></div>
- <div class="grid grid-cols-2 gap-3"><div class="bg-white rounded-2xl p-3 card-shadow"><p class="text-[10px] text-slate-500">Active Leases</p><p id="active-count" class="text-xl font-extrabold mt-1">0</p></div><div class="bg-white rounded-2xl p-3 card-shadow"><p class="text-[10px] text-slate-500">Total Earned</p><p id="equipment-earned" class="text-lg font-extrabold mt-1">UGX 0</p></div></div>
- <button onclick="simulateNextDay()" class="w-full bg-[#127369] text-white rounded-xl py-3 text-xs font-bold"><i data-lucide="calendar-clock" class="inline w-4 h-4 mr-1"></i> Simulate Next Day (Demo)</button>
- <div id="active-equipment-list" class="space-y-3"></div>
- <div><h3 class="font-display font-bold text-sm mb-2">Available Equipment</h3><div id="equipment-products" class="space-y-3"></div></div>
-</section>
+  <!-- ================= AUTHENTICATION SCREEN (REGISTRATION & LOGIN) ================= -->
+  <div id="auth-screen" class="app-shell flex flex-col justify-between p-5 bg-gradient-to-b from-slate-950 via-slate-900 to-emerald-950 text-white">
+    <div class="pt-4">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-950/50">
+          <svg class="w-7 h-7 text-slate-950" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-2xl font-extrabold tracking-tight text-white">ITALIAN</h1>
+          <p class="text-xs text-emerald-300 font-medium">Capital Growth &amp; Tactical Defense Fund</p>
+        </div>
+      </div>
 
-<section id="view-earnings" class="page space-y-4">
- <div><h2 class="font-display font-extrabold text-lg">Earnings & Transactions</h2><p class="text-xs text-slate-500">Your demo transaction history</p></div>
- <div class="bg-white rounded-2xl p-4 card-shadow"><p class="text-xs text-slate-500">Total Earned</p><p id="ledger-total-earned" class="font-display text-2xl font-extrabold mt-1">UGX 0</p></div>
- <div id="transaction-ledger-list" class="space-y-2"></div>
-</section>
+      <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-3.5 mt-3 space-y-1.5">
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-emerald-300 font-bold">New Member Reward</span>
+          <span class="px-2 py-0.5 rounded-full bg-emerald-500/25 text-emerald-200 font-extrabold">+UGX 243 Bonus</span>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Register now for an instant <strong>UGX 243</strong> welcome bonus, 24-hour automated payouts, 3-tier referral commissions (10% / 3% / 1%), and Christmas rewards.
+        </p>
+      </div>
+    </div>
 
-<section id="view-profile" class="page space-y-4">
- <div class="rounded-2xl bg-gradient-to-r from-[#0D564E] to-[#1363DF] p-4 text-white"><div class="flex items-center gap-3"><div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center"><i data-lucide="user-round" class="w-6 h-6"></i></div><div><h2 class="font-extrabold">Demo Investor</h2><p class="text-[11px] text-white/80">Eastradge MedInvest Member</p></div></div><p class="text-[10px] mt-3 text-white/80">Account ID: DEMO-UG-001</p></div>
- <div class="bg-white rounded-2xl p-4 card-shadow space-y-3"><div class="flex justify-between text-xs"><span class="text-slate-500">Deposit Balance</span><b id="profile-deposit">UGX 50,000</b></div><div class="flex justify-between text-xs"><span class="text-slate-500">Withdraw Balance</span><b id="profile-withdraw">UGX 0</b></div><div class="border-t pt-3"><p class="text-[10px] text-slate-500 mb-1">Referral link (demo)</p><div class="flex gap-2"><input id="referral-link" readonly value="https://eastradge.example/invite/DEMO-UG-001" class="min-w-0 flex-1 bg-slate-50 rounded-lg px-2 py-2 text-[10px]"><button onclick="copyReferralLink()" class="bg-[#127369] text-white rounded-lg px-3 text-xs font-bold">Copy</button></div></div></div>
- <button onclick="openManagerModal()" class="w-full bg-white rounded-xl p-3 text-left text-xs font-bold card-shadow"><i data-lucide="headset" class="inline w-4 h-4 mr-2 text-teal-700"></i>Contact Account Manager</button>
- <button onclick="openAnnouncementsModal()" class="w-full bg-white rounded-xl p-3 text-left text-xs font-bold card-shadow"><i data-lucide="megaphone" class="inline w-4 h-4 mr-2 text-blue-700"></i>Hospital Announcements</button>
- <button onclick="resetDemoData()" class="w-full bg-rose-50 text-rose-700 rounded-xl p-3 text-xs font-bold">Reset Demo Data</button>
-</section>
-</main>
+    <!-- Auth Form Card -->
+    <div class="bg-white text-slate-900 rounded-3xl p-5 shadow-2xl my-auto">
+      <div class="grid grid-cols-2 bg-slate-100 p-1 rounded-xl mb-4">
+        <button id="tab-login" onclick="switchAuthMode('login')" class="py-2.5 text-sm font-bold rounded-lg bg-white text-slate-900 shadow-xs transition">
+          Sign In
+        </button>
+        <button id="tab-register" onclick="switchAuthMode('register')" class="py-2.5 text-sm font-bold rounded-lg text-slate-500 transition">
+          Register
+        </button>
+      </div>
 
-<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white border-t border-slate-100 z-40 px-2 py-2 grid grid-cols-4 gap-1">
- <button data-tab="home" onclick="switchTab('home')" class="nav-item selected rounded-xl py-2 text-[10px] font-bold"><i data-lucide="house" class="w-5 h-5 mx-auto mb-1"></i>Home</button>
- <button data-tab="equipment" onclick="switchTab('equipment')" class="nav-item rounded-xl py-2 text-[10px] font-bold text-slate-400"><i data-lucide="stethoscope" class="w-5 h-5 mx-auto mb-1"></i>Equipment</button>
- <button data-tab="earnings" onclick="switchTab('earnings')" class="nav-item rounded-xl py-2 text-[10px] font-bold text-slate-400"><i data-lucide="chart-no-axes-combined" class="w-5 h-5 mx-auto mb-1"></i>Earnings</button>
- <button data-tab="profile" onclick="switchTab('profile')" class="nav-item rounded-xl py-2 text-[10px] font-bold text-slate-400"><i data-lucide="user-round" class="w-5 h-5 mx-auto mb-1"></i>Profile</button>
-</nav>
-<div id="modal-backdrop" class="modal-backdrop hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-3">
- <div class="bg-white w-full max-w-[410px] rounded-3xl p-4 max-h-[88vh] overflow-y-auto shadow-2xl">
-  <div class="flex justify-between items-center mb-3"><h3 id="modal-title" class="font-display font-extrabold text-base">Details</h3><button onclick="closeModal()" class="p-2 rounded-full bg-slate-100"><i data-lucide="x" class="w-4 h-4"></i></button></div>
-  <div id="modal-body"></div>
- </div>
-</div>
-<div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-[60] hidden max-w-[90%] rounded-xl px-4 py-3 text-xs font-bold text-white shadow-xl"></div>
-</div>
+      <!-- Login Form -->
+      <form id="login-form" onsubmit="handleLogin(event)" class="space-y-3.5">
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Phone Number</label>
+          <input id="login-phone" type="tel" required placeholder="07XXXXXXXX"
+            class="w-full px-3.5 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-600" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Password</label>
+          <input id="login-password" type="password" required placeholder="Enter your password"
+            class="w-full px-3.5 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-600" />
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 active:scale-[0.99] text-white font-bold text-sm shadow-lg shadow-emerald-700/25 transition">
+          Sign In to ITALIAN
+        </button>
+      </form>
 
-<script>
-const PRODUCTS=[
-{id:'stethoscope',name:'Professional Stethoscope',price:5000,cycleDays:3,dailyIncome:2700,totalIncome:8100,tag:'Starter Plan',icon:'stethoscope',color:'blue'},
-{id:'digital-thermometer',name:'Digital Thermometer',price:15000,cycleDays:10,dailyIncome:2400,totalIncome:24000,tag:'Triage Unit',icon:'thermometer',color:'teal'},
-{id:'oxygen-concentrator',name:'Oxygen Concentrator',price:50000,cycleDays:12,dailyIncome:7500,totalIncome:90000,tag:'Popular',icon:'wind',color:'emerald'},
-{id:'hospital-bed',name:'Hospital Bed',price:120000,cycleDays:15,dailyIncome:16000,totalIncome:240000,tag:'Patient Care',icon:'bed',color:'indigo'},
-{id:'nebulizer',name:'Nebulizer',price:250000,cycleDays:10,dailyIncome:150000,totalIncome:1500000,tag:'Advanced Care',icon:'activity',color:'amber'},
-{id:'blood-pressure-monitor',name:'Blood Pressure Monitor',price:500000,cycleDays:20,dailyIncome:55000,totalIncome:1100000,tag:'Monitoring',icon:'heart-pulse',color:'rose'}
-];
-const STORAGE_KEY='eastradge_medinvest_ugx_v1';
-const DEFAULT_STATE={depositBalance:50000,withdrawBalance:0,bonusClaimedDate:null,activeEquipment:[],transactions:[{id:'TX-INIT-01',type:'deposit',title:'Welcome Demo Credit',subtitle:'Pre-loaded testing balance',amount:50000,isCredit:true,timestamp:new Date().toLocaleString('en-UG',{dateStyle:'medium',timeStyle:'short'})}]};
-let appState=loadState();let selectedProvider='MTN MoMo';
-function loadState(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY));return x?{...structuredClone(DEFAULT_STATE),...x}:structuredClone(DEFAULT_STATE)}catch(e){return structuredClone(DEFAULT_STATE)}}
-function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(appState))}
-function formatUGX(v){return 'UGX '+Number(v||0).toLocaleString('en-UG')}
-function getTodayStr(){return new Date().toISOString().slice(0,10)}
-function showToast(msg,type='success'){const el=document.getElementById('toast');el.textContent=msg;el.className='fixed top-20 left-1/2 -translate-x-1/2 z-[60] max-w-[90%] rounded-xl px-4 py-3 text-xs font-bold text-white shadow-xl '+(type==='error'?'bg-rose-600':type==='info'?'bg-blue-700':'bg-emerald-700');el.classList.remove('hidden');setTimeout(()=>el.classList.add('hidden'),2800)}
-function addTransaction(type,title,subtitle,amount,isCredit){appState.transactions.unshift({id:'TX-'+Date.now(),type,title,subtitle,amount,isCredit,timestamp:new Date().toLocaleString('en-UG',{dateStyle:'medium',timeStyle:'short'})})}
-function renderBalances(){['deposit-balance-text','profile-deposit'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=formatUGX(appState.depositBalance)});['withdraw-balance-text','profile-withdraw'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=formatUGX(appState.withdrawBalance)})}
-function productCard(p){return `<article class="bg-white rounded-2xl p-3.5 card-shadow border border-slate-100"><div class="flex gap-3 items-center"><div class="w-12 h-12 rounded-xl bg-teal-50 text-[#127369] flex items-center justify-center shrink-0"><i data-lucide="${p.icon}" class="w-6 h-6"></i></div><div class="min-w-0 flex-1"><div class="flex items-center gap-2"><h4 class="font-bold text-xs text-slate-900">${p.name}</h4></div><p class="text-[10px] text-slate-500 mt-1">${p.tag} • ${p.cycleDays}-day cycle</p></div></div><div class="grid grid-cols-3 gap-2 mt-3 py-2 border-y border-slate-100"><div><p class="text-[9px] text-slate-400">Lease price</p><b class="text-[10px]">${formatUGX(p.price)}</b></div><div><p class="text-[9px] text-slate-400">Daily income*</p><b class="text-[10px] text-[#127369]">${formatUGX(p.dailyIncome)}</b></div><div><p class="text-[9px] text-slate-400">Total return*</p><b class="text-[10px]">${formatUGX(p.totalIncome)}</b></div></div><button onclick="openInvestModal('${p.id}')" class="w-full mt-3 bg-[#127369] text-white rounded-xl py-2.5 text-xs font-extrabold">Lease Equipment</button></article>`}
-function renderProducts(){const html=PRODUCTS.map(productCard).join('');document.getElementById('products-list').innerHTML=html;document.getElementById('equipment-products').innerHTML=html}
-function renderActiveEquipment(){const list=document.getElementById('active-equipment-list');document.getElementById('active-count').textContent=appState.activeEquipment.length;const earned=appState.activeEquipment.reduce((s,x)=>s+x.totalEarned,0);document.getElementById('equipment-earned').textContent=formatUGX(earned);if(!appState.activeEquipment.length){list.innerHTML='<div class="bg-white rounded-2xl p-5 text-center text-xs text-slate-500 card-shadow">No active equipment leases yet. Explore the available equipment below.</div>';return}list.innerHTML=appState.activeEquipment.map(x=>{const pct=Math.min(100,Math.round(x.daysCompleted/x.cycleDays*100));return `<div class="bg-white rounded-2xl p-4 card-shadow"><div class="flex justify-between gap-2"><div><h4 class="font-bold text-sm">${x.name}</h4><p class="text-[10px] text-slate-500 mt-1">${x.leaseId}</p></div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 rounded-full px-2 py-1 h-fit">${x.daysCompleted}/${x.cycleDays} days</span></div><div class="flex justify-between text-[10px] mt-3"><span class="text-slate-500">Progress</span><b>${pct}%</b></div><div class="h-2 bg-slate-100 rounded-full mt-1 overflow-hidden"><div class="h-full bg-teal-600 rounded-full" style="width:${pct}%"></div></div><div class="flex justify-between mt-3 text-[10px]"><span class="text-slate-500">Earned: <b class="text-slate-800">${formatUGX(x.totalEarned)}</b></span><span class="text-slate-500">Daily: <b class="text-teal-700">${formatUGX(x.dailyIncome)}</b></span></div></div>`}).join('')}
-function renderTransactions(){const total=appState.transactions.filter(t=>t.type==='payout'||t.type==='bonus').reduce((s,t)=>s+t.amount,0);document.getElementById('ledger-total-earned').textContent=formatUGX(total);const el=document.getElementById('transaction-ledger-list');el.innerHTML=appState.transactions.map(t=>`<div class="bg-white rounded-xl p-3 flex items-center gap-3 card-shadow"><div class="w-9 h-9 rounded-full ${t.isCredit?'bg-emerald-50 text-emerald-700':'bg-rose-50 text-rose-600'} flex items-center justify-center"><i data-lucide="${t.isCredit?'arrow-down-left':'arrow-up-right'}" class="w-4 h-4"></i></div><div class="flex-1 min-w-0"><p class="text-xs font-bold truncate">${t.title}</p><p class="text-[10px] text-slate-500">${t.subtitle} • ${t.timestamp}</p></div><b class="text-xs ${t.isCredit?'text-emerald-700':'text-slate-800'}">${t.isCredit?'+':'-'}${formatUGX(t.amount)}</b></div>`).join('')||'<p class="text-xs text-slate-500 text-center p-5">No transactions yet.</p>'}
-function renderAll(){renderBalances();renderProducts();renderActiveEquipment();renderTransactions();if(window.lucide)lucide.createIcons()}
-function switchTab(tab){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='view-'+tab));document.querySelectorAll('.nav-item').forEach(n=>{const on=n.dataset.tab===tab;n.classList.toggle('selected',on);n.classList.toggle('text-slate-400',!on)});window.scrollTo({top:0,behavior:'smooth'});if(window.lucide)lucide.createIcons()}
-function claimDailyBonus(){if(appState.bonusClaimedDate===getTodayStr()){showToast('You have already claimed today’s demo bonus.','info');return}const bonus=1000;appState.bonusClaimedDate=getTodayStr();appState.withdrawBalance+=bonus;addTransaction('bonus','Daily Check-in Bonus','Demo daily reward',bonus,true);saveState();renderAll();showToast('Demo bonus of '+formatUGX(bonus)+' credited!')}
-function simulateNextDay(){let paid=0;appState.activeEquipment.forEach(x=>{if(x.daysCompleted<x.cycleDays){x.daysCompleted++;x.totalEarned=Math.min(x.totalIncome,x.totalEarned+x.dailyIncome);paid+=Math.min(x.dailyIncome,x.totalIncome-(x.totalEarned-x.dailyIncome))}});if(!paid){showToast('No active equipment available for demo payout.','info');return}appState.withdrawBalance+=paid;addTransaction('payout','Simulated Daily Equipment Income','Demo payout credited',paid,true);saveState();renderAll();showToast(formatUGX(paid)+' demo income credited.')}
-function copyReferralLink(){const x=document.getElementById('referral-link').value;if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(x).then(()=>showToast('Referral link copied!')).catch(()=>showToast(x,'info'));else showToast(x,'info')}
-function resetDemoData(){if(!confirm('Reset all local demo balances and records?'))return;localStorage.removeItem(STORAGE_KEY);appState=structuredClone(DEFAULT_STATE);saveState();renderAll();showToast('Demo data reset.')}
-function setProvider(provider){selectedProvider=provider;document.querySelectorAll('.provider-btn').forEach(b=>{b.classList.toggle('selected',b.dataset.provider===provider)});}
-function providerMarkup(){return `<div><label class="block font-semibold text-slate-700 mb-1.5">Mobile Money Provider</label><div class="flex gap-2"><button type="button" data-provider="MTN MoMo" onclick="setProvider('MTN MoMo')" class="provider-btn selected flex-1 py-2.5 px-2 rounded-xl border text-xs font-bold">🟡 MTN MoMo</button><button type="button" data-provider="Airtel Money" onclick="setProvider('Airtel Money')" class="provider-btn flex-1 py-2.5 px-2 rounded-xl border text-xs font-bold">🔴 Airtel Money</button></div></div>`}
-function openDepositModal(){selectedProvider='MTN MoMo';document.getElementById('modal-title').textContent='Deposit Funds (UGX)';document.getElementById('modal-body').innerHTML=`<div class="space-y-3.5 text-xs">${providerMarkup()}<div><label class="block font-semibold text-slate-700 mb-1">Deposit Amount (UGX)</label><input id="modal-amount-input" type="number" min="1000" placeholder="Enter amount" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 font-bold text-sm"></div><div class="flex gap-2">${[5000,10000,20000,50000].map(n=>`<button onclick="document.getElementById('modal-amount-input').value=${n}" class="flex-1 bg-slate-100 rounded-lg py-2 text-[10px] font-bold">${n.toLocaleString()}</button>`).join('')}</div><div><label class="block font-semibold text-slate-700 mb-1">Mobile Money Phone</label><input id="modal-phone-input" type="tel" placeholder="e.g. 0772000000" class="w-full px-3.5 py-3 rounded-xl border border-slate-200"></div><button onclick="confirmDeposit()" class="w-full bg-[#127369] text-white font-bold py-3 rounded-xl">Confirm Deposit (Demo)</button><p class="text-[10px] text-slate-400">Demo only: no real mobile money request is sent.</p></div>`;document.getElementById('modal-backdrop').classList.remove('hidden');}
-function confirmDeposit(){const amount=Number(document.getElementById('modal-amount-input').value);const phone=document.getElementById('modal-phone-input').value.trim();if(!amount||amount<1000){showToast('Please enter a valid deposit amount (min UGX 1,000)','error');return}if(!phone||phone.length<9){showToast('Please enter a valid Uganda mobile number','error');return}appState.depositBalance+=amount;addTransaction('deposit',`${selectedProvider} Deposit`,`Phone: ${phone}`,amount,true);saveState();renderAll();closeModal();showToast(`Demo deposit of ${formatUGX(amount)} recorded.`)}
-function openWithdrawModal(){selectedProvider='MTN MoMo';document.getElementById('modal-title').textContent='Withdraw Earnings (UGX)';document.getElementById('modal-body').innerHTML=`<div class="space-y-3.5 text-xs"><div class="bg-emerald-50 border border-emerald-100 rounded-xl p-3 flex justify-between"><span>Available Withdraw Balance:</span><b>${formatUGX(appState.withdrawBalance)}</b></div>${providerMarkup()}<div><label class="block font-semibold mb-1">Withdraw Amount (UGX)</label><input id="withdraw-amount-input" type="number" min="1000" value="${appState.withdrawBalance||''}" class="w-full px-3.5 py-2.5 rounded-xl border"></div><div><label class="block font-semibold mb-1">Recipient Phone Number</label><input id="withdraw-phone-input" type="tel" placeholder="e.g. 0772000000" class="w-full px-3.5 py-2.5 rounded-xl border"></div><button onclick="confirmWithdraw()" class="w-full bg-[#127369] text-white font-bold py-3 rounded-xl">Confirm Withdrawal (Demo)</button><p class="text-[10px] text-slate-400">Demo only: no real payout is sent.</p></div>`;document.getElementById('modal-backdrop').classList.remove('hidden')}
-function confirmWithdraw(){const amount=Number(document.getElementById('withdraw-amount-input').value);const phone=document.getElementById('withdraw-phone-input').value.trim();if(!amount||amount<1000){showToast('Minimum withdrawal amount is UGX 1,000','error');return}if(amount>appState.withdrawBalance){showToast('Insufficient Withdraw Balance!','error');return}if(!phone||phone.length<9){showToast('Please enter a valid recipient phone number','error');return}appState.withdrawBalance-=amount;addTransaction('withdraw',`${selectedProvider} Withdrawal`,`Demo request for ${phone}`,amount,false);saveState();renderAll();closeModal();showToast('Demo withdrawal recorded; no money was sent.','info')}
-function openInvestModal(productId){const prod=PRODUCTS.find(p=>p.id===productId);if(!prod)return;const canAfford=appState.depositBalance>=prod.price;document.getElementById('modal-title').textContent='Confirm Equipment Lease';document.getElementById('modal-body').innerHTML=`<div class="space-y-3.5 text-xs"><div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50"><div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center text-[#127369]"><i data-lucide="${prod.icon}" class="w-8 h-8"></i></div><div><h4 class="font-bold text-sm">${prod.name}</h4><p class="text-[11px] text-slate-500">Eastradge Medical Equipment Lease</p></div></div><div class="bg-slate-50 rounded-2xl p-3 space-y-2"><div class="flex justify-between"><span>Lease Price:</span><b>${formatUGX(prod.price)}</b></div><div class="flex justify-between"><span>Investment Cycle:</span><b>${prod.cycleDays} Days</b></div><div class="flex justify-between"><span>Daily Income*:</span><b class="text-teal-700">${formatUGX(prod.dailyIncome)}</b></div><div class="flex justify-between border-t pt-2"><span>Total Return*:</span><b>${formatUGX(prod.totalIncome)}</b></div></div><div class="flex justify-between px-1"><span>Your Deposit Balance:</span><b class="${canAfford?'text-teal-700':'text-rose-600'}">${formatUGX(appState.depositBalance)}</b></div>${canAfford?`<button onclick="confirmInvestment('${prod.id}')" class="w-full bg-[#F5B82E] text-slate-950 font-extrabold py-3 rounded-xl">Confirm & Lease (${formatUGX(prod.price)})</button>`:`<button onclick="openDepositModal()" class="w-full bg-[#127369] text-white font-bold py-3 rounded-xl">Insufficient Balance — Deposit Now</button>`}<p class="text-[10px] text-slate-400">*Illustrative demo figures only; not a verified investment offer or guaranteed return.</p></div>`;document.getElementById('modal-backdrop').classList.remove('hidden');lucide.createIcons()}
-function confirmInvestment(productId){const prod=PRODUCTS.find(p=>p.id===productId);if(!prod)return;if(appState.depositBalance<prod.price){showToast('Insufficient Deposit Balance!','error');return}appState.depositBalance-=prod.price;appState.activeEquipment.unshift({leaseId:'EQ-'+Date.now().toString().slice(-5),productId:prod.id,name:prod.name,price:prod.price,cycleDays:prod.cycleDays,dailyIncome:prod.dailyIncome,totalIncome:prod.totalIncome,daysCompleted:0,totalEarned:0});addTransaction('invest',`Leased ${prod.name}`,`${prod.cycleDays}-Day Demo Cycle`,prod.price,false);saveState();renderAll();closeModal();showToast(`Demo lease created for ${prod.name}.`);switchTab('equipment')}
-function openManagerModal(){document.getElementById('modal-title').textContent='Account Manager & Community';document.getElementById('modal-body').innerHTML=`<div class="space-y-3 text-xs"><div class="p-3.5 rounded-2xl bg-teal-50 border flex items-center gap-3"><div class="w-11 h-11 rounded-full bg-[#127369] text-white flex items-center justify-center"><i data-lucide="headphones" class="w-5 h-5"></i></div><div><h4 class="font-bold text-sm">Sarah Namukasa</h4><p class="text-[11px] text-slate-600">Senior Hospital Equipment Advisor • Demo Contact</p></div></div><p class="text-slate-600">For assistance with the demonstration interface, use the contact details supplied by your platform administrator.</p><div class="grid grid-cols-2 gap-2"><button onclick="closeModal();showToast('WhatsApp Support Desk contact: +256 700 849 200','info')" class="bg-emerald-600 text-white font-bold py-2.5 rounded-xl">WhatsApp Desk</button><button onclick="closeModal();showToast('Telegram: @EastradgeMedUG','info')" class="bg-[#1363DF] text-white font-bold py-2.5 rounded-xl">Telegram Group</button></div></div>`;document.getElementById('modal-backdrop').classList.remove('hidden');lucide.createIcons()}
-function openAnnouncementsModal(){document.getElementById('modal-title').textContent='Hospital Announcements';document.getElementById('modal-body').innerHTML=`<div class="space-y-3 text-xs"><div class="p-3 rounded-2xl bg-blue-50 border border-blue-100"><b class="text-blue-700">Equipment Catalogue Update</b><p class="text-slate-600 mt-1">Browse the equipment cards and review the illustrative demo figures.</p></div><div class="p-3 rounded-2xl bg-slate-50"><b>Demo Portal Notice</b><p class="text-slate-600 mt-1">Balances, leases and transaction records are stored locally in this browser for demonstration only.</p></div><button onclick="closeModal()" class="w-full bg-[#127369] text-white font-bold py-2.5 rounded-xl">Got It</button></div>`;document.getElementById('modal-backdrop').classList.remove('hidden')}
-function closeModal(){document.getElementById('modal-backdrop').classList.add('hidden')}
-document.getElementById('modal-backdrop').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
-window.addEventListener('DOMContentLoaded',()=>renderAll());
-</script>
+      <!-- Register Form -->
+      <form id="register-form" onsubmit="handleRegister(event)" class="space-y-3 hidden">
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Full Name</label>
+          <input id="reg-name" type="text" required placeholder="Enter your full name"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-600" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Mobile Money Number</label>
+          <input id="reg-phone" type="tel" required placeholder="07XXXXXXXX"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-600" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Create Password</label>
+          <input id="reg-password" type="password" required placeholder="Create secure password"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-600" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Invite / Referral Code (Optional)</label>
+          <input id="reg-invite-code" type="text" placeholder="Enter sponsor invite code"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-semibold uppercase focus:outline-none focus:ring-2 focus:ring-emerald-600" />
+        </div>
+        <div class="bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-2 text-[11px] font-semibold text-emerald-800 flex items-center justify-between">
+          <span>Instant Registration Bonus:</span>
+          <span class="font-extrabold">UGX 243</span>
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white font-bold text-sm shadow-lg transition">
+          Create Account &amp; Claim UGX 243
+        </button>
+      </form>
+    </div>
+
+    <p class="text-center text-[11px] text-slate-400">
+      ITALIAN Holdings &bull; Uganda Mobile Money Verified
+    </p>
+  </div>
+
+  <!-- ================= MAIN APPLICATION SHELL ================= -->
+  <div id="main-app" class="app-shell hidden">
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-100 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-slate-900 text-emerald-400 flex items-center justify-center font-extrabold text-base shadow-xs">
+          IT
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-base tracking-tight text-slate-900">ITALIAN</span>
+            <span id="admin-badge" class="hidden px-1.5 py-0.5 text-[10px] font-bold uppercase bg-amber-100 text-amber-800 rounded-md">Admin</span>
+          </div>
+          <p id="header-user-info" class="text-[11px] text-slate-500 font-medium">0700000000</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <!-- Prominent Admin Panel Button on Home Header for 0758878297 -->
+        <button id="header-admin-btn" onclick="openAdminPanel()" class="hidden px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs shadow-xs flex items-center gap-1 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          Admin Panel
+        </button>
+        <button onclick="logoutUser()" title="Sign Out" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= TAB 1: HOME VIEW ================= -->
+    <main id="view-home" class="p-4 space-y-4">
+      <!-- Dual Wallet Cards -->
+      <div class="grid grid-cols-2 gap-3">
+        <!-- Deposit Balance Card -->
+        <div class="bg-white rounded-2xl p-3.5 border border-slate-100 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              </svg>
+            </div>
+            <p class="text-[11px] font-medium text-slate-500">Deposit Balance</p>
+            <p id="ui-deposit-balance" class="text-base font-extrabold text-slate-900 mt-0.5 truncate">UGX 0</p>
+          </div>
+          <button onclick="openModal('deposit-modal')" class="mt-3 w-full py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-4-4m4 4l4-4" />
+            </svg>
+            Deposit
+          </button>
+        </div>
+
+        <!-- Withdraw Balance Card -->
+        <div class="bg-white rounded-2xl p-3.5 border border-slate-100 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <p class="text-[11px] font-medium text-slate-500">Withdraw Balance</p>
+            <p id="ui-withdraw-balance" class="text-base font-extrabold text-slate-900 mt-0.5 truncate">UGX 0</p>
+          </div>
+          <button onclick="openModal('withdraw-modal')" class="mt-3 w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 20V4m0 0l-4 4m4-4l4 4" />
+            </svg>
+            Withdraw
+          </button>
+        </div>
+      </div>
+
+      <!-- Home Page Admin Panel Card (Visible when logged in as Admin 0758878297) -->
+      <div id="home-admin-card" class="hidden bg-amber-50 border border-amber-300 rounded-2xl p-3.5 flex items-center justify-between shadow-xs">
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
+            <p class="text-xs font-extrabold text-amber-950">Master Admin Panel (0758878297)</p>
+          </div>
+          <p class="text-[11px] text-amber-800 mt-0.5">
+            <span id="home-pending-count" class="font-bold">0</span> pending &bull; Edit Products, Approvals &amp; DB
+          </p>
+        </div>
+        <button onclick="openAdminPanel()" class="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs shadow-xs transition">
+          Open Admin
+        </button>
+      </div>
+
+      <!-- Quick Access Bar (Invite Page, Transfer, Christmas Rewards, Manager -> WhatsApp 256758878297) -->
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <h2 class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Quick Access</h2>
+          <span class="text-[11px] font-semibold text-emerald-700">24h Income Cycle</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+          <!-- Invite Page Button on Home Page -->
+          <button onclick="switchTab('invite')" class="bg-gradient-to-br from-emerald-600 to-teal-700 p-2.5 rounded-2xl shadow-xs flex flex-col items-center gap-1.5 active:scale-95 transition text-white">
+            <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold">Invite</span>
+          </button>
+
+          <button onclick="openModal('transfer-modal')" class="bg-white p-2.5 rounded-2xl border border-slate-100 shadow-xs flex flex-col items-center gap-1.5 active:scale-95 transition">
+            <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold text-slate-700">Transfer</span>
+          </button>
+
+          <!-- Christmas Rewards Button -->
+          <button onclick="openModal('xmas-modal')" class="bg-rose-600 p-2.5 rounded-2xl shadow-xs flex flex-col items-center gap-1.5 active:scale-95 transition text-white">
+            <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center text-base">
+              🎄
+            </div>
+            <span class="text-[11px] font-bold">Xmas Gifts</span>
+          </button>
+
+          <!-- Manager Button -> Forwards directly to WhatsApp 256758878297 -->
+          <a href="https://wa.me/256758878297" target="_blank" rel="noopener noreferrer" onclick="showToast('Connecting to ITALIAN Manager on WhatsApp...')" class="bg-white p-2.5 rounded-2xl border border-slate-100 shadow-xs flex flex-col items-center gap-1.5 active:scale-95 transition">
+            <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold text-slate-700">Manager</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Christmas Rewards Banner on Home Page (5 to 100 Purchased Products -> Physical or Cash Conversion) -->
+      <div onclick="openModal('xmas-modal')" class="cursor-pointer bg-gradient-to-r from-rose-700 via-red-600 to-amber-600 text-white rounded-2xl p-4 shadow-sm relative overflow-hidden">
+        <div class="flex items-center justify-between gap-3">
+          <div class="space-y-1">
+            <span class="px-2 py-0.5 rounded-full bg-white/20 text-[10px] font-extrabold uppercase tracking-wider">5 – 100 Products Milestone</span>
+            <h3 class="text-sm font-extrabold">Christmas Rewards: Car, Motorcycle, Rice &amp; Cash</h3>
+            <p class="text-[11px] text-rose-100 leading-snug">
+              Buy 5 to 100 products to win Hens, Posho, Rice, Milk, Bread, Cooking Oil, Motorcycle, Car, or convert to Cash (e.g. 30kg Rice = <strong>UGX 1.8M</strong>).
+            </p>
+          </div>
+          <div class="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center text-2xl shrink-0">
+            🎁
+          </div>
+        </div>
+        <div class="mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-[11px] font-bold">
+          <span>Your Purchased Products: <strong id="home-xmas-bought-count">0</strong> / 100</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white text-rose-700 font-extrabold">Open Rewards &rarr;</span>
+        </div>
+      </div>
+
+      <!-- Invite & Team Commission Strip on Home Page -->
+      <div onclick="switchTab('invite')" class="cursor-pointer bg-white rounded-2xl p-3.5 border border-emerald-200 shadow-xs flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-extrabold text-sm">
+            14%
+          </div>
+          <div>
+            <p class="text-xs font-extrabold text-slate-900">Invite &amp; Earn 3-Level Commissions</p>
+            <p class="text-[11px] text-slate-600">Lv1: <strong class="text-emerald-700">10%</strong> &bull; Lv2: <strong class="text-emerald-700">3%</strong> &bull; Lv3: <strong class="text-emerald-700">1%</strong></p>
+          </div>
+        </div>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold">Invite &rarr;</span>
+      </div>
+
+      <!-- Direct WhatsApp Support Strip -->
+      <a href="https://wa.me/256758878297" target="_blank" rel="noopener noreferrer" class="bg-emerald-50 border border-emerald-200 rounded-2xl p-3 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">
+            WA
+          </div>
+          <div>
+            <p class="text-xs font-extrabold text-slate-900">Contact Official Manager</p>
+            <p class="text-[11px] text-emerald-800">Direct WhatsApp Support: +256 758 878 297</p>
+          </div>
+        </div>
+        <span class="px-3 py-1.5 rounded-xl bg-emerald-700 text-white text-xs font-bold">Chat Now</span>
+      </a>
+
+      <!-- Weekly Champions Preview -->
+      <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-xs">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="text-base">🏆</span>
+            <h3 class="text-sm font-extrabold text-slate-900">Weekly Champions</h3>
+          </div>
+          <button onclick="openModal('champions-modal')" class="text-xs font-bold text-emerald-700 hover:underline">View All &rarr;</button>
+        </div>
+        <div id="home-champions-preview" class="space-y-2"></div>
+      </div>
+
+      <!-- Featured Investment Plans -->
+      <div>
+        <div class="flex items-center justify-between mb-2.5">
+          <h3 class="text-sm font-extrabold text-slate-900">Featured Plans (40k – 7.5M)</h3>
+          <button onclick="switchTab('products')" class="text-xs font-bold text-emerald-700 hover:underline">All Plans &rarr;</button>
+        </div>
+        <div id="home-featured-products" class="space-y-3"></div>
+      </div>
+    </main>
+
+    <!-- ================= TAB 2: INVESTMENT PLANS VIEW ================= -->
+    <main id="view-products" class="p-4 space-y-3.5 hidden">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900">Investment Plans</h2>
+          <p class="text-xs text-slate-500">Income credited automatically every 24 hours</p>
+        </div>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">40k – 7.5M</span>
+      </div>
+
+      <!-- Duration Filter Chips (2, 35, 45, 75, 100 Days) -->
+      <div class="flex gap-1.5 overflow-x-auto hide-scrollbar pb-1">
+        <button onclick="filterProducts('all')" class="prod-filter-btn px-3 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white whitespace-nowrap" data-filter="all">All Cycles</button>
+        <button onclick="filterProducts(2)" class="prod-filter-btn px-3 py-1.5 rounded-full text-xs font-bold bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="2">2 Days</button>
+        <button onclick="filterProducts(35)" class="prod-filter-btn px-3 py-1.5 rounded-full text-xs font-bold bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="35">35 Days</button>
+        <button onclick="filterProducts(45)" class="prod-filter-btn px-3 py-1.5 rounded-full text-xs font-bold bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="45">45 Days</button>
+        <button onclick="filterProducts(75)" class="prod-filter-btn px-3 py-1.5 rounded-full text-xs font-bold bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="75">75 Days</button>
+        <button onclick="filterProducts(100)" class="prod-filter-btn px-3 py-1.5 rounded-full text-xs font-bold bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="100">100 Days</button>
+      </div>
+
+      <div id="products-list" class="space-y-3"></div>
+    </main>
+
+    <!-- ================= TAB 3: INVITE PAGE (LV1 10%, LV2 3%, LV3 1%) ================= -->
+    <main id="view-invite" class="p-4 space-y-4 hidden">
+      <div class="bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-5 shadow-md space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold uppercase tracking-wider">3-Tier Partner Network</span>
+          <span class="text-xs font-bold text-amber-300">Instant Payouts</span>
+        </div>
+        <h2 class="text-xl font-extrabold">Invite &amp; Earn Commission</h2>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Share your invite code with friends. Every time your network invests in a plan, you earn automatic commissions credited directly to your Withdraw Balance.
+        </p>
+
+        <!-- Invite Code Box -->
+        <div class="bg-white/10 border border-white/15 rounded-2xl p-3.5 space-y-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-emerald-300 font-bold">Your Personal Invite Code</p>
+              <p id="ui-my-invite-code" class="text-lg font-extrabold tracking-widest text-white mt-0.5">IT0000</p>
+            </div>
+            <div class="flex gap-1.5">
+              <button onclick="copyInviteCode()" class="px-3 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs transition">
+                Copy Code
+              </button>
+              <button onclick="shareInviteWhatsApp()" class="px-3 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs transition">
+                Share
+              </button>
+            </div>
+          </div>
+
+          <!-- Shareable Invite Link + Code Box -->
+          <div class="pt-2.5 border-t border-white/15 space-y-2">
+            <p class="text-[10px] uppercase tracking-wider text-amber-300 font-bold">Your Shareable Invite Link</p>
+            <div class="bg-slate-950/60 border border-white/10 rounded-xl px-3 py-2 text-[11px] font-mono text-emerald-200 break-all" id="ui-my-invite-link">
+              #ref=IT0000
+            </div>
+            <button id="copy-link-code-btn" onclick="copyInviteLinkAndCode()" class="w-full py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs shadow-sm transition">
+              Copy Link + Code
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3-Tier Commission Breakdown Cards (Lv1 10%, Lv2 3%, Lv3 1%) -->
+      <div class="grid grid-cols-3 gap-2.5">
+        <div class="bg-white rounded-2xl p-3 border border-emerald-200 shadow-xs text-center space-y-1">
+          <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold">Level 1</span>
+          <p class="text-xl font-extrabold text-emerald-700">10%</p>
+          <p class="text-[10px] text-slate-500 font-medium">Direct Invites</p>
+          <p id="ui-lv1-count" class="text-xs font-extrabold text-slate-900 pt-1 border-t border-slate-100">0 Members</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-3 border border-sky-200 shadow-xs text-center space-y-1">
+          <span class="px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-extrabold">Level 2</span>
+          <p class="text-xl font-extrabold text-sky-700">3%</p>
+          <p class="text-[10px] text-slate-500 font-medium">2nd Generation</p>
+          <p id="ui-lv2-count" class="text-xs font-extrabold text-slate-900 pt-1 border-t border-slate-100">0 Members</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-3 border border-amber-200 shadow-xs text-center space-y-1">
+          <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-extrabold">Level 3</span>
+          <p class="text-xl font-extrabold text-amber-700">1%</p>
+          <p class="text-[10px] text-slate-500 font-medium">3rd Generation</p>
+          <p id="ui-lv3-count" class="text-xs font-extrabold text-slate-900 pt-1 border-t border-slate-100">0 Members</p>
+        </div>
+      </div>
+
+      <!-- Total Referral Earnings Summary -->
+      <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-xs flex items-center justify-between">
+        <div>
+          <p class="text-xs text-slate-500 font-medium">Total Referral Commission Earned</p>
+          <p id="ui-total-ref-earned" class="text-lg font-extrabold text-emerald-700 mt-0.5">UGX 0</p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs text-slate-500 font-medium">Total Team Size</p>
+          <p id="ui-total-team-size" class="text-lg font-extrabold text-slate-900 mt-0.5">0</p>
+        </div>
+      </div>
+
+      <!-- Team Members & Commission History -->
+      <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-xs space-y-2.5">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-500">My Team &amp; Commission Log</h3>
+        <div id="invite-team-list" class="space-y-2 text-xs"></div>
+      </div>
+    </main>
+
+    <!-- ================= TAB 4: DEFENSE DONATE VIEW (GUNS, BOMBS, TANKS, AIRCRAFT - NO MEDICINE) ================= -->
+    <main id="view-donate" class="p-4 space-y-4 hidden">
+      <div class="bg-slate-900 text-white rounded-2xl p-4 shadow-sm">
+        <span class="px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 text-[10px] font-bold uppercase">Defense Hardware Fund</span>
+        <h2 class="text-lg font-extrabold mt-1">Tactical Arsenal Donations</h2>
+        <p class="text-xs text-slate-300 mt-1">
+          Allocate funds directly to heavy defense assets: <strong>Guns, Bombs, Tanks, and Aircraft</strong>.
+        </p>
+        <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between">
+          <span class="text-xs text-slate-400">Your Total Contributions</span>
+          <span id="user-total-donated" class="text-sm font-extrabold text-amber-400">UGX 0</span>
+        </div>
+      </div>
+
+      <div id="donation-categories-grid" class="grid grid-cols-1 gap-3"></div>
+
+      <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-xs">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2.5">Recent Defense Contributions</h3>
+        <div id="donation-history-list" class="space-y-2 text-xs"></div>
+      </div>
+    </main>
+
+    <!-- ================= TAB 5: ACCOUNT & 24-HOUR ACTIVE ORDERS VIEW ================= -->
+    <main id="view-account" class="p-4 space-y-4 hidden">
+      <!-- Account Summary Card -->
+      <div class="bg-slate-900 text-white rounded-2xl p-4 shadow-sm space-y-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <p id="acc-user-name" class="text-base font-extrabold">Member</p>
+            <p id="acc-user-phone" class="text-xs text-slate-400">0700000000</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-bold">
+            Bonus: UGX 243
+          </span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 pt-2 border-t border-white/10 text-center">
+          <div>
+            <p class="text-[10px] text-slate-400">Active Plans</p>
+            <p id="portfolio-active-count" class="text-base font-extrabold">0</p>
+          </div>
+          <div class="border-x border-white/10">
+            <p class="text-[10px] text-slate-400">Total Bought</p>
+            <p id="portfolio-total-bought" class="text-base font-extrabold text-amber-400">0</p>
+          </div>
+          <div>
+            <p class="text-[10px] text-slate-400">24h Income</p>
+            <p id="portfolio-daily-yield" class="text-base font-extrabold text-emerald-400">UGX 0</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-1.5 pt-1">
+          <button onclick="process24HourCycles(true)" class="py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] transition">
+            Settle 24h
+          </button>
+          <button onclick="openModal('xmas-modal')" class="py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-[11px] transition">
+            Xmas Rewards
+          </button>
+          <a href="https://wa.me/256758878297" target="_blank" rel="noopener noreferrer" class="py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-[11px] text-center transition">
+            Manager
+          </a>
+        </div>
+      </div>
+
+      <!-- Active 24h Orders -->
+      <div>
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Active 24-Hour Contracts</h3>
+        <div id="active-investments-list" class="space-y-3"></div>
+      </div>
+
+      <!-- User's Deposit & Withdrawal History -->
+      <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-xs space-y-2.5">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-500">My Recent Transactions</h3>
+        <div id="user-tx-history" class="space-y-2 text-xs"></div>
+      </div>
+    </main>
+
+    <!-- ================= BOTTOM NAVIGATION BAR ================= -->
+    <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white border-t border-slate-200 px-2 py-2 flex items-center justify-around z-30">
+      <button onclick="switchTab('home')" class="nav-btn flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl text-emerald-700 font-bold" data-tab="home">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        <span class="text-[10px]">Home</span>
+      </button>
+
+      <button onclick="switchTab('products')" class="nav-btn flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl text-slate-400 font-medium" data-tab="products">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+        <span class="text-[10px]">Plans</span>
+      </button>
+
+      <button onclick="switchTab('invite')" class="nav-btn flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl text-slate-400 font-medium" data-tab="invite">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+        </svg>
+        <span class="text-[10px]">Invite</span>
+      </button>
+
+      <button onclick="switchTab('donate')" class="nav-btn flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl text-slate-400 font-medium" data-tab="donate">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
+        </svg>
+        <span class="text-[10px]">Donate</span>
+      </button>
+
+      <button onclick="switchTab('account')" class="nav-btn flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl text-slate-400 font-medium" data-tab="account">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+        <span class="text-[10px]">Account</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- 1. DEPOSIT MODAL (Minimum 40,000 UGX -> 0758878297 Shakira Nantongo + TxID + Confirm) -->
+  <div id="deposit-modal" class="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-xs hidden flex items-end sm:items-center justify-center p-3">
+    <div class="bg-white w-full max-w-[440px] rounded-3xl p-5 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-extrabold text-slate-900">Deposit Funds (Min UGX 40,000)</h3>
+        <button onclick="closeModal('deposit-modal')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold">&times;</button>
+      </div>
+
+      <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5 space-y-2">
+        <p class="text-[11px] font-bold uppercase text-emerald-800">Step 1: Send Mobile Money To</p>
+        <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-emerald-100">
+          <div>
+            <p class="text-sm font-extrabold text-slate-900">0758878297</p>
+            <p class="text-xs font-semibold text-emerald-700">Account Name: Shakira Nantongo</p>
+          </div>
+          <button type="button" onclick="copyText('0758878297')" class="px-3 py-1.5 rounded-lg bg-emerald-700 text-white text-xs font-bold">
+            Copy
+          </button>
+        </div>
+        <p class="text-[11px] text-emerald-800">
+          Minimum deposit is <strong>UGX 40,000</strong>. Send payment to <strong>0758878297 (Shakira Nantongo)</strong>, enter the Transaction ID below, and tap Confirm.
+        </p>
+      </div>
+
+      <form onsubmit="submitDeposit(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Amount Sent (Minimum 40,000 UGX)</label>
+          <input id="dep-amount" type="number" min="40000" step="500" required placeholder="40000"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-emerald-600" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Mobile Money Transaction ID</label>
+          <input id="dep-txid" type="text" required placeholder="Enter Transaction ID from SMS"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-semibold uppercase focus:outline-none focus:ring-2 focus:ring-emerald-600" />
+        </div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold text-sm shadow-lg transition">
+          Confirm
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. WITHDRAW MODAL (Automatic 5% Charge) -->
+  <div id="withdraw-modal" class="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-xs hidden flex items-end sm:items-center justify-center p-3">
+    <div class="bg-white w-full max-w-[440px] rounded-3xl p-5 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-extrabold text-slate-900">Withdraw Funds</h3>
+        <button onclick="closeModal('withdraw-modal')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold">&times;</button>
+      </div>
+
+      <div class="bg-slate-100 rounded-2xl p-3 flex items-center justify-between">
+        <span class="text-xs font-semibold text-slate-600">Available Withdraw Balance</span>
+        <span id="modal-withdraw-avail" class="text-sm font-extrabold text-slate-900">UGX 0</span>
+      </div>
+
+      <form onsubmit="submitWithdraw(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Withdraw Amount (UGX)</label>
+          <input id="with-amount" type="number" min="5000" step="500" required oninput="updateWithdrawPreview()" placeholder="Enter amount to withdraw"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-slate-900" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Receiving Mobile Number</label>
+          <input id="with-phone" type="tel" required placeholder="07XXXXXXXX"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-slate-900" />
+        </div>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-3 space-y-1.5 text-xs">
+          <div class="flex justify-between text-slate-600">
+            <span>Withdrawal Amount:</span>
+            <span id="with-preview-gross" class="font-bold">UGX 0</span>
+          </div>
+          <div class="flex justify-between text-rose-700">
+            <span>Withdrawal Charge (5%):</span>
+            <span id="with-preview-fee" class="font-bold">- UGX 0</span>
+          </div>
+          <div class="pt-1.5 border-t border-amber-200 flex justify-between text-slate-950 font-extrabold text-sm">
+            <span>Net Payout Sent:</span>
+            <span id="with-preview-net" class="text-emerald-700">UGX 0</span>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm shadow-lg transition">
+          Confirm Withdrawal
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. TRANSFER FUNDS MODAL -->
+  <div id="transfer-modal" class="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-xs hidden flex items-end sm:items-center justify-center p-3">
+    <div class="bg-white w-full max-w-[440px] rounded-3xl p-5 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-extrabold text-slate-900">Transfer Funds</h3>
+        <button onclick="closeModal('transfer-modal')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold">&times;</button>
+      </div>
+
+      <form onsubmit="submitTransfer(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Transfer Type</label>
+          <select id="transfer-mode" onchange="toggleTransferRecipient()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-bold">
+            <option value="self">Withdraw Balance &rarr; My Deposit Balance (Reinvest)</option>
+            <option value="peer">Send to Another Member's Phone Number</option>
+          </select>
+        </div>
+
+        <div id="transfer-recipient-group" class="hidden">
+          <label class="block text-xs font-bold text-slate-700 mb-1">Recipient Phone Number</label>
+          <input id="transfer-phone" type="tel" placeholder="Enter registered phone number"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-semibold" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Amount (UGX)</label>
+          <input id="transfer-amount" type="number" min="100" step="100" required placeholder="Enter amount in UGX"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-bold" />
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold text-sm shadow-lg transition">
+          Transfer Now
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. CHRISTMAS REWARDS MODAL (5 to 100 Purchased Products -> Choose Physical Gift or Cash Conversion) -->
+  <div id="xmas-modal" class="fixed inset-0 z-40 bg-slate-950/70 backdrop-blur-xs hidden flex items-end sm:items-center justify-center p-2">
+    <div class="bg-white w-full max-w-[460px] max-h-[90vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+      <div class="bg-gradient-to-r from-rose-700 to-amber-600 text-white px-5 py-4 flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-wider bg-white/20 px-2 py-0.5 rounded-full">5 – 100 Products Program</span>
+          <h3 class="text-base font-extrabold mt-1">🎄 Christmas Rewards &amp; Cash Exchange</h3>
+        </div>
+        <button onclick="closeModal('xmas-modal')" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white font-bold">&times;</button>
+      </div>
+
+      <div class="p-4 overflow-y-auto space-y-3 text-xs">
+        <div class="bg-rose-50 border border-rose-200 rounded-2xl p-3 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-rose-950">Your Purchased Products:</span>
+            <span id="xmas-modal-count" class="px-2.5 py-0.5 rounded-full bg-rose-600 text-white font-extrabold">0 Products</span>
+          </div>
+          <p class="text-[11px] text-rose-800 leading-relaxed">
+            Members who purchase <strong>5 to 100 products</strong> unlock Christmas rewards: <strong>Hens, Posho, Rice, Milk, Bread, Cash, Car, Motorcycle, and Cooking Oil</strong>. Winners choose either the <strong>Physical Gift</strong> or instant <strong>Cash Conversion</strong> (e.g., <strong>30 kg of Rice = UGX 1,800,000</strong>).
+          </p>
+        </div>
+
+        <div id="xmas-rewards-list" class="space-y-2.5"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. WEEKLY CHAMPIONS FULL MODAL -->
+  <div id="champions-modal" class="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-xs hidden flex items-end sm:items-center justify-center p-3">
+    <div class="bg-white w-full max-w-[440px] max-h-[85vh] rounded-3xl p-5 shadow-2xl flex flex-col overflow-hidden space-y-3">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-extrabold uppercase text-amber-600">Chosen The Best</span>
+          <h3 class="text-base font-extrabold text-slate-900">👑 Weekly Champions</h3>
+        </div>
+        <button onclick="closeModal('champions-modal')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold">&times;</button>
+      </div>
+      <div id="champions-modal-list" class="space-y-2 overflow-y-auto"></div>
+    </div>
+  </div>
+
+  <!-- 6. DONATE MODAL (Guns, Bombs, Tanks, Aircraft) -->
+  <div id="donate-modal" class="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-xs hidden flex items-end sm:items-center justify-center p-3">
+    <div class="bg-white w-full max-w-[440px] rounded-3xl p-5 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 id="donate-modal-title" class="text-base font-extrabold text-slate-900">Support Defense Hardware</h3>
+        <button onclick="closeModal('donate-modal')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold">&times;</button>
+      </div>
+      <p id="donate-modal-desc" class="text-xs text-slate-600"></p>
+      <form onsubmit="submitDonation(event)" class="space-y-3">
+        <input type="hidden" id="donate-category-id" />
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Select Wallet</label>
+          <select id="donate-wallet-source" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-bold">
+            <option value="depositBalance">Deposit Balance</option>
+            <option value="withdrawBalance">Withdraw Balance</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Contribution Amount (UGX)</label>
+          <input id="donate-amount" type="number" min="200" step="100" required placeholder="Enter amount in UGX"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-bold" />
+        </div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-sm shadow-lg transition">
+          Confirm Defense Donation
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 7. COMPLETE ALL-IN-ONE ADMIN PANEL MODAL (0758878297 / Prince700) -->
+  <div id="admin-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-xs hidden flex items-center justify-center p-2">
+    <div class="bg-white w-full max-w-[820px] max-h-[94vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+      <div class="bg-slate-950 text-white px-4 py-3.5 flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400">Authorized Master Admin &bull; 0758878297</span>
+          <h3 class="text-base font-extrabold">ITALIAN Complete Control Center</h3>
+        </div>
+        <button onclick="closeModal('admin-modal')" class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-white font-bold">&times;</button>
+      </div>
+
+      <!-- Complete Admin Navigation Tabs -->
+      <div class="flex bg-slate-100 p-1.5 gap-1 overflow-x-auto hide-scrollbar border-b border-slate-200">
+        <button onclick="switchAdminTab('overview')" class="admin-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-900 shadow-xs whitespace-nowrap" data-admintab="overview">Overview</button>
+        <button onclick="switchAdminTab('products')" class="admin-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 whitespace-nowrap" data-admintab="products">Edit Products</button>
+        <button onclick="switchAdminTab('deposits')" class="admin-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 whitespace-nowrap" data-admintab="deposits">Deposits</button>
+        <button onclick="switchAdminTab('withdrawals')" class="admin-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 whitespace-nowrap" data-admintab="withdrawals">Withdrawals</button>
+        <button onclick="switchAdminTab('users')" class="admin-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 whitespace-nowrap" data-admintab="users">Registration Table</button>
+        <button onclick="switchAdminTab('logins')" class="admin-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 whitespace-nowrap" data-admintab="logins">Login Table</button>
+        <button onclick="switchAdminTab('xmas')" class="admin-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 whitespace-nowrap" data-admintab="xmas">Christmas &amp; Champions</button>
+        <button onclick="switchAdminTab('orders')" class="admin-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 whitespace-nowrap" data-admintab="orders">Orders &amp; Arsenal</button>
+      </div>
+
+      <div class="p-4 overflow-y-auto space-y-4 flex-1 text-xs">
+        <!-- ADMIN TAB 1: OVERVIEW & KPIs -->
+        <div id="admin-sec-overview" class="space-y-4">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="admin-kpi-grid"></div>
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <p class="font-extrabold text-slate-900">Global 24-Hour Income Engine</p>
+              <p class="text-[11px] text-slate-500">Force-settle all due 24-hour payouts across every active investor account.</p>
+            </div>
+            <button onclick="process24HourCycles(true); renderAdminTables();" class="px-3.5 py-2 rounded-xl bg-emerald-700 text-white font-bold">
+              Run 24h Payout Cycle
+            </button>
+          </div>
+        </div>
+
+        <!-- ADMIN TAB 2: EDIT PRODUCTS (ADD, EDIT PRICE/DAILY INCOME/DURATION, DELETE) -->
+        <div id="admin-sec-products" class="space-y-3 hidden">
+          <div class="flex items-center justify-between">
+            <h4 class="font-extrabold text-slate-900">Product Catalog Editor (40k – 7.5M+)</h4>
+            <span class="text-[11px] text-emerald-700 font-bold">Changes update live storefront immediately</span>
+          </div>
+
+          <!-- Add / Edit Product Form -->
+          <form onsubmit="adminSaveProduct(event)" class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2.5">
+            <input type="hidden" id="edit-prod-id" />
+            <div class="flex items-center justify-between">
+              <p id="edit-prod-form-title" class="font-extrabold text-slate-800">Add New Product / Plan</p>
+              <button type="button" onclick="resetProductEditorForm()" class="text-[11px] text-slate-500 underline">Clear Form</button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Product Name</label>
+                <input id="edit-prod-name" type="text" required placeholder="e.g. Milan Vault" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white" />
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Price (UGX)</label>
+                <input id="edit-prod-price" type="number" min="40000" step="1000" required placeholder="40000" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white" />
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">24h Daily Income (UGX)</label>
+                <input id="edit-prod-daily" type="number" min="100" step="100" required placeholder="24000" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white" />
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Duration (Days)</label>
+                <select id="edit-prod-days" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white font-bold">
+                  <option value="2">2 Days</option>
+                  <option value="35">35 Days</option>
+                  <option value="45">45 Days</option>
+                  <option value="75">75 Days</option>
+                  <option value="100">100 Days</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Badge Tag</label>
+                <input id="edit-prod-tag" type="text" required placeholder="e.g. Popular Plan" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white" />
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Icon Emoji</label>
+                <input id="edit-prod-icon" type="text" required value="⚡" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white" />
+              </div>
+            </div>
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold">
+              Save Product Changes
+            </button>
+          </form>
+
+          <!-- Editable Product List -->
+          <div id="admin-products-list" class="space-y-2"></div>
+        </div>
+
+        <!-- ADMIN TAB 3: DEPOSIT APPROVALS -->
+        <div id="admin-sec-deposits" class="space-y-3 hidden">
+          <div class="flex items-center justify-between">
+            <h4 class="font-extrabold text-slate-900">Mobile Money Deposits (0758878297 Shakira Nantongo)</h4>
+            <span class="text-[11px] text-slate-500">Min UGX 40,000</span>
+          </div>
+          <div id="admin-deposits-list" class="space-y-2.5"></div>
+        </div>
+
+        <!-- ADMIN TAB 4: WITHDRAWAL APPROVALS -->
+        <div id="admin-sec-withdrawals" class="space-y-3 hidden">
+          <h4 class="font-extrabold text-slate-900">Withdrawal Requests (5% Fee Deducted)</h4>
+          <div id="admin-withdrawals-list" class="space-y-2.5"></div>
+        </div>
+
+        <!-- ADMIN TAB 5: COMPLETE REGISTRATION TABLE & USER BALANCE EDITOR -->
+        <div id="admin-sec-users" class="space-y-3 hidden">
+          <div class="flex items-center justify-between">
+            <h4 class="font-extrabold text-slate-900">Registration Table &amp; Balance Manager</h4>
+            <span id="admin-user-count" class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-bold">0 Users</span>
+          </div>
+
+          <form onsubmit="adminAdjustUserBalance(event)" class="bg-slate-50 p-3 rounded-2xl border border-slate-200 grid grid-cols-1 sm:grid-cols-4 gap-2 items-end">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Member Phone</label>
+              <input id="adj-phone" type="tel" required placeholder="07XXXXXXXX" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white" />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Wallet</label>
+              <select id="adj-wallet" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white font-bold">
+                <option value="depositBalance">Deposit Balance</option>
+                <option value="withdrawBalance">Withdraw Balance</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Amount (+/- UGX)</label>
+              <input id="adj-amount" type="number" required placeholder="e.g. 50000" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white" />
+            </div>
+            <button type="submit" class="py-2 px-3 rounded-lg bg-slate-900 text-white font-bold">Apply Balance</button>
+          </form>
+
+          <div class="overflow-x-auto border border-slate-200 rounded-xl">
+            <table class="w-full text-left border-collapse text-[11px]">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-2 border-b">Name</th>
+                  <th class="p-2 border-b">Phone</th>
+                  <th class="p-2 border-b">Invite Code</th>
+                  <th class="p-2 border-b">Invited By</th>
+                  <th class="p-2 border-b">Deposit Bal</th>
+                  <th class="p-2 border-b">Withdraw Bal</th>
+                  <th class="p-2 border-b">Bought</th>
+                  <th class="p-2 border-b">Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-reg-tbody" class="divide-y divide-slate-100"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ADMIN TAB 6: COMPLETE LOGIN LOGS TABLE -->
+        <div id="admin-sec-logins" class="space-y-2.5 hidden">
+          <h4 class="font-extrabold text-slate-900">Login Activity Table</h4>
+          <div class="overflow-x-auto border border-slate-200 rounded-xl">
+            <table class="w-full text-left border-collapse text-[11px]">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-2 border-b">Phone</th>
+                  <th class="p-2 border-b">Role</th>
+                  <th class="p-2 border-b">Status</th>
+                  <th class="p-2 border-b">Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="admin-login-tbody" class="divide-y divide-slate-100"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ADMIN TAB 7: CHRISTMAS REWARDS CLAIMS & WEEKLY CHAMPIONS -->
+        <div id="admin-sec-xmas" class="space-y-4 hidden">
+          <div>
+            <h4 class="font-extrabold text-slate-900 mb-2">Christmas Reward Claims (Physical Gifts &amp; Cash Conversions)</h4>
+            <div id="admin-xmas-claims-list" class="space-y-1.5"></div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-200">
+            <h4 class="font-extrabold text-slate-900 mb-2">Crown Weekly Champion (Chosen The Best)</h4>
+            <form onsubmit="adminAddChampion(event)" class="bg-slate-50 p-3 rounded-xl border border-slate-200 grid grid-cols-1 sm:grid-cols-4 gap-2 items-end">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Full Name</label>
+                <input id="champ-name" type="text" required placeholder="Champion Name" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white" />
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Phone</label>
+                <input id="champ-phone" type="tel" required placeholder="07XXXXXXXX" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white" />
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Weekly Reward (UGX)</label>
+                <input id="champ-prize" type="number" required placeholder="250000" class="w-full px-2.5 py-2 rounded-lg border border-slate-200 bg-white" />
+              </div>
+              <button type="submit" class="py-2 px-3 rounded-lg bg-amber-500 text-slate-950 font-extrabold">Add Champion</button>
+            </form>
+            <div id="admin-champs-list" class="space-y-1.5 mt-2.5"></div>
+          </div>
+        </div>
+
+        <!-- ADMIN TAB 8: ACTIVE ORDERS, REFERRALS & ARSENAL DONATIONS -->
+        <div id="admin-sec-orders" class="space-y-4 hidden">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-extrabold text-slate-900">All Active Member Contracts</h4>
+              <button onclick="process24HourCycles(true); renderAdminTables();" class="px-2.5 py-1 rounded-lg bg-emerald-700 text-white font-bold">Distribute Due 24h</button>
+            </div>
+            <div id="admin-orders-list" class="space-y-2"></div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-200">
+            <h4 class="font-extrabold text-slate-900 mb-2">Defense Arsenal Donations Log (Guns, Bombs, Tanks, Aircraft)</h4>
+            <div id="admin-donations-list" class="space-y-1.5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // ITALIAN INVESTMENT PLATFORM — COMPLETE CORE ENGINE
+    // =========================================================================
+    const ADMIN_PHONE = '0758878297';
+    const ADMIN_PASS = 'Prince700';
+    const ADMIN_RECEIVER_NAME = 'Shakira Nantongo';
+    const WELCOME_BONUS_UGX = 243;
+    const MIN_DEPOSIT_UGX = 40000;
+    const DAY_MS = 24 * 60 * 60 * 1000;
+
+    // Default 8 Investment Plans (UGX 40,000 to UGX 7,500,000; Cycles: 2, 35, 45, 75, 100 Days)
+    const DEFAULT_PRODUCTS = [
+      { id: 'it-1', name: 'Starter Node', tag: 'Fast 2-Day Cycle', price: 40000, days: 2, dailyIncome: 24000, icon: '⚡' },
+      { id: 'it-2', name: 'Tactical Relay', tag: '35-Day Plan', price: 85000, days: 35, dailyIncome: 4200, icon: '🛡️' },
+      { id: 'it-3', name: 'Milan Vault', tag: 'Popular 45-Day', price: 200000, days: 45, dailyIncome: 9500, icon: '🏛️' },
+      { id: 'it-4', name: 'Turin Core', tag: 'High Yield 45-Day', price: 500000, days: 45, dailyIncome: 24000, icon: '🎯' },
+      { id: 'it-5', name: 'Rome Reserve', tag: '75-Day Tier', price: 1200000, days: 75, dailyIncome: 52000, icon: '⚔️' },
+      { id: 'it-6', name: 'Venice Grid', tag: '75-Day Elite', price: 2800000, days: 75, dailyIncome: 125000, icon: '🚀' },
+      { id: 'it-7', name: 'Naples Sovereign', tag: '100-Day Flagship', price: 5000000, days: 100, dailyIncome: 220000, icon: '✈️' },
+      { id: 'it-8', name: 'Imperial Capital', tag: 'Maximum 7.5M Tier', price: 7500000, days: 100, dailyIncome: 340000, icon: '👑' }
+    ];
+
+    // Christmas Rewards Program (5 to 100 Purchased Products — Physical Gift or Cash Conversion)
+    const CHRISTMAS_REWARDS = [
+      { id: 'xm-bread', name: '10 Loaves of Christmas Bread', minProducts: 5, cashValue: 250000, icon: '🍞' },
+      { id: 'xm-milk', name: '20 Litres of Fresh Milk', minProducts: 10, cashValue: 350000, icon: '🥛' },
+      { id: 'xm-hens', name: '5 Fat Christmas Hens', minProducts: 15, cashValue: 500000, icon: '🐓' },
+      { id: 'xm-oil', name: '20 Litres of Cooking Oil', minProducts: 20, cashValue: 750000, icon: '🫗' },
+      { id: 'xm-posho', name: '50 kg Bag of Super Posho', minProducts: 25, cashValue: 1100000, icon: '🌾' },
+      { id: 'xm-rice', name: '30 kg of Premium Rice', minProducts: 30, cashValue: 1800000, icon: '🍚' },
+      { id: 'xm-cash', name: 'Festive Cash Hamper Box', minProducts: 50, cashValue: 3200000, icon: '💵' },
+      { id: 'xm-moto', name: 'Brand New Boxer Motorcycle', minProducts: 75, cashValue: 6800000, icon: '🏍️' },
+      { id: 'xm-car', name: 'Brand New Executive Car', minProducts: 100, cashValue: 35000000, icon: '🚗' }
+    ];
+
+    // Defense Hardware Donation Categories (Guns, Bombs, Tanks, Aircraft ONLY — NO medicine)
+    const DONATION_CATEGORIES = [
+      {
+        id: 'guns',
+        title: 'Guns & Assault Rifles',
+        desc: 'Tactical infantry firearms, precision rifles, and heavy ammunition supply.',
+        goal: 25000000,
+        raised: 16400000,
+        badge: 'Infantry Guns'
+      },
+      {
+        id: 'bombs',
+        title: 'Bombs & Heavy Ordnance',
+        desc: 'High-impact artillery shells, guided bombs, and explosive defense munitions.',
+        goal: 40000000,
+        raised: 27800000,
+        badge: 'Heavy Bombs'
+      },
+      {
+        id: 'tanks',
+        title: 'Armored Battle Tanks',
+        desc: 'Heavy plated main battle tanks and armored ground assault vehicles.',
+        goal: 85000000,
+        raised: 54200000,
+        badge: 'Battle Tanks'
+      },
+      {
+        id: 'aircraft',
+        title: 'Fighter Aircraft & Jets',
+        desc: 'Supersonic combat aircraft, tactical helicopters, and aerial defense squadrons.',
+        goal: 150000000,
+        raised: 98500000,
+        badge: 'Combat Aircraft'
+      }
+    ];
+
+    function makeInviteCode(phone) {
+      return 'IT' + String(phone).slice(-6);
+    }
+
+    function loadDB() {
+      const nowStr = new Date().toLocaleString('en-GB', { hour12: false });
+      const defaultDB = {
+        products: [...DEFAULT_PRODUCTS],
+        users: [
+          {
+            name: 'Shakira Nantongo (Admin)',
+            phone: ADMIN_PHONE,
+            password: ADMIN_PASS,
+            inviteCode: makeInviteCode(ADMIN_PHONE),
+            invitedBy: null,
+            depositBalance: 500000,
+            withdrawBalance: 250000,
+            welcomeBonus: WELCOME_BONUS_UGX,
+            isAdmin: true,
+            registeredAt: nowStr
+          }
+        ],
+        loginLogs: [],
+        deposits: [],
+        withdrawals: [],
+        investments: [],
+        referralLogs: [],
+        xmasClaims: [],
+        donations: [],
+        champions: [
+          { id: 'c1', name: 'Ssemakula Brian', phone: '0774***812', prize: 350000, rank: 1, title: 'Top Weekly Investor' },
+          { id: 'c2', name: 'Namukasa Grace', phone: '0701***449', prize: 200000, rank: 2, title: 'Elite Capital Backer' },
+          { id: 'c3', name: 'Mugisha Ronald', phone: '0782***903', prize: 100000, rank: 3, title: 'Defense Arsenal Champion' }
+        ],
+        categoryTotals: {
+          guns: 16400000,
+          bombs: 27800000,
+          tanks: 54200000,
+          aircraft: 98500000
+        }
+      };
+
+      try {
+        const raw = localStorage.getItem('italian_platform_db_v3');
+        if (!raw) {
+          localStorage.setItem('italian_platform_db_v3', JSON.stringify(defaultDB));
+          return defaultDB;
+        }
+        const parsed = JSON.parse(raw);
+        if (!parsed.products || !parsed.products.length) parsed.products = [...DEFAULT_PRODUCTS];
+        if (!parsed.referralLogs) parsed.referralLogs = [];
+        if (!parsed.xmasClaims) parsed.xmasClaims = [];
+        let adminUser = parsed.users.find(u => u.phone === ADMIN_PHONE);
+        if (!adminUser) {
+          parsed.users.unshift(defaultDB.users[0]);
+        } else {
+          adminUser.password = ADMIN_PASS;
+          adminUser.isAdmin = true;
+          if (!adminUser.inviteCode) adminUser.inviteCode = makeInviteCode(ADMIN_PHONE);
+        }
+        return parsed;
+      } catch (e) {
+        return defaultDB;
+      }
+    }
+
+    function saveDB(db) {
+      localStorage.setItem('italian_platform_db_v3', JSON.stringify(db));
+    }
+
+    let currentUserPhone = localStorage.getItem('italian_current_user_v3') || null;
+    let currentProductFilter = 'all';
+
+    function formatUGX(num) {
+      return 'UGX ' + Math.round(Number(num) || 0).toLocaleString('en-US');
+    }
+
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const el = document.createElement('div');
+      const colors = type === 'error'
+        ? 'bg-rose-600 text-white border-rose-500'
+        : type === 'warning'
+        ? 'bg-amber-500 text-slate-950 border-amber-400'
+        : 'bg-slate-900 text-white border-emerald-500';
+      el.className = `pointer-events-auto px-4 py-3 rounded-2xl border shadow-xl text-xs font-bold flex items-center justify-between gap-2 transition-all ${colors}`;
+      el.innerHTML = `<span>${message}</span>`;
+      container.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        setTimeout(() => el.remove(), 250);
+      }, 3400);
+    }
+
+    function copyText(text) {
+      const temp = document.createElement('input');
+      temp.value = text;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      showToast('Copied ' + text + ' to clipboard');
+    }
+
+    function normalizePhone(phone) {
+      return phone.replace(/\s+/g, '').trim();
+    }
+
+    function buildInviteLink(code) {
+      const cleanCode = String(code || '').trim().toUpperCase();
+      const baseUrl = window.location.href.split('#')[0];
+      return `${baseUrl}#ref=${encodeURIComponent(cleanCode)}`;
+    }
+
+    function getHashReferralCode() {
+      const hash = window.location.hash || '';
+      const match = hash.match(/ref=([^&]+)/i);
+      if (!match || !match[1]) return '';
+      try {
+        return decodeURIComponent(match[1]).trim().toUpperCase();
+      } catch (e) {
+        return match[1].trim().toUpperCase();
+      }
+    }
+
+    function applyIncomingReferralHash() {
+      const refCode = getHashReferralCode();
+      if (!refCode) return;
+      const inviteInput = document.getElementById('reg-invite-code');
+      if (inviteInput) {
+        inviteInput.value = refCode;
+      }
+      if (!currentUserPhone) {
+        switchAuthMode('register');
+        showToast(`Invite code ${refCode} applied to registration.`);
+      }
+    }
+
+    // =========================================================================
+    // REGISTRATION & LOGIN WITH UGX 243 WELCOME BONUS, INVITE CODE & ADMIN
+    // =========================================================================
+    function switchAuthMode(mode) {
+      const loginForm = document.getElementById('login-form');
+      const regForm = document.getElementById('register-form');
+      const tabLogin = document.getElementById('tab-login');
+      const tabReg = document.getElementById('tab-register');
+
+      if (mode === 'login') {
+        loginForm.classList.remove('hidden');
+        regForm.classList.add('hidden');
+        tabLogin.className = 'py-2.5 text-sm font-bold rounded-lg bg-white text-slate-900 shadow-xs transition';
+        tabReg.className = 'py-2.5 text-sm font-bold rounded-lg text-slate-500 transition';
+      } else {
+        loginForm.classList.add('hidden');
+        regForm.classList.remove('hidden');
+        tabReg.className = 'py-2.5 text-sm font-bold rounded-lg bg-white text-slate-900 shadow-xs transition';
+        tabLogin.className = 'py-2.5 text-sm font-bold rounded-lg text-slate-500 transition';
+      }
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value.trim();
+      const phone = normalizePhone(document.getElementById('reg-phone').value);
+      const password = document.getElementById('reg-password').value.trim();
+      const enteredInviteCode = document.getElementById('reg-invite-code').value.trim().toUpperCase();
+
+      if (phone.length < 9 || password.length < 4) {
+        showToast('Enter a valid phone number and password (4+ chars).', 'error');
+        return;
+      }
+
+      const db = loadDB();
+      const nowStr = new Date().toLocaleString('en-GB', { hour12: false });
+
+      if (phone === ADMIN_PHONE) {
+        if (password !== ADMIN_PASS) {
+          showToast('Admin registration requires the official admin password.', 'error');
+          return;
+        }
+        let adminUser = db.users.find(u => u.phone === ADMIN_PHONE);
+        if (adminUser) {
+          adminUser.name = name || adminUser.name;
+          adminUser.password = ADMIN_PASS;
+          adminUser.isAdmin = true;
+        }
+        db.loginLogs.unshift({ phone, role: 'ADMIN', status: 'REGISTERED & VERIFIED', timestamp: nowStr });
+        saveDB(db);
+        currentUserPhone = phone;
+        localStorage.setItem('italian_current_user_v3', phone);
+        showToast('Master Admin Panel Activated!');
+        bootApp();
+        return;
+      }
+
+      if (db.users.some(u => u.phone === phone)) {
+        showToast('Phone number already registered. Please sign in.', 'error');
+        switchAuthMode('login');
+        return;
+      }
+
+      let sponsorPhone = null;
+      if (enteredInviteCode) {
+        const sponsor = db.users.find(u => (u.inviteCode || '').toUpperCase() === enteredInviteCode || u.phone === enteredInviteCode);
+        if (sponsor && sponsor.phone !== phone) {
+          sponsorPhone = sponsor.phone;
+        }
+      }
+
+      db.users.push({
+        name,
+        phone,
+        password,
+        inviteCode: makeInviteCode(phone),
+        invitedBy: sponsorPhone,
+        depositBalance: WELCOME_BONUS_UGX,
+        withdrawBalance: 0,
+        welcomeBonus: WELCOME_BONUS_UGX,
+        isAdmin: false,
+        registeredAt: nowStr
+      });
+
+      db.loginLogs.unshift({
+        phone,
+        role: 'MEMBER',
+        status: 'REGISTERED (+UGX 243)',
+        timestamp: nowStr
+      });
+
+      saveDB(db);
+      currentUserPhone = phone;
+      localStorage.setItem('italian_current_user_v3', phone);
+      showToast('Account created! UGX 243 Welcome Bonus credited.');
+      bootApp();
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const phone = normalizePhone(document.getElementById('login-phone').value);
+      const password = document.getElementById('login-password').value.trim();
+
+      const db = loadDB();
+      const nowStr = new Date().toLocaleString('en-GB', { hour12: false });
+      const user = db.users.find(u => u.phone === phone);
+
+      if (!user) {
+        db.loginLogs.unshift({ phone, role: 'UNKNOWN', status: 'FAILED (NOT FOUND)', timestamp: nowStr });
+        saveDB(db);
+        showToast('Account not found. Please register first.', 'error');
+        return;
+      }
+
+      if (phone === ADMIN_PHONE && password !== ADMIN_PASS) {
+        db.loginLogs.unshift({ phone, role: 'ADMIN', status: 'DENIED (WRONG PASSWORD)', timestamp: nowStr });
+        saveDB(db);
+        showToast('Invalid Admin password.', 'error');
+        return;
+      }
+
+      if (user.password !== password) {
+        db.loginLogs.unshift({ phone, role: user.isAdmin ? 'ADMIN' : 'MEMBER', status: 'FAILED (WRONG PASSWORD)', timestamp: nowStr });
+        saveDB(db);
+        showToast('Incorrect password. Please try again.', 'error');
+        return;
+      }
+
+      db.loginLogs.unshift({
+        phone: user.phone,
+        role: user.isAdmin ? 'ADMIN' : 'MEMBER',
+        status: 'SUCCESS',
+        timestamp: nowStr
+      });
+
+      saveDB(db);
+      currentUserPhone = user.phone;
+      localStorage.setItem('italian_current_user_v3', user.phone);
+      showToast(user.isAdmin ? 'Signed in as Master Admin!' : 'Welcome back to ITALIAN!');
+      bootApp();
+    }
+
+    function logoutUser() {
+      currentUserPhone = null;
+      localStorage.removeItem('italian_current_user_v3');
+      document.getElementById('main-app').classList.add('hidden');
+      document.getElementById('auth-screen').classList.remove('hidden');
+    }
+
+    // =========================================================================
+    // 24-HOUR AUTOMATED INCOME CREDITING ENGINE
+    // =========================================================================
+    function process24HourCycles(manualTrigger = false) {
+      const db = loadDB();
+      const now = Date.now();
+      let totalCreditedForCurrentUser = 0;
+      let totalOrdersSettled = 0;
+
+      db.investments.forEach(inv => {
+        if (inv.status !== 'active') return;
+        const elapsed = now - inv.lastCreditedAt;
+        const cyclesDue = Math.floor(elapsed / DAY_MS);
+
+        if (cyclesDue > 0) {
+          const remainingDays = inv.totalDays - inv.daysCompleted;
+          const payableCycles = Math.min(cyclesDue, remainingDays);
+
+          if (payableCycles > 0) {
+            const payout = payableCycles * inv.dailyIncome;
+            const investor = db.users.find(u => u.phone === inv.userPhone);
+            if (investor) {
+              investor.withdrawBalance += payout;
+              if (inv.userPhone === currentUserPhone) {
+                totalCreditedForCurrentUser += payout;
+              }
+            }
+            inv.daysCompleted += payableCycles;
+            inv.lastCreditedAt += payableCycles * DAY_MS;
+            totalOrdersSettled++;
+
+            if (inv.daysCompleted >= inv.totalDays) {
+              inv.status = 'completed';
+            }
+          }
+        }
+      });
+
+      saveDB(db);
+      if (manualTrigger) {
+        if (totalCreditedForCurrentUser > 0) {
+          showToast(`Credited ${formatUGX(totalCreditedForCurrentUser)} from 24-hour cycles!`);
+        } else if (totalOrdersSettled > 0) {
+          showToast(`Settled ${totalOrdersSettled} due 24-hour contracts.`);
+        } else {
+          showToast('All 24-hour timers checked. Next income credits after 24 hours.');
+        }
+        renderAll();
+      }
+    }
+
+    // =========================================================================
+    // DEPOSIT (MIN 40,000), WITHDRAW (5% FEE), TRANSFER & 3-TIER REFERRAL PAYOUTS
+    // =========================================================================
+    function submitDeposit(e) {
+      e.preventDefault();
+      const amount = Number(document.getElementById('dep-amount').value);
+      const txId = document.getElementById('dep-txid').value.trim().toUpperCase();
+
+      if (amount < MIN_DEPOSIT_UGX) {
+        showToast('Minimum deposit is UGX 40,000.', 'error');
+        return;
+      }
+      if (txId.length < 4) {
+        showToast('Please enter a valid Mobile Money Transaction ID.', 'error');
+        return;
+      }
+
+      const db = loadDB();
+      db.deposits.unshift({
+        id: 'DEP-' + Date.now().toString().slice(-6),
+        userPhone: currentUserPhone,
+        amount,
+        txId,
+        receiver: `${ADMIN_PHONE} (${ADMIN_RECEIVER_NAME})`,
+        status: 'pending',
+        createdAt: new Date().toLocaleString('en-GB', { hour12: false })
+      });
+      saveDB(db);
+
+      document.getElementById('dep-amount').value = '';
+      document.getElementById('dep-txid').value = '';
+      closeModal('deposit-modal');
+      showToast('Deposit confirmed! Awaiting Admin verification of TxID ' + txId);
+      renderAll();
+    }
+
+    function updateWithdrawPreview() {
+      const gross = Number(document.getElementById('with-amount').value) || 0;
+      const fee = Math.round(gross * 0.05);
+      const net = Math.max(0, gross - fee);
+
+      document.getElementById('with-preview-gross').textContent = formatUGX(gross);
+      document.getElementById('with-preview-fee').textContent = '- ' + formatUGX(fee);
+      document.getElementById('with-preview-net').textContent = formatUGX(net);
+    }
+
+    function submitWithdraw(e) {
+      e.preventDefault();
+      const amount = Number(document.getElementById('with-amount').value);
+      const phone = normalizePhone(document.getElementById('with-phone').value);
+
+      const db = loadDB();
+      const user = db.users.find(u => u.phone === currentUserPhone);
+
+      if (!user || amount < 5000) {
+        showToast('Minimum withdrawal amount is UGX 5,000.', 'error');
+        return;
+      }
+      if (user.withdrawBalance < amount) {
+        showToast('Insufficient Withdraw Balance.', 'error');
+        return;
+      }
+
+      const fee = Math.round(amount * 0.05);
+      const netPayout = amount - fee;
+
+      user.withdrawBalance -= amount;
+      db.withdrawals.unshift({
+        id: 'WTH-' + Date.now().toString().slice(-6),
+        userPhone: currentUserPhone,
+        receivePhone: phone,
+        grossAmount: amount,
+        feeAmount: fee,
+        netAmount: netPayout,
+        status: 'pending',
+        createdAt: new Date().toLocaleString('en-GB', { hour12: false })
+      });
+
+      saveDB(db);
+      document.getElementById('with-amount').value = '';
+      updateWithdrawPreview();
+      closeModal('withdraw-modal');
+      showToast(`Withdrawal submitted! Net payout: ${formatUGX(netPayout)} (after 5% charge).`);
+      renderAll();
+    }
+
+    function toggleTransferRecipient() {
+      const mode = document.getElementById('transfer-mode').value;
+      const group = document.getElementById('transfer-recipient-group');
+      if (mode === 'peer') group.classList.remove('hidden');
+      else group.classList.add('hidden');
+    }
+
+    function submitTransfer(e) {
+      e.preventDefault();
+      const mode = document.getElementById('transfer-mode').value;
+      const amount = Number(document.getElementById('transfer-amount').value);
+      const targetPhone = normalizePhone(document.getElementById('transfer-phone').value);
+
+      const db = loadDB();
+      const sender = db.users.find(u => u.phone === currentUserPhone);
+
+      if (!sender || amount < 100) {
+        showToast('Minimum transfer amount is UGX 100.', 'error');
+        return;
+      }
+
+      if (mode === 'self') {
+        if (sender.withdrawBalance < amount) {
+          showToast('Insufficient Withdraw Balance.', 'error');
+          return;
+        }
+        sender.withdrawBalance -= amount;
+        sender.depositBalance += amount;
+        saveDB(db);
+        closeModal('transfer-modal');
+        document.getElementById('transfer-amount').value = '';
+        showToast(`Transferred ${formatUGX(amount)} to your Deposit Balance.`);
+        renderAll();
+      } else {
+        if (!targetPhone || targetPhone === currentUserPhone) {
+          showToast('Enter a valid recipient phone number.', 'error');
+          return;
+        }
+        const recipient = db.users.find(u => u.phone === targetPhone);
+        if (!recipient) {
+          showToast('Recipient phone number not found on ITALIAN.', 'error');
+          return;
+        }
+        if (sender.depositBalance < amount) {
+          showToast('Insufficient Deposit Balance for member transfer.', 'error');
+          return;
+        }
+        sender.depositBalance -= amount;
+        recipient.depositBalance += amount;
+        saveDB(db);
+        closeModal('transfer-modal');
+        document.getElementById('transfer-amount').value = '';
+        document.getElementById('transfer-phone').value = '';
+        showToast(`Sent ${formatUGX(amount)} to ${recipient.name} (${recipient.phone}).`);
+        renderAll();
+      }
+    }
+
+    function distributeReferralCommissions(db, buyerPhone, productPrice, productName) {
+      const buyer = db.users.find(u => u.phone === buyerPhone);
+      if (!buyer || !buyer.invitedBy) return;
+
+      const tiers = [
+        { level: 1, rate: 0.10 },
+        { level: 2, rate: 0.03 },
+        { level: 3, rate: 0.01 }
+      ];
+
+      let currentSponsorPhone = buyer.invitedBy;
+      const nowStr = new Date().toLocaleString('en-GB', { hour12: false });
+
+      tiers.forEach(tier => {
+        if (!currentSponsorPhone) return;
+        const sponsor = db.users.find(u => u.phone === currentSponsorPhone);
+        if (sponsor) {
+          const commission = Math.round(productPrice * tier.rate);
+          if (commission > 0) {
+            sponsor.withdrawBalance += commission;
+            db.referralLogs.unshift({
+              id: 'REF-' + Date.now().toString().slice(-6) + tier.level,
+              sponsorPhone: sponsor.phone,
+              fromPhone: buyerPhone,
+              level: tier.level,
+              ratePercent: tier.rate * 100,
+              amount: commission,
+              productName,
+              createdAt: nowStr
+            });
+          }
+          currentSponsorPhone = sponsor.invitedBy;
+        } else {
+          currentSponsorPhone = null;
+        }
+      });
+    }
+
+    function investInProduct(productId) {
+      const db = loadDB();
+      const product = db.products.find(p => p.id === productId);
+      if (!product) return;
+
+      const user = db.users.find(u => u.phone === currentUserPhone);
+      if (!user) return;
+
+      if (user.depositBalance < product.price) {
+        showToast(`Insufficient Deposit Balance. Need ${formatUGX(product.price)}.`, 'error');
+        openModal('deposit-modal');
+        return;
+      }
+
+      user.depositBalance -= product.price;
+      const now = Date.now();
+      db.investments.unshift({
+        id: 'INV-' + now.toString().slice(-6),
+        userPhone: currentUserPhone,
+        productId: product.id,
+        productName: product.name,
+        price: product.price,
+        dailyIncome: product.dailyIncome,
+        totalDays: product.days,
+        daysCompleted: 0,
+        startedAt: now,
+        lastCreditedAt: now,
+        status: 'active'
+      });
+
+      // Credit 3-tier referral commissions: Lv1 10%, Lv2 3%, Lv3 1%
+      distributeReferralCommissions(db, currentUserPhone, product.price, product.name);
+
+      saveDB(db);
+      showToast(`Activated ${product.name}! Income credits every 24 hours.`);
+      renderAll();
+      switchTab('account');
+    }
+
+    // =========================================================================
+    // CHRISTMAS REWARDS (5 TO 100 PRODUCTS: PHYSICAL GIFT OR CASH CONVERSION)
+    // =========================================================================
+    function claimChristmasReward(rewardId, choiceMode) {
+      const reward = CHRISTMAS_REWARDS.find(r => r.id === rewardId);
+      if (!reward) return;
+
+      const db = loadDB();
+      const user = db.users.find(u => u.phone === currentUserPhone);
+      if (!user) return;
+
+      const userBoughtCount = db.investments.filter(i => i.userPhone === currentUserPhone).length;
+      if (userBoughtCount < reward.minProducts) {
+        showToast(`Purchase ${reward.minProducts} products to unlock ${reward.name} (You have ${userBoughtCount}).`, 'error');
+        return;
+      }
+
+      const alreadyClaimed = db.xmasClaims.some(c => c.userPhone === currentUserPhone && c.rewardId === reward.id);
+      if (alreadyClaimed) {
+        showToast('You have already claimed this Christmas reward.', 'warning');
+        return;
+      }
+
+      const nowStr = new Date().toLocaleString('en-GB', { hour12: false });
+
+      if (choiceMode === 'cash') {
+        user.withdrawBalance += reward.cashValue;
+        db.xmasClaims.unshift({
+          id: 'XM-' + Date.now().toString().slice(-6),
+          userPhone: currentUserPhone,
+          userName: user.name,
+          rewardId: reward.id,
+          rewardName: reward.name,
+          choice: 'CONVERTED TO CASH',
+          cashValue: reward.cashValue,
+          status: 'CREDITED TO WITHDRAW BALANCE',
+          createdAt: nowStr
+        });
+        saveDB(db);
+        showToast(`Converted ${reward.name} to ${formatUGX(reward.cashValue)}! Added to Withdraw Balance.`);
+      } else {
+        db.xmasClaims.unshift({
+          id: 'XM-' + Date.now().toString().slice(-6),
+          userPhone: currentUserPhone,
+          userName: user.name,
+          rewardId: reward.id,
+          rewardName: reward.name,
+          choice: 'PHYSICAL CHRISTMAS GIFT',
+          cashValue: reward.cashValue,
+          status: 'DELIVERY SCHEDULED',
+          createdAt: nowStr
+        });
+        saveDB(db);
+        showToast(`Claimed physical gift: ${reward.name}! Manager will coordinate delivery.`);
+      }
+
+      renderAll();
+    }
+
+    // =========================================================================
+    // DEFENSE ARSENAL DONATIONS (GUNS, BOMBS, TANKS, AIRCRAFT)
+    // =========================================================================
+    function openDonateModal(catId) {
+      const cat = DONATION_CATEGORIES.find(c => c.id === catId);
+      if (!cat) return;
+      document.getElementById('donate-category-id').value = cat.id;
+      document.getElementById('donate-modal-title').textContent = 'Donate: ' + cat.title;
+      document.getElementById('donate-modal-desc').textContent = cat.desc;
+      openModal('donate-modal');
+    }
+
+    function submitDonation(e) {
+      e.preventDefault();
+      const catId = document.getElementById('donate-category-id').value;
+      const walletKey = document.getElementById('donate-wallet-source').value;
+      const amount = Number(document.getElementById('donate-amount').value);
+      const cat = DONATION_CATEGORIES.find(c => c.id === catId);
+
+      const db = loadDB();
+      const user = db.users.find(u => u.phone === currentUserPhone);
+
+      if (!user || !cat || amount < 200) {
+        showToast('Minimum defense contribution is UGX 200.', 'error');
+        return;
+      }
+      if (user[walletKey] < amount) {
+        showToast('Insufficient balance in selected wallet.', 'error');
+        return;
+      }
+
+      user[walletKey] -= amount;
+      db.categoryTotals[catId] = (db.categoryTotals[catId] || cat.raised) + amount;
+      db.donations.unshift({
+        id: 'DON-' + Date.now().toString().slice(-6),
+        userPhone: currentUserPhone,
+        categoryTitle: cat.title,
+        amount,
+        createdAt: new Date().toLocaleString('en-GB', { hour12: false })
+      });
+
+      saveDB(db);
+      document.getElementById('donate-amount').value = '';
+      closeModal('donate-modal');
+      showToast(`Contributed ${formatUGX(amount)} to ${cat.title}.`);
+      renderAll();
+    }
+
+    // =========================================================================
+    // COMPLETE ALL-IN-ONE ADMIN PANEL (0758878297 / Prince700)
+    // =========================================================================
+    function openAdminPanel() {
+      const db = loadDB();
+      const user = db.users.find(u => u.phone === currentUserPhone);
+      if (!user || (user.phone !== ADMIN_PHONE && !user.isAdmin)) {
+        showToast('Access restricted to Master Admin 0758878297.', 'error');
+        return;
+      }
+      renderAdminTables();
+      openModal('admin-modal');
+    }
+
+    function switchAdminTab(tab) {
+      document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+        if (btn.dataset.admintab === tab) {
+          btn.className = 'admin-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-900 shadow-xs whitespace-nowrap';
+        } else {
+          btn.className = 'admin-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 whitespace-nowrap';
+        }
+      });
+
+      ['overview', 'products', 'deposits', 'withdrawals', 'users', 'logins', 'xmas', 'orders'].forEach(sec => {
+        const el = document.getElementById('admin-sec-' + sec);
+        if (sec === tab) el.classList.remove('hidden');
+        else el.classList.add('hidden');
+      });
+    }
+
+    // Admin Product Editor Actions
+    function adminEditProductLoad(prodId) {
+      const db = loadDB();
+      const p = db.products.find(item => item.id === prodId);
+      if (!p) return;
+
+      document.getElementById('edit-prod-id').value = p.id;
+      document.getElementById('edit-prod-name').value = p.name;
+      document.getElementById('edit-prod-price').value = p.price;
+      document.getElementById('edit-prod-daily').value = p.dailyIncome;
+      document.getElementById('edit-prod-days').value = String(p.days);
+      document.getElementById('edit-prod-tag').value = p.tag;
+      document.getElementById('edit-prod-icon').value = p.icon;
+      document.getElementById('edit-prod-form-title').textContent = 'Editing Product: ' + p.name;
+      showToast('Loaded ' + p.name + ' into editor.');
+    }
+
+    function resetProductEditorForm() {
+      document.getElementById('edit-prod-id').value = '';
+      document.getElementById('edit-prod-name').value = '';
+      document.getElementById('edit-prod-price').value = '';
+      document.getElementById('edit-prod-daily').value = '';
+      document.getElementById('edit-prod-days').value = '45';
+      document.getElementById('edit-prod-tag').value = '';
+      document.getElementById('edit-prod-icon').value = '⚡';
+      document.getElementById('edit-prod-form-title').textContent = 'Add New Product / Plan';
+    }
+
+    function adminSaveProduct(e) {
+      e.preventDefault();
+      const id = document.getElementById('edit-prod-id').value.trim();
+      const name = document.getElementById('edit-prod-name').value.trim();
+      const price = Number(document.getElementById('edit-prod-price').value);
+      const dailyIncome = Number(document.getElementById('edit-prod-daily').value);
+      const days = Number(document.getElementById('edit-prod-days').value);
+      const tag = document.getElementById('edit-prod-tag').value.trim();
+      const icon = document.getElementById('edit-prod-icon').value.trim() || '⚡';
+
+      const db = loadDB();
+      if (id) {
+        const idx = db.products.findIndex(p => p.id === id);
+        if (idx !== -1) {
+          db.products[idx] = { id, name, price, dailyIncome, days, tag, icon };
+          showToast('Updated product: ' + name);
+        }
+      } else {
+        db.products.push({
+          id: 'it-' + Date.now().toString().slice(-5),
+          name,
+          price,
+          dailyIncome,
+          days,
+          tag,
+          icon
+        });
+        showToast('Added new product: ' + name);
+      }
+
+      saveDB(db);
+      resetProductEditorForm();
+      renderAdminTables();
+      renderAll();
+    }
+
+    function adminDeleteProduct(prodId) {
+      const db = loadDB();
+      if (db.products.length <= 1) {
+        showToast('At least one product must remain active.', 'error');
+        return;
+      }
+      db.products = db.products.filter(p => p.id !== prodId);
+      saveDB(db);
+      showToast('Product removed from storefront.');
+      renderAdminTables();
+      renderAll();
+    }
+
+    function adminApproveDeposit(depId, approve) {
+      const db = loadDB();
+      const dep = db.deposits.find(d => d.id === depId);
+      if (!dep || dep.status !== 'pending') return;
+
+      if (approve) {
+        dep.status = 'approved';
+        const investor = db.users.find(u => u.phone === dep.userPhone);
+        if (investor) {
+          investor.depositBalance += dep.amount;
+        }
+        showToast(`Approved ${formatUGX(dep.amount)} for ${dep.userPhone}`);
+      } else {
+        dep.status = 'rejected';
+        showToast('Deposit rejected.', 'warning');
+      }
+
+      saveDB(db);
+      renderAdminTables();
+      renderAll();
+    }
+
+    function adminApproveWithdrawal(wthId, approve) {
+      const db = loadDB();
+      const wth = db.withdrawals.find(w => w.id === wthId);
+      if (!wth || wth.status !== 'pending') return;
+
+      if (approve) {
+        wth.status = 'paid';
+        showToast(`Marked withdrawal ${wth.id} as Paid (${formatUGX(wth.netAmount)})`);
+      } else {
+        wth.status = 'rejected';
+        const investor = db.users.find(u => u.phone === wth.userPhone);
+        if (investor) {
+          investor.withdrawBalance += wth.grossAmount;
+        }
+        showToast('Withdrawal rejected & refunded.', 'warning');
+      }
+
+      saveDB(db);
+      renderAdminTables();
+      renderAll();
+    }
+
+    function adminAdjustUserBalance(e) {
+      e.preventDefault();
+      const phone = normalizePhone(document.getElementById('adj-phone').value);
+      const wallet = document.getElementById('adj-wallet').value;
+      const delta = Number(document.getElementById('adj-amount').value);
+
+      const db = loadDB();
+      const target = db.users.find(u => u.phone === phone);
+      if (!target) {
+        showToast('User phone not found in Registration Table.', 'error');
+        return;
+      }
+
+      target[wallet] = Math.max(0, (target[wallet] || 0) + delta);
+      saveDB(db);
+      document.getElementById('adj-amount').value = '';
+      showToast(`Updated ${target.name}'s ${wallet === 'depositBalance' ? 'Deposit' : 'Withdraw'} Balance.`);
+      renderAdminTables();
+      renderAll();
+    }
+
+    function adminDeleteUser(phone) {
+      if (phone === ADMIN_PHONE) {
+        showToast('Cannot delete Master Admin account.', 'error');
+        return;
+      }
+      const db = loadDB();
+      db.users = db.users.filter(u => u.phone !== phone);
+      saveDB(db);
+      showToast('Member removed from Registration Table.');
+      renderAdminTables();
+    }
+
+    function adminAddChampion(e) {
+      e.preventDefault();
+      const name = document.getElementById('champ-name').value.trim();
+      const phone = document.getElementById('champ-phone').value.trim();
+      const prize = Number(document.getElementById('champ-prize').value);
+
+      const db = loadDB();
+      db.champions.unshift({
+        id: 'c-' + Date.now(),
+        name,
+        phone,
+        prize,
+        rank: 1,
+        title: 'Chosen The Best Weekly Champion'
+      });
+      db.champions.forEach((c, idx) => c.rank = idx + 1);
+      saveDB(db);
+
+      document.getElementById('champ-name').value = '';
+      document.getElementById('champ-phone').value = '';
+      document.getElementById('champ-prize').value = '';
+      showToast('Weekly Champion added!');
+      renderAdminTables();
+      renderAll();
+    }
+
+    function adminRemoveChampion(id) {
+      const db = loadDB();
+      db.champions = db.champions.filter(c => c.id !== id);
+      db.champions.forEach((c, idx) => c.rank = idx + 1);
+      saveDB(db);
+      renderAdminTables();
+      renderAll();
+    }
+
+    function renderAdminTables() {
+      const db = loadDB();
+
+      // 1. Overview KPIs
+      const approvedDepTotal = db.deposits.filter(d => d.status === 'approved').reduce((s, d) => s + d.amount, 0);
+      const pendingDepCount = db.deposits.filter(d => d.status === 'pending').length;
+      const pendingWthCount = db.withdrawals.filter(w => w.status === 'pending').length;
+      const totalFees = db.withdrawals.filter(w => w.status !== 'rejected').reduce((s, w) => s + w.feeAmount, 0);
+      const totalRefPaid = db.referralLogs.reduce((s, r) => s + r.amount, 0);
+      const totalArsenal = Object.values(db.categoryTotals || {}).reduce((s, v) => s + v, 0);
+
+      document.getElementById('admin-kpi-grid').innerHTML = `
+        <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200">
+          <p class="text-[10px] font-bold uppercase text-slate-500">Registered Users</p>
+          <p class="text-base font-extrabold text-slate-900 mt-0.5">${db.users.length}</p>
+        </div>
+        <div class="p-3 rounded-2xl bg-emerald-50 border border-emerald-200">
+          <p class="text-[10px] font-bold uppercase text-emerald-700">Approved Deposits</p>
+          <p class="text-base font-extrabold text-emerald-900 mt-0.5">${formatUGX(approvedDepTotal)}</p>
+        </div>
+        <div class="p-3 rounded-2xl bg-amber-50 border border-amber-200">
+          <p class="text-[10px] font-bold uppercase text-amber-700">Pending Approvals</p>
+          <p class="text-base font-extrabold text-amber-900 mt-0.5">${pendingDepCount} Dep / ${pendingWthCount} Wth</p>
+        </div>
+        <div class="p-3 rounded-2xl bg-indigo-50 border border-indigo-200">
+          <p class="text-[10px] font-bold uppercase text-indigo-700">5% Withdraw Fees</p>
+          <p class="text-base font-extrabold text-indigo-900 mt-0.5">${formatUGX(totalFees)}</p>
+        </div>
+        <div class="p-3 rounded-2xl bg-teal-50 border border-teal-200">
+          <p class="text-[10px] font-bold uppercase text-teal-700">Referral Payouts</p>
+          <p class="text-base font-extrabold text-teal-900 mt-0.5">${formatUGX(totalRefPaid)}</p>
+        </div>
+        <div class="p-3 rounded-2xl bg-rose-50 border border-rose-200">
+          <p class="text-[10px] font-bold uppercase text-rose-700">Arsenal Fund Total</p>
+          <p class="text-base font-extrabold text-rose-900 mt-0.5">${formatUGX(totalArsenal)}</p>
+        </div>
+      `;
+
+      // 2. Edit Products List
+      document.getElementById('admin-products-list').innerHTML = db.products.map(p => `
+        <div class="p-3 rounded-xl border border-slate-200 bg-white flex items-center justify-between gap-2">
+          <div>
+            <p class="font-extrabold text-slate-900">${p.icon} ${p.name} <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">${p.days} Days</span></p>
+            <p class="text-[11px] text-slate-500 mt-0.5">Price: <strong class="text-slate-900">${formatUGX(p.price)}</strong> &bull; 24h Income: <strong class="text-emerald-700">${formatUGX(p.dailyIncome)}</strong></p>
+          </div>
+          <div class="flex gap-1.5 shrink-0">
+            <button onclick="adminEditProductLoad('${p.id}')" class="px-2.5 py-1.5 rounded-lg bg-amber-100 text-amber-900 font-bold">Edit</button>
+            <button onclick="adminDeleteProduct('${p.id}')" class="px-2.5 py-1.5 rounded-lg bg-rose-100 text-rose-700 font-bold">Delete</button>
+          </div>
+        </div>
+      `).join('');
+
+      // 3. Deposits List
+      const depContainer = document.getElementById('admin-deposits-list');
+      depContainer.innerHTML = db.deposits.length === 0
+        ? '<p class="text-slate-400 text-center py-4">No deposit submissions yet.</p>'
+        : db.deposits.map(d => `
+          <div class="p-3 rounded-xl border ${d.status === 'pending' ? 'border-amber-300 bg-amber-50/50' : 'border-slate-200 bg-white'} space-y-1.5">
+            <div class="flex justify-between font-bold">
+              <span>${d.userPhone} &bull; <span class="text-slate-400 font-normal">${d.createdAt}</span></span>
+              <span class="text-emerald-700">${formatUGX(d.amount)}</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-600">
+              <span>TxID: <strong class="text-slate-900">${d.txId}</strong></span>
+              <span class="uppercase font-extrabold ${d.status === 'approved' ? 'text-emerald-600' : d.status === 'rejected' ? 'text-rose-600' : 'text-amber-600'}">${d.status}</span>
+            </div>
+            ${d.status === 'pending' ? `
+              <div class="grid grid-cols-2 gap-2 pt-1.5">
+                <button onclick="adminApproveDeposit('${d.id}', true)" class="py-1.5 rounded-lg bg-emerald-700 text-white font-bold">Approve &amp; Credit</button>
+                <button onclick="adminApproveDeposit('${d.id}', false)" class="py-1.5 rounded-lg bg-rose-100 text-rose-700 font-bold">Reject</button>
+              </div>
+            ` : ''}
+          </div>
+        `).join('');
+
+      // 4. Withdrawals List
+      const wthContainer = document.getElementById('admin-withdrawals-list');
+      wthContainer.innerHTML = db.withdrawals.length === 0
+        ? '<p class="text-slate-400 text-center py-4">No withdrawal requests yet.</p>'
+        : db.withdrawals.map(w => `
+          <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-1.5">
+            <div class="flex justify-between font-bold">
+              <span>Send to: ${w.receivePhone}</span>
+              <span class="text-slate-900">Net: ${formatUGX(w.netAmount)}</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-500">
+              <span>Gross: ${formatUGX(w.grossAmount)} (5% Fee: ${formatUGX(w.feeAmount)})</span>
+              <span class="uppercase font-extrabold text-amber-600">${w.status}</span>
+            </div>
+            ${w.status === 'pending' ? `
+              <div class="grid grid-cols-2 gap-2 pt-1.5">
+                <button onclick="adminApproveWithdrawal('${w.id}', true)" class="py-1.5 rounded-lg bg-slate-900 text-white font-bold">Mark Paid</button>
+                <button onclick="adminApproveWithdrawal('${w.id}', false)" class="py-1.5 rounded-lg bg-rose-100 text-rose-700 font-bold">Reject &amp; Refund</button>
+              </div>
+            ` : ''}
+          </div>
+        `).join('');
+
+      // 5. Complete Registration Table
+      document.getElementById('admin-user-count').textContent = `${db.users.length} Users`;
+      document.getElementById('admin-reg-tbody').innerHTML = db.users.map(u => {
+        const boughtCount = db.investments.filter(i => i.userPhone === u.phone).length;
+        return `
+          <tr>
+            <td class="p-2 font-bold text-slate-900">${u.name}</td>
+            <td class="p-2 font-mono">${u.phone}</td>
+            <td class="p-2 font-mono text-emerald-700 font-bold">${u.inviteCode || makeInviteCode(u.phone)}</td>
+            <td class="p-2 text-slate-500">${u.invitedBy || 'Direct'}</td>
+            <td class="p-2 text-emerald-700 font-bold">${formatUGX(u.depositBalance)}</td>
+            <td class="p-2 font-semibold">${formatUGX(u.withdrawBalance)}</td>
+            <td class="p-2 font-extrabold text-amber-700">${boughtCount}</td>
+            <td class="p-2">
+              ${u.phone !== ADMIN_PHONE ? `<button onclick="adminDeleteUser('${u.phone}')" class="px-2 py-0.5 rounded bg-rose-100 text-rose-700 font-bold">Delete</button>` : '<span class="text-amber-600 font-bold">Master</span>'}
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      // 6. Complete Login Logs Table
+      document.getElementById('admin-login-tbody').innerHTML = db.loginLogs.map(l => `
+        <tr>
+          <td class="p-2 font-mono font-bold">${l.phone}</td>
+          <td class="p-2"><span class="px-1.5 py-0.5 rounded bg-slate-100 font-bold">${l.role}</span></td>
+          <td class="p-2 font-semibold text-slate-700">${l.status || 'SUCCESS'}</td>
+          <td class="p-2 text-slate-500">${l.timestamp}</td>
+        </tr>
+      `).join('');
+
+      // 7. Christmas Claims & Weekly Champions
+      const xmasAdminEl = document.getElementById('admin-xmas-claims-list');
+      xmasAdminEl.innerHTML = db.xmasClaims.length === 0
+        ? '<p class="text-slate-400">No Christmas rewards claimed yet.</p>'
+        : db.xmasClaims.map(c => `
+          <div class="p-2.5 rounded-xl bg-rose-50/60 border border-rose-200 flex items-center justify-between">
+            <div>
+              <p class="font-extrabold text-slate-900">${c.userName} (${c.userPhone}) &bull; ${c.rewardName}</p>
+              <p class="text-[11px] text-rose-700 font-bold">${c.choice} (${formatUGX(c.cashValue)}) &bull; ${c.createdAt}</p>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">${c.status}</span>
+          </div>
+        `).join('');
+
+      document.getElementById('admin-champs-list').innerHTML = db.champions.map(c => `
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+          <div>
+            <p class="font-bold text-slate-900">#${c.rank} ${c.name} (${c.phone})</p>
+            <p class="text-[11px] text-emerald-700 font-semibold">Weekly Reward: ${formatUGX(c.prize)}</p>
+          </div>
+          <button onclick="adminRemoveChampion('${c.id}')" class="px-2.5 py-1 rounded-lg bg-rose-100 text-rose-700 font-bold">Remove</button>
+        </div>
+      `).join('');
+
+      // 8. Active Orders & Arsenal Donations
+      const ordContainer = document.getElementById('admin-orders-list');
+      ordContainer.innerHTML = db.investments.length === 0
+        ? '<p class="text-slate-400 text-center py-4">No active investment orders yet.</p>'
+        : db.investments.map(inv => `
+          <div class="p-2.5 rounded-xl border border-slate-200 bg-white flex items-center justify-between">
+            <div>
+              <p class="font-bold text-slate-900">${inv.productName} &bull; ${inv.userPhone}</p>
+              <p class="text-[11px] text-slate-500">Day ${inv.daysCompleted}/${inv.totalDays} &bull; 24h Yield: ${formatUGX(inv.dailyIncome)}</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${inv.status === 'active' ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-700'}">${inv.status}</span>
+          </div>
+        `).join('');
+
+      const donLogContainer = document.getElementById('admin-donations-list');
+      donLogContainer.innerHTML = db.donations.length === 0
+        ? '<p class="text-slate-400">No defense hardware donations recorded yet.</p>'
+        : db.donations.map(d => `
+          <div class="flex items-center justify-between p-2 rounded-lg bg-rose-50/60 border border-rose-100">
+            <span><strong>${d.userPhone}</strong> &rarr; ${d.categoryTitle} (${d.createdAt})</span>
+            <span class="font-extrabold text-rose-700">${formatUGX(d.amount)}</span>
+          </div>
+        `).join('');
+    }
+
+    // =========================================================================
+    // UI RENDERING & NAVIGATION
+    // =========================================================================
+    function openModal(id) {
+      if (id === 'withdraw-modal') {
+        const db = loadDB();
+        const user = db.users.find(u => u.phone === currentUserPhone);
+        document.getElementById('modal-withdraw-avail').textContent = formatUGX(user ? user.withdrawBalance : 0);
+        document.getElementById('with-phone').value = currentUserPhone || '';
+      }
+      if (id === 'xmas-modal') {
+        renderChristmasRewards();
+      }
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function switchTab(tabName) {
+      ['home', 'products', 'invite', 'donate', 'account'].forEach(t => {
+        const view = document.getElementById('view-' + t);
+        if (t === tabName) view.classList.remove('hidden');
+        else view.classList.add('hidden');
+      });
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (btn.dataset.tab === tabName) {
+          btn.className = 'nav-btn flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl text-emerald-700 font-bold';
+        } else {
+          btn.className = 'nav-btn flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl text-slate-400 font-medium';
+        }
+      });
+    }
+
+    function copyInviteCode() {
+      const db = loadDB();
+      const user = db.users.find(u => u.phone === currentUserPhone);
+      if (!user) return;
+      copyText(user.inviteCode || makeInviteCode(user.phone));
+    }
+
+    function copyInviteLinkAndCode() {
+      const db = loadDB();
+      const user = db.users.find(u => u.phone === currentUserPhone);
+      if (!user) return;
+      const code = user.inviteCode || makeInviteCode(user.phone);
+      const link = buildInviteLink(code);
+      const combinedPayload = `ITALIAN Invite Link: ${link} | Invitation Code: ${code}`;
+
+      const temp = document.createElement('input');
+      temp.value = combinedPayload;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+
+      const btn = document.getElementById('copy-link-code-btn');
+      if (btn) {
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied Link + Code!';
+        btn.className = 'w-full py-2.5 rounded-xl bg-emerald-400 text-slate-950 font-extrabold text-xs shadow-sm transition';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.className = 'w-full py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs shadow-sm transition';
+        }, 2200);
+      }
+
+      showToast(`Copied invite link & code (${code})`);
+    }
+
+    function shareInviteWhatsApp() {
+      const db = loadDB();
+      const user = db.users.find(u => u.phone === currentUserPhone);
+      if (!user) return;
+      const code = user.inviteCode || makeInviteCode(user.phone);
+      const link = buildInviteLink(code);
+      const text = encodeURIComponent(`Join ITALIAN Investment Platform and receive an instant UGX 243 Welcome Bonus!\nInvite Link: ${link}\nInvitation Code: ${code}`);
+      window.open(`https://wa.me/?text=${text}`, '_blank', 'noopener,noreferrer');
+    }
+
+    function renderInvitePage() {
+      const db = loadDB();
+      const user = db.users.find(u => u.phone === currentUserPhone);
+      if (!user) return;
+
+      const myCode = user.inviteCode || makeInviteCode(user.phone);
+      document.getElementById('ui-my-invite-code').textContent = myCode;
+      document.getElementById('ui-my-invite-link').textContent = buildInviteLink(myCode);
+
+      const lv1Users = db.users.filter(u => u.invitedBy === user.phone);
+      const lv1Phones = lv1Users.map(u => u.phone);
+      const lv2Users = db.users.filter(u => u.invitedBy && lv1Phones.includes(u.invitedBy));
+      const lv2Phones = lv2Users.map(u => u.phone);
+      const lv3Users = db.users.filter(u => u.invitedBy && lv2Phones.includes(u.invitedBy));
+
+      document.getElementById('ui-lv1-count').textContent = `${lv1Users.length} Members`;
+      document.getElementById('ui-lv2-count').textContent = `${lv2Users.length} Members`;
+      document.getElementById('ui-lv3-count').textContent = `${lv3Users.length} Members`;
+      document.getElementById('ui-total-team-size').textContent = lv1Users.length + lv2Users.length + lv3Users.length;
+
+      const myRefLogs = db.referralLogs.filter(r => r.sponsorPhone === user.phone);
+      const totalEarned = myRefLogs.reduce((sum, r) => sum + r.amount, 0);
+      document.getElementById('ui-total-ref-earned').textContent = formatUGX(totalEarned);
+
+      const listEl = document.getElementById('invite-team-list');
+      if (myRefLogs.length === 0 && lv1Users.length === 0) {
+        listEl.innerHTML = '<p class="text-slate-400">Share your invite code above to earn 10% (Lv1), 3% (Lv2), and 1% (Lv3) on every purchase.</p>';
+      } else {
+        const commRows = myRefLogs.map(r => `
+          <div class="flex items-center justify-between py-2 border-b border-slate-100 last:border-0">
+            <div>
+              <p class="font-bold text-slate-900">Lv${r.level} (${r.ratePercent}%) &bull; From ${r.fromPhone}</p>
+              <p class="text-[10px] text-slate-400">${r.productName} &bull; ${r.createdAt}</p>
+            </div>
+            <span class="font-extrabold text-emerald-700">+${formatUGX(r.amount)}</span>
+          </div>
+        `).join('');
+
+        const memberRows = lv1Users.map(m => `
+          <div class="flex items-center justify-between py-1.5 border-b border-slate-100 last:border-0">
+            <div>
+              <p class="font-bold text-slate-800">${m.name} (${m.phone})</p>
+              <p class="text-[10px] text-slate-400">Joined ${m.registeredAt}</p>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold text-[10px]">Lv1 Direct</span>
+          </div>
+        `).join('');
+
+        listEl.innerHTML = commRows + memberRows;
+      }
+    }
+
+    function renderChristmasRewards() {
+      const db = loadDB();
+      const userBoughtCount = db.investments.filter(i => i.userPhone === currentUserPhone).length;
+      document.getElementById('xmas-modal-count').textContent = `${userBoughtCount} Products`;
+
+      const container = document.getElementById('xmas-rewards-list');
+      container.innerHTML = CHRISTMAS_REWARDS.map(r => {
+        const unlocked = userBoughtCount >= r.minProducts;
+        const claimedEntry = db.xmasClaims.find(c => c.userPhone === currentUserPhone && c.rewardId === r.id);
+
+        return `
+          <div class="p-3 rounded-2xl border ${unlocked ? 'border-emerald-300 bg-emerald-50/40' : 'border-slate-200 bg-white'} space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="text-2xl">${r.icon}</span>
+                <div>
+                  <p class="font-extrabold text-slate-900 text-xs">${r.name}</p>
+                  <p class="text-[11px] text-slate-500">Requires <strong>${r.minProducts}</strong> Purchased Products</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-[10px] text-slate-400">Cash Option</p>
+                <p class="text-xs font-extrabold text-emerald-700">${formatUGX(r.cashValue)}</p>
+              </div>
+            </div>
+
+            ${claimedEntry ? `
+              <div class="py-1.5 px-3 rounded-xl bg-slate-900 text-white text-[11px] font-bold text-center">
+                Claimed: ${claimedEntry.choice} (${formatUGX(claimedEntry.cashValue)})
+              </div>
+            ` : unlocked ? `
+              <div class="grid grid-cols-2 gap-2 pt-1">
+                <button onclick="claimChristmasReward('${r.id}', 'physical')" class="py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-[11px]">
+                  Claim Physical Gift
+                </button>
+                <button onclick="claimChristmasReward('${r.id}', 'cash')" class="py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold text-[11px]">
+                  Convert to ${formatUGX(r.cashValue)}
+                </button>
+              </div>
+            ` : `
+              <div class="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-100">
+                <span>Progress: <strong>${userBoughtCount} / ${r.minProducts}</strong> products</span>
+                <button onclick="closeModal('xmas-modal'); switchTab('products');" class="text-rose-600 font-bold hover:underline">Buy Products &rarr;</button>
+              </div>
+            `}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterProducts(days) {
+      currentProductFilter = days;
+      document.querySelectorAll('.prod-filter-btn').forEach(btn => {
+        if (String(btn.dataset.filter) === String(days)) {
+          btn.className = 'prod-filter-btn px-3 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white whitespace-nowrap';
+        } else {
+          btn.className = 'prod-filter-btn px-3 py-1.5 rounded-full text-xs font-bold bg-white text-slate-600 border border-slate-200 whitespace-nowrap';
+        }
+      });
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const db = loadDB();
+      const allProducts = db.products || DEFAULT_PRODUCTS;
+      const filtered = currentProductFilter === 'all'
+        ? allProducts
+        : allProducts.filter(p => p.days === Number(currentProductFilter));
+
+      const cardHTML = (p) => {
+        const totalIncome = p.dailyIncome * p.days;
+        return `
+          <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-xs space-y-3">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-xl shadow-xs">
+                  ${p.icon}
+                </div>
+                <div>
+                  <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 text-[10px] font-bold">${p.tag}</span>
+                  <h4 class="text-sm font-extrabold text-slate-900 mt-0.5">${p.name}</h4>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-xl bg-slate-100 text-slate-800 text-xs font-extrabold">${p.days} Days</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 bg-slate-50 p-2.5 rounded-xl text-center">
+              <div>
+                <p class="text-[10px] text-slate-500">Price</p>
+                <p class="text-xs font-extrabold text-slate-900 mt-0.5">${formatUGX(p.price)}</p>
+              </div>
+              <div class="border-x border-slate-200">
+                <p class="text-[10px] text-slate-500">24h Income</p>
+                <p class="text-xs font-extrabold text-emerald-700 mt-0.5">${formatUGX(p.dailyIncome)}</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500">Total Return</p>
+                <p class="text-xs font-extrabold text-amber-700 mt-0.5">${formatUGX(totalIncome)}</p>
+              </div>
+            </div>
+
+            <button onclick="investInProduct('${p.id}')" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-emerald-700 text-white font-bold text-xs transition">
+              Invest &bull; ${formatUGX(p.price)}
+            </button>
+          </div>
+        `;
+      };
+
+      document.getElementById('products-list').innerHTML = filtered.map(cardHTML).join('');
+      document.getElementById('home-featured-products').innerHTML = allProducts.slice(0, 3).map(cardHTML).join('');
+    }
+
+    function renderAccountAndPortfolio() {
+      const db = loadDB();
+      const user = db.users.find(u => u.phone === currentUserPhone);
+      if (user) {
+        document.getElementById('acc-user-name').textContent = user.name;
+        document.getElementById('acc-user-phone').textContent = user.phone;
+      }
+
+      const myInvs = db.investments.filter(i => i.userPhone === currentUserPhone);
+      const activeInvs = myInvs.filter(i => i.status === 'active');
+
+      document.getElementById('portfolio-active-count').textContent = activeInvs.length;
+      document.getElementById('portfolio-total-bought').textContent = myInvs.length;
+      document.getElementById('home-xmas-bought-count').textContent = myInvs.length;
+
+      const dailyTotal = activeInvs.reduce((sum, i) => sum + i.dailyIncome, 0);
+      document.getElementById('portfolio-daily-yield').textContent = formatUGX(dailyTotal);
+
+      const container = document.getElementById('active-investments-list');
+      if (myInvs.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white rounded-2xl p-5 text-center border border-slate-100 space-y-2">
+            <p class="text-sm font-bold text-slate-700">No Active Contracts</p>
+            <p class="text-xs text-slate-500">Invest in any plan starting from UGX 40,000 to earn every 24 hours.</p>
+            <button onclick="switchTab('products')" class="mt-1 px-4 py-2 rounded-xl bg-emerald-700 text-white text-xs font-bold">View Plans</button>
+          </div>
+        `;
+      } else {
+        const now = Date.now();
+        container.innerHTML = myInvs.map(inv => {
+          const nextCreditAt = inv.lastCreditedAt + DAY_MS;
+          const msLeft = Math.max(0, nextCreditAt - now);
+          const hrs = Math.floor(msLeft / (1000 * 60 * 60));
+          const mins = Math.floor((msLeft % (1000 * 60 * 60)) / (1000 * 60));
+          const pct = Math.min(100, Math.round((inv.daysCompleted / inv.totalDays) * 100));
+
+          return `
+            <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-xs space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-extrabold text-slate-900">${inv.productName}</h4>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${inv.status === 'active' ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-700'}">
+                  ${inv.status}
+                </span>
+              </div>
+              <div class="flex justify-between text-xs text-slate-600">
+                <span>24h Income: <strong class="text-emerald-700">${formatUGX(inv.dailyIncome)}</strong></span>
+                <span>Cycle: <strong>${inv.daysCompleted}/${inv.totalDays} Days</strong></span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                <div class="h-full bg-emerald-600 rounded-full" style="width: ${pct}%"></div>
+              </div>
+              <div class="flex justify-between items-center text-[11px] text-slate-500 pt-1">
+                <span>Next 24h credit in: <strong>${inv.status === 'active' ? `${hrs}h ${mins}m` : 'Completed'}</strong></span>
+                <span>Credited: <strong class="text-slate-900">${formatUGX(inv.daysCompleted * inv.dailyIncome)}</strong></span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // User Transaction History
+      const myDeps = db.deposits.filter(d => d.userPhone === currentUserPhone).map(d => ({
+        label: `Deposit (TxID: ${d.txId})`,
+        amount: `+${formatUGX(d.amount)}`,
+        status: d.status,
+        time: d.createdAt,
+        color: 'text-emerald-700'
+      }));
+      const myWths = db.withdrawals.filter(w => w.userPhone === currentUserPhone).map(w => ({
+        label: `Withdraw (5% Fee: ${formatUGX(w.feeAmount)})`,
+        amount: `-${formatUGX(w.grossAmount)}`,
+        status: w.status,
+        time: w.createdAt,
+        color: 'text-rose-700'
+      }));
+      const allTx = [...myDeps, ...myWths];
+      const txEl = document.getElementById('user-tx-history');
+      txEl.innerHTML = allTx.length === 0
+        ? '<p class="text-slate-400">No deposits or withdrawals yet.</p>'
+        : allTx.map(t => `
+          <div class="flex items-center justify-between py-1.5 border-b border-slate-100 last:border-0">
+            <div>
+              <p class="font-bold text-slate-800">${t.label}</p>
+              <p class="text-[10px] text-slate-400">${t.time} &bull; <span class="uppercase font-bold">${t.status}</span></p>
+            </div>
+            <span class="font-extrabold ${t.color}">${t.amount}</span>
+          </div>
+        `).join('');
+    }
+
+    function renderChampionsAndDonations() {
+      const db = loadDB();
+
+      const champRow = (c) => `
+        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full ${c.rank === 1 ? 'bg-amber-400 text-slate-950' : 'bg-slate-900 text-white'} font-extrabold text-xs flex items-center justify-center">
+              #${c.rank}
+            </div>
+            <div>
+              <p class="text-xs font-extrabold text-slate-900">${c.name}</p>
+              <p class="text-[11px] text-slate-500">${c.phone} &bull; ${c.title}</p>
+            </div>
+          </div>
+          <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold text-xs">
+            +${formatUGX(c.prize)}
+          </span>
+        </div>
+      `;
+      document.getElementById('home-champions-preview').innerHTML = db.champions.slice(0, 2).map(champRow).join('');
+      document.getElementById('champions-modal-list').innerHTML = db.champions.map(champRow).join('');
+
+      const myDonations = db.donations.filter(d => d.userPhone === currentUserPhone);
+      const myDonTotal = myDonations.reduce((s, d) => s + d.amount, 0);
+      document.getElementById('user-total-donated').textContent = formatUGX(myDonTotal);
+
+      document.getElementById('donation-categories-grid').innerHTML = DONATION_CATEGORIES.map(cat => {
+        const raised = db.categoryTotals[cat.id] || cat.raised;
+        const pct = Math.min(100, Math.round((raised / cat.goal) * 100));
+        return `
+          <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-xs space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 text-[10px] font-bold uppercase">${cat.badge}</span>
+              <span class="text-xs font-extrabold text-slate-700">${pct}% Funded</span>
+            </div>
+            <h3 class="text-sm font-extrabold text-slate-900">${cat.title}</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">${cat.desc}</p>
+            <div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+              <div class="h-full bg-rose-600 rounded-full" style="width: ${pct}%"></div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-slate-600">
+              <span>Raised: <strong>${formatUGX(raised)}</strong></span>
+              <span>Goal: ${formatUGX(cat.goal)}</span>
+            </div>
+            <button onclick="openDonateModal('${cat.id}')" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-rose-700 text-white font-bold text-xs transition">
+              Donate to ${cat.title}
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      const histContainer = document.getElementById('donation-history-list');
+      histContainer.innerHTML = db.donations.length === 0
+        ? '<p class="text-slate-400">No defense hardware contributions logged yet.</p>'
+        : db.donations.slice(0, 8).map(d => `
+          <div class="flex items-center justify-between py-1.5 border-b border-slate-100 last:border-0">
+            <div>
+              <p class="font-bold text-slate-800">${d.categoryTitle}</p>
+              <p class="text-[10px] text-slate-400">${d.userPhone} &bull; ${d.createdAt}</p>
+            </div>
+            <span class="font-extrabold text-rose-700">${formatUGX(d.amount)}</span>
+          </div>
+        `).join('');
+    }
+
+    function renderAll() {
+      const db = loadDB();
+      const user = db.users.find(u => u.phone === currentUserPhone);
+      if (!user) return;
+
+      document.getElementById('header-user-info').textContent = `${user.name} • ${user.phone}`;
+      document.getElementById('ui-deposit-balance').textContent = formatUGX(user.depositBalance);
+      document.getElementById('ui-withdraw-balance').textContent = formatUGX(user.withdrawBalance);
+
+      const isAdmin = user.phone === ADMIN_PHONE || user.isAdmin;
+      const pendingCount = db.deposits.filter(d => d.status === 'pending').length + db.withdrawals.filter(w => w.status === 'pending').length;
+      document.getElementById('home-pending-count').textContent = pendingCount;
+
+      if (isAdmin) {
+        document.getElementById('admin-badge').classList.remove('hidden');
+        document.getElementById('header-admin-btn').classList.remove('hidden');
+        document.getElementById('home-admin-card').classList.remove('hidden');
+      } else {
+        document.getElementById('admin-badge').classList.add('hidden');
+        document.getElementById('header-admin-btn').classList.add('hidden');
+        document.getElementById('home-admin-card').classList.add('hidden');
+      }
+
+      renderProducts();
+      renderInvitePage();
+      renderChristmasRewards();
+      renderAccountAndPortfolio();
+      renderChampionsAndDonations();
+    }
+
+    function bootApp() {
+      if (!currentUserPhone) {
+        document.getElementById('auth-screen').classList.remove('hidden');
+        document.getElementById('main-app').classList.add('hidden');
+        return;
+      }
+      document.getElementById('auth-screen').classList.add('hidden');
+      document.getElementById('main-app').classList.remove('hidden');
+      process24HourCycles(false);
+      renderAll();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      applyIncomingReferralHash();
+      bootApp();
+      setInterval(() => {
+        if (currentUserPhone) {
+          process24HourCycles(false);
+          renderAccountAndPortfolio();
+        }
+      }, 60000);
+    });
+
+    window.addEventListener('hashchange', () => {
+      applyIncomingReferralHash();
+    });
+  </script>
 </body>
 </html>

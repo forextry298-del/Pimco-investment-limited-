@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: italian-investment-platform
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
